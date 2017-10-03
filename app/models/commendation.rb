@@ -1,0 +1,2 @@
+class Commendation < ApplicationRecord
+end
