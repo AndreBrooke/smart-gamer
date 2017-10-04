@@ -1,0 +1,10 @@
+
+<% if @article.url %>
+	<div><%= @article.url %></div>
+	<div><%= image_tag(@article.image, height: '200') %></div>
+<% end %>
+
+<div><%= @article.title %></div>
+
+<div><%= @article.content %></div>
+

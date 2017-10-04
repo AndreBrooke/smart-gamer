@@ -1,24 +1,17 @@
-<%= form_for @article, html: { class: 'form-horizontal' } do |form| %>
-	
-	<!-- Article title -->
-	<div class="form-group">
-	  <%= form.label :title, class: 'col-sm-3 control-label' %>
-	  <div class="col-sm-9">
-		  <%= form.text_field :title, required: true, class: 'form-control' %>
-	  </div>
+<div class="panel-group">
+	<!-- Admin share 3rd party articles -->
+	<div class="panel panel-default">
+		<div class="panel-heading">Share article</div>
+		<div class="panel-body">
+			<%= render partial: '/articles/share' %>
+		</div>
 	</div>
 
-	<!-- Article content -->
-	<div class="form-group">
-	  <%= form.label :content, class: 'col-sm-3 control-label' %>
-	  <div class="col-sm-9">
-		  <%= form.text_area :content, required: true, class: 'form-control' %>
-	  </div>
+	<!-- Admin create inhouse articles -->
+	<div class="panel panel-default">
+		<div class="panel-heading">Create article</div>
+		<div class="panel-body">
+			<%= render partial: '/articles/form' %>
+		</div>
 	</div>
-
-	<!-- Submit button to create article -->
-  <div class="form-group text-center">
-      <%= form.submit 'Create article', class: 'btn btn-default' %>
-  </div>
-
-<% end %>
+</div>
