@@ -13,7 +13,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :name
     end
 
-    add_index :users, :email
+    # add_index :users, :email
     add_index :users, :remember_token
     add_index :users, :uid, unique: true
 

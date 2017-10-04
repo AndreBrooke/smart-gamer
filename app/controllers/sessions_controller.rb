@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
 
   def create
     begin
-      @user = User.from_omniauth request.env['omniauth.auth']
+      @user = User.from_omniauth(request.env['omniauth.auth'])
     rescue
+    	byebug
       flash[:error] = "Can't authorize you..."
     else
       session[:user_id] = @user.id
