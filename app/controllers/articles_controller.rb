@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+	include ArticlesHelper
 	def index
 		@articles = Article.all
 	end
@@ -12,7 +13,14 @@ class ArticlesController < ApplicationController
 	end
 
 	def create
-		@article = Article.new(article_params)
+		url = article_params["url"]
+		if url
+			share_params = get_shared_article_params(url)
+			@article = Article.new(share_params)
+		else
+			@article = Article.new(article_params)
+		end
+
 		if @article.save
 			flash[:success] = "Article is created successfully."
 			redirect_to @article
@@ -46,6 +54,6 @@ class ArticlesController < ApplicationController
 	private
 
 	def article_params
-		params.require(:article).permit(:title, :content)
+		params.require(:article).permit(:title, :content, :url)
 	end
 end
