@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"
-	
+
 	match '/auth/:provider/callback', to: 'sessions#create', via: :all
 	delete '/logout', to: 'sessions#destroy', as: :logout
 
@@ -25,5 +25,7 @@ Rails.application.routes.draw do
   resources :users, only: :show
 
   resources :articles
+
+  resources :followers, only: [:create, :destroy]
 
 end
