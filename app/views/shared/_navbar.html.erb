@@ -19,6 +19,7 @@
           <li><%= link_to 'Log In via Steam', '/auth/steam' %></li>
         </ul>
       <% end %>
+      <%= link_to "Create Articles", articles_path, class: "navbar-brand" if current_user && current_user.admin? %>
 		</div>
 
 		<div id="navbar" class="navbar-collapse collapse">
