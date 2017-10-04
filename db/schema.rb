@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171003103742) do
     t.string "avatar_url"
     t.string "profile_url"
     t.string "name"
+    t.integer "personastate"
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
