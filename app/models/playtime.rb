@@ -1,7 +1,6 @@
 class Playtime < ApplicationRecord
   belongs_to  :user
   before_save    :update_today_playtime
-  # after_create  :update_today_playtime
 
   private
 
@@ -11,7 +10,7 @@ class Playtime < ApplicationRecord
     if yesterday
       self.today_playtime = self[:total_playtime] - yesterday[:total_playtime]
     else
-      self.today_playtime = nil
+      self.today_playtime = 20
     end
   end
 
