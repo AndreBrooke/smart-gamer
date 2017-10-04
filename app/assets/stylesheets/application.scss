@@ -5,10 +5,17 @@
 body{
 	color: #565A5C;
 	background-color: #F8F8F8;
+
 	.main-container{
-		padding-top: 20px;
+		padding-top: 100px;
+		margin-bottom: 60px;
 	}
 }
+html {
+	  position: relative;
+	  min-height: 100%;
+	}
+
 
 
 
