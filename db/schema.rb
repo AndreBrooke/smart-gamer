@@ -40,10 +40,11 @@ ActiveRecord::Schema.define(version: 20171004074457) do
   end
 
   create_table "followers", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
+    t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_followers_on_users_id"
+    t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
   create_table "playtimes", force: :cascade do |t|
@@ -74,5 +75,5 @@ ActiveRecord::Schema.define(version: 20171004074457) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
-  add_foreign_key "followers", "users", column: "users_id"
+  add_foreign_key "followers", "users"
 end
