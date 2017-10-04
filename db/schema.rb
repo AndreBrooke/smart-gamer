@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20171004034202) do
 
-ActiveRecord::Schema.define(version: 20171003103742) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20171003103742) do
     t.string "profile_url"
     t.string "name"
     t.integer "personastate"
+    t.integer "status", default: 0
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["uid"], name: "index_users_on_uid", unique: true
-    t.integer "status", default: 0
   end
+
 end
