@@ -1,0 +1,19 @@
+<% @articles.each do |article| %>
+
+	<div class="">	
+		<% if article.url %>
+			<div><%= article.url %></div>
+			<div><%= image_tag(article.image, height: '200') %></div>
+		<% end %>
+
+		<div><%= article.title %></div>
+
+		<div><%= article.content %></div>
+	</div>
+
+	<% unless article.url %>
+		<%#= link_to 'Edit Article', edit_article_path %>
+	<% end %>
+
+	<%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
