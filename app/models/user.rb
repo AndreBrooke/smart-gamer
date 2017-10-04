@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
+  enum status: [ :gamer, :admin ]
+
 	  def self.from_omniauth(auth)
 	    info = auth['info']
 
