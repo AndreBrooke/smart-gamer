@@ -1,0 +1,42 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container{
+	width: 80%;
+}
+
+.row-space-1{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.row-space-2{
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.row-space-3{
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.col-lg-2{
+	width: 500px;
+	height: 500px;
+	color: grey;
+}
+
+.a-pic {
+	background-color: grey;
+	width: 100px;
+}
+
+.article-image-main {
+	padding: 5px;
+}
+
+.article-image-second{
+	padding: 5px;
+}
