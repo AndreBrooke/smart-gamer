@@ -4,16 +4,22 @@ class User < ApplicationRecord
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
 
-  def self.update
-    User.all do |x|
-      data = Track.job.perform_later(x.uid)
-      playtime = x.playtimes.find_by(date: Date.today)
-      if playtime == nil
-        x.playtimes.create(date: Date.today, total_playtime: data[:playtime_forever])
-      else
-        playtime.update(total_playtimes: data[:playtime_forever])
-      end
+  def self.update_playtime
+    all.each do |x|
+      TrackJob.perform_later(x.id)
     end
+  end
+
+  def update_today_playtime(data)
+    playtime = self.playtimes.find_by(date: Date.today)
+    if playtime == nil
+      self.update(personastate: data[:personastate])
+      self.playtimes.create(date: Date.today, total_playtime: data[:playtime_forever])
+    else
+      self.update(personastate: data[:personastate])
+      playtime.update(total_playtime: data[:playtime_forever])
+    end
+    TrackJob.set(wait: 1.minutes).perform_later(self.id)
   end
 
   def self.from_omniauth(auth)
