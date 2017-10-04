@@ -1,0 +1,79 @@
+
+<header class="jumbotron my-4">
+	<div class="row">
+		<div class="col-sm-4"> <h1 class="display-3">SmartGamer</h1></div>
+       
+        
+        <input type="text" name="search" placeholder="Find..">
+    </div>
+    <p class="lead">Play Smart not Hard</p>
+</header>
+
+<div class="container">
+	<blockquote class="blockquote col-sm-offset-3 col-sm-6">
+		<p><%= @quote["quoteText"] %></p>
+		<% quote_author = @quote["quoteAuthor"] %>
+		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
+	</blockquote>
+</div>
+
+<div class="container" >
+	<div class="row">
+		<h3 class="h3-title">Articles</h3>
+		<div class="col-md-6">
+			<img src='/assets/placeholder.jpg' alt="Main article image" class="article-image-main">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+		
+		</div>
+		<div class="col-sm-2">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+		</div>
+		<div class="col-sm-2">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+		</div>
+		<div class="col-sm-2">
+			
+		</div>
+			
+		
+	</div>
+	<div class="row">
+		<div class="col-sm-2-1">
+		<h3 class="h3-title">People</h3>
+		</div>
+		<div class="col-md-6">
+			<img src='/assets/placeholder.jpg' alt="Main article image" class="article-image-main">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+		
+		</div>
+		<div class="col-sm-3">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+		</div>
+		<div class="col-sm-2">
+			
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+		</div>
+		<div class="col-sm-2">
+			
+		</div>
+			
+		
+	</div>
+</div>

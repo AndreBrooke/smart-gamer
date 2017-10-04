@@ -1,0 +1,51 @@
+@mixin box_size($height) {
+  width: 100%;
+  height: $height;
+  margin-bottom: 10px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+#body {
+  width:100%;
+  display: flex;
+  text-align: center;
+}
+
+#left{
+  width:65%;
+  margin: 30px auto;
+}
+
+#right {
+  width:25%;
+  margin: 30px auto;
+}
+
+
+#header {
+  @include box_size(200px);
+}
+
+#button {
+  @include box_size(50px);
+}
+
+#content {
+  @include box_size(860px);
+}
+
+#about_me {
+  @include box_size(250px);
+}
+
+#my_games {
+  @include box_size(250px);
+}
+
+#my_achievements {
+  @include box_size(400px);
+}
+
