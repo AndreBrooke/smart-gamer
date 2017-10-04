@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def admin_page
+    if current_user.admin?
+      redirect_to articles_path
+    end
+  end
+
   private
 
 	def email_params
