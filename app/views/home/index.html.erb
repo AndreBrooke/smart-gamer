@@ -9,6 +9,13 @@
     <p class="lead">Play Smart not Hard</p>
 </header>
 
+<div class="container">
+	<blockquote class="blockquote col-sm-offset-3 col-sm-6">
+		<p><%= @quote["quoteText"] %></p>
+		<% quote_author = @quote["quoteAuthor"] %>
+		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
+	</blockquote>
+</div>
 
 <div class="container" >
 	<div class="row">
