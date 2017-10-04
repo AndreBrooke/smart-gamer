@@ -19,7 +19,7 @@ class User < ApplicationRecord
       self.update(personastate: data[:personastate])
       playtime.update(total_playtime: data[:playtime_forever])
     end
-    TrackJob.set(wait: 1.minutes).perform_later(self.id)
+    TrackJob.set(wait: 10.minutes).perform_later(self.id)
   end
 
   def self.from_omniauth(auth)
