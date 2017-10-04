@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem "clearance"
 
+gem 'whenever', :require => false
 # Use figaro for privacy protection
 gem 'figaro'
 # Use Omniauth Steam for steam login
