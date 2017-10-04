@@ -5,10 +5,14 @@ class UsersController < ApplicationController
 
 	def update
   	@user = User.find(params[:id])
-  	@user.update(email_params)
-  	redirect_to 
+  	if @user.update(email_params)
+  	  redirect_to user_path(@user)
+    else
+      flash[:notice] = "Incorect Email"
+      render 'users/edit'
+    end
   end
-  
+
   def show
     @user = User.find(params[:id])
   end

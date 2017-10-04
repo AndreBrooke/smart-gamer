@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	    user.avatar_url = info['image']
 	    user.profile_url = info['urls']['Profile']
 	    user.name = info['name']
-	    user.email = "example@na.com"
+	    user.email ||= "example@na.com"
 	    user.password = SecureRandom.hex(10)
 	    user.personastate = auth["extra"]['raw_info']['personastate']
 	    user

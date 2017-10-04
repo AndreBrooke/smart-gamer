@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
-  
+
   def create
       @user = User.from_omniauth(request.env['omniauth.auth'])
       @user.email = params[:user][:email] if params[:user]
@@ -12,9 +12,9 @@ class SessionsController < ApplicationController
     else
       session[:user_id] = @user.id
       flash[:success] = "Welcome, #{@user.nickname}!"
+      redirect_to user_path(@user)
     end
   end
-
   def destroy
 	  if current_user
 	    session.delete(:user_id)
