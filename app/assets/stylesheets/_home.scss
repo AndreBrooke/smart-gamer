@@ -34,9 +34,32 @@
 }
 
 .article-image-main {
+	width: 555px;
+	height: 390px;
 	padding: 5px;
 }
 
 .article-image-second{
+	position: relative;
+	right: 30px;
+	width: 195px;
+	height: 195px;
 	padding: 5px;
+}
+
+.activity-pic{
+	width: 150px;
+	height: 150px;
+	padding: 5px;
+}
+.article-image-second-long{
+	width: 275px;
+	height: 195px;
+	padding: 5px;
+	position: relative;	
+}
+
+.h3-title{
+	position: relative;
+	left: 25px;
 }
