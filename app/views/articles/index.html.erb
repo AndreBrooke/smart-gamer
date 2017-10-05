@@ -17,6 +17,10 @@
     <span class="fa fa-facebook"></span>
 	<% end %>
 
+	<%= link_to "http://twitter.com/home?status=#{article.title} #{article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
+		<span class="fa fa-twitter"></span>
+	<% end %>
+
 	<% unless article.url %>
 		<%= link_to 'Edit Article', edit_article_path(article) %>
 	<% end %>
