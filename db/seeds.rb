@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# rake db:seed
+
+include ArticlesHelper
+
+url = "https://www.flaktest.com/studied-benefits-playing-esports/"
+Article.create(get_shared_article_params(url))
+
+url = "http://es.me/en/2017/08/18/another-esports-academy-opens-doors-malaysia/"
+Article.create(get_shared_article_params(url))
+
+Article.create(title: "Stay tuned for our upcoming event", content: "Hint: new badge")
