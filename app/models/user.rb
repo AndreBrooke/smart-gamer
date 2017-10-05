@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      where("nickname ILIKE :search OR name ILIKE :search OR email ILIKE :search OR uid ILIKE search", search: "%#{search}%")
+      where("nickname ILIKE :search OR name ILIKE :search OR email ILIKE :search OR uid ILIKE :search", search: "%#{search}%")
     else
       all
     end
