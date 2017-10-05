@@ -1,5 +1,5 @@
 <div>Title: <%= @article.title %></div>
-<div>Content: <%= @article.content %></div>
+<div class="article-content">Content: <%= simple_format(@article.content) %></div>
 
 <%= form_for [@article, @comment], html: { class: 'form-horizontal' } do |form| %>
 	<%= render partial: '/comments/form', object: form %>
