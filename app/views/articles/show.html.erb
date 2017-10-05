@@ -4,11 +4,11 @@
 	
 	<% if @article.url %>
 		<div class="article-image"><%= image_tag(@article.image, width: '500') %></div>
+		<%= link_to @article.url, target: "_blank", class: 'btn btn-default' do %>
+			View article from original source
+		<% end %>
 	<% end %>
 	
-	<%= link_to @article.url, target: "_blank", class: 'btn btn-default' do %>
-		View article from original source
-	<% end %>
 
 	<div class="article-content"><%= @article.content %></div>
 </div>
