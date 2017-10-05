@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new(comment_params)
-		byebug
 		if @comment.save
 			redirect_to article_path(@comment.article.id)
 			flash[:success] = "Created the comments!"
@@ -36,6 +35,13 @@ class CommentsController < ApplicationController
 			flash[:danger] = "Error updating comment."
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@article = Article.find(params[:article_id])
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		redirect_to article_path(@article)
 	end
 
 	private
