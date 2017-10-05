@@ -18,6 +18,14 @@ Article.create(get_shared_article_params(url))
 
 Article.create(title: "Stay tuned for our upcoming event", content: "Hint: new badge")
 
+url = "http://www.stadiumastro.com/sports/e-sports/article/growth-of-esports-in-malaysia/35043"
+Article.create(get_shared_article_params(url))
+
+Article.create(title: "Tournament", content: "month-long tournament")
+
+url = "http://www.psychologyofgames.com/2016/12/deliberate-practice-and-getting-good/"
+Article.create(get_shared_article_params(url))
+
 User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
 User.create(email: "yizen@hotmail.com", password: SecureRandom.hex(10), uid: "100893614", nickname: "Peacemaker", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/55/55ba503630606e10ba2a99e8d9c1541be1d391d7_medium.jpg", profile_url: "http://steamcommunity.com/id/kooyizen/", name: "Koo Yi Zen")
 User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136990519", nickname: "Your Mum's Pussy", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198097256247/", name: "kit")
@@ -33,3 +41,4 @@ User.all.each do |x|
     x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
   end
 end
+

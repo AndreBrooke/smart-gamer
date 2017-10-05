@@ -1,12 +1,26 @@
+<div class="article">	
 
-<% if @article.url %>
-	<div><%= @article.url %></div>
-	<div><%= image_tag(@article.image, height: '200') %></div>
-<% end %>
+	<div class="article-title h1"><%= @article.title %></div>
+	
+	<% if @article.url %>
+		<div class="article-image"><%= image_tag(@article.image, width: '500') %></div>
+		<%= link_to @article.url, target: "_blank", class: 'btn btn-default' do %>
+			View article from original source
+		<% end %>
+	<% end %>
+	
+	<div class="article-social">
+		<%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{@article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
+	    <span class="fa fa-facebook"></span>
+		<% end %>
 
-<div><%= @article.title %></div>
+		<%= link_to "http://twitter.com/home?status=#{@article.title} #{@article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
+			<span class="fa fa-twitter"></span>
+		<% end %>
+	</div>
 
-<div><%= @article.content %></div>
+	<div class="article-content"><%= simple_format(@article.content) %></div>
+</div>
 
 <% @article.comments.each do |comment| %>
 	<p><%= comment.reply_article %>
@@ -14,3 +28,4 @@
 		<%= link_to 'Delete Comment', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
+
