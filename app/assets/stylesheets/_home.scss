@@ -43,8 +43,21 @@
 	width: 555px;
 	height: 390px;
 	padding: 5px;
-    background-color: #000;
+}
+
+.article-text-main {
+    width: 555px;
+    height: 390px;
+    line-height: 390px;
+    padding: 5px;
+    background-color: #272121;
     color: #fff;
+    font-size: 3em;  
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
 }
 
 .article-image-second{
@@ -53,6 +66,24 @@
 	width: 195px;
 	height: 195px;
 	padding: 5px;
+}
+
+.article-text-second {
+    display: inline-block;
+    position: relative;
+    right: 30px;
+    width: 195px;
+    height: 195px;
+    line-height: 195px;
+    padding: 5px;
+    background-color: #272121;
+    color: #fff;
+    font-size: 2em;  
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
 }
 
 .activity-pic{
@@ -66,6 +97,24 @@
 	padding: 5px;
 	position: relative;
 }
+
+.article-text-second-long {
+    display: inline-block;
+    position: relative;
+    width: 275px;
+    height: 195px;
+    line-height: 195px;
+    padding: 5px;
+    background-color: #272121;
+    color: #fff;
+    font-size: 2em;  
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
+}
+
 
 .h3-title{
 	width: 585px;

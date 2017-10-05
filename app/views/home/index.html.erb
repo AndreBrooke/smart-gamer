@@ -21,26 +21,46 @@
 		<div class="col-sm-6">
 
 			
-			<% first_article = @articles.first %>
+			<% first_article = @articles_home.first %>
 			<%= link_to article_path(first_article), target: "_self" do %>
 				<% if first_article.image %>
 					<%= image_tag first_article.image, class: "article-image-main" %>
 				<% else %>
 					<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
-					<div style='background-image: url(/assets/placeholder.jpg); background-size: contain;' class="text-center article-image-main"><%= first_article.title %></div>
+					<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+	
+			<% second_articles = @articles_home.slice(1..2) %>
+			<% second_articles.each do |article| %>
+				<%= link_to article_path(article), target: "_self" do %>
+					<% if article.image %>
+						<%= image_tag article.image, class: "article-image-second-long" %>
+					<% else %>
+						<div class="text-center article-text-second-long"><span><%= article.title %></span></div>
+					<% end %>
 				<% end %>
 			<% end %>
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
 		</div>
 		<div class="col-sm-2">
+
+		<% second_articles = @articles_home.slice(3..5) %>
+		<% second_articles.each do |article| %>
+			<%= link_to article_path(article), target: "_self" do %>
+				<% if article.image %>
+					<%= image_tag article.image, class: "article-image-second" %>
+				<% else %>
+					<div class="text-center article-text-second"><span><%= article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+
+
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
+
 		</div>
+		
 		<div class="col-sm-4">
 			<h3 class="h3-title">Activity</h3>
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
