@@ -1,6 +1,6 @@
 class Playtime < ApplicationRecord
   belongs_to  :user
-  before_save :update_today_playtime
+  # before_save :update_today_playtime
 
   private
 
