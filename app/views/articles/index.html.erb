@@ -12,6 +12,14 @@
 			<div><%= article.content %></div>
 		</div>
 	<% end %>
+	
+	<%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
+    <span class="fa fa-facebook"></span>
+	<% end %>
+
+	<%= link_to "http://twitter.com/home?status=#{article.title} #{article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
+		<span class="fa fa-twitter"></span>
+	<% end %>
 
 	<% unless article.url %>
 		<%= link_to 'Edit Article', edit_article_path(article) %>
