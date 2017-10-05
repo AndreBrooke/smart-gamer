@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
   enum privacy: [ :public_profile, :friend_only, :private_profile]
-  scope :nickname, ->(nickname) { where "nickname like ?", "%#{nickname}%" }
-  scope :email, ->(email) { where "email like ?", "%#{email}%" }
+  scope :nickname, ->(nickname) { where "lower(nickname) like ?", "%#{nickname.downcase}%" }
+  scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
 
 
