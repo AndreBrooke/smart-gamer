@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @achievement = UserAchievement.all
   end
 
   def admin_page
