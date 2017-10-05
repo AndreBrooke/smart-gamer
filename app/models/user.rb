@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
+  has_many  :comments, dependent: :destroy
   has_many :followers
   validates :desired_playtime, numericality: { only_integer: true }
   has_many  :playtimes
