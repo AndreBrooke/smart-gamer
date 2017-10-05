@@ -1,8 +1,32 @@
-<% @users.each do |user| %>
-  <%= user.nickname %>
-<% end %>
+<div id="search_result">
+  <div id="search_result_nav">
+    <% if !@users.empty? && !@articles.empty? %>
+      <button class="btn btn-primary active">All</button>
+    <% end %>
+    <% if !@users.empty? %>
+      <button class="btn btn-primary">Gamers</button>
+    <% end %>
+    <% if !@articles.empty? %>
+      <button class="btn btn-primary">Articles</button>
+    <% end %>
+    <%= link_to "New search", root_path, class: "btn btn-primary" %>
+  </div>
 
-<% @articles.each do |article| %>
-  <%= article.title %>
-  <%= article.content %>
-<% end %>
+  <div id="search_result_content">
+    <% if !@users.empty? %>
+      <div class="border">
+        <% @users.each do |user| %>
+          <%= user.nickname %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if !@articles.empty? %>
+      <div class="border">
+        <% @articles.each do |article| %>
+          <%= article.title %>
+          <%= article.content %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
