@@ -79,49 +79,38 @@
 
 
 	<div class="row">
-		<div class="col-sm-8">
-			
+
+		<div class="col-sm-6">
 			<div class="row">
 				<div class="col-sm-9"><h3 class="h3-title">People</h3></div>
 				<div class="col-sm-3">
 				</div>
 			</div>
-			
-			<div class="row">			
-				<div class="col-sm-9">
-					<% first_user = @users_home.first %>
-					<%= link_to user_path(first_user), target: "_self" do %>
-						<%= image_tag first_user.avatar_url, title: first_user.nickname, class: "article-image-main" %>
-					<% end %>
-			
-					<% second_users = @users_home.slice(1..2) %>
-					<% second_users.each do |user| %>
-						<%= link_to user_path(user), target: "_self" do %>
-							<%= image_tag user.avatar_url, title: user.nickname, class: "article-image-second-long" %>
-						<% end %>
-					<% end %>
-				</div>
 
-				<div class="col-sm-3">
-					<% second_users = @users_home.slice(3..5) %>
-					<% second_users.each do |user| %>
-						<%= link_to user_path(user), target: "_self" do %>
-							<%= image_tag user.avatar_url, title: user.nickname, class: "article-image-second" %>
-						<% end %>
-					<% end %>
+			<table class="home-user-table">
+				<tr>
+					<th>User</th>
+					<th>Stat1</th>
+					<th>Stat2</th>
+				</tr>
 
-					<%= image_tag '/assets/placeholder.jpg', class: "article-image-second" %>
-				</div>
-			</div>
+				<% @users_home.each do |user| %>
+					<tr>
+						<td><%= image_tag user.avatar_url, title: user.nickname, class: "" %> <%= user.nickname %></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<% end %>
+			</table>
 		</div>
 
 
-		<div class="col-sm-4">
-			<h3 class="h3-title">Activity</h3>
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
+				<div class="col-sm-3">
+				</div>
+			</div>
 		</div>
 	</div>
 
