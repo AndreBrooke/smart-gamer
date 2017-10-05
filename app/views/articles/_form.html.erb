@@ -1,5 +1,4 @@
-<%= form_for @article, html: { class: 'form-horizontal' } do |form| %>
-	
+
 	<!-- Article title -->
 	<div class="form-group">
 	  <%= form.label :title, class: 'col-sm-2 control-label' %>
@@ -15,10 +14,3 @@
 		  <%= form.text_area :content, required: true, class: 'form-control' %>
 	  </div>
 	</div>
-
-	<!-- Submit button to create article -->
-  <div class="form-group text-center">
-      <%= form.submit 'Create article', class: 'btn btn-default' %>
-  </div>
-
-<% end %>

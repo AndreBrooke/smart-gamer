@@ -1,5 +1,7 @@
-	<%= form_for @user do |form| %>
-		<%= form.label :email %>
-		<%= form.email_field :email, :value => nil, placeholder: "Enter Your Email" %>
-		<%= form.submit %>
-	<% end %>
+<%= form_for @user do |form| %>
+
+  <%= render partial: 'users/form', object: form %>
+  
+  <%= form.submit %>
+
+<% end %>

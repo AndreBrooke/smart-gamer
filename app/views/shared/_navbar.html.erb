@@ -10,6 +10,8 @@
 			</button>
 			<%= link_to "SmartGamer", root_path, class: "navbar-brand" %>
 
+
+		
       <% if signed_in?  %>
         <ul class="nav navbar-nav pull-right">
           <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
@@ -19,6 +21,9 @@
           <li><%= link_to 'Log In via Steam', '/auth/steam' %></li>
         </ul>
       <% end %>
+       <% flash.each do |key, value| %>
+  	<%= content_tag :div, value, :id => key %>
+  <% end %>
       <%= link_to "Create Articles", articles_path, class: "navbar-brand" if current_user && current_user.admin? %>
 		</div>
 
