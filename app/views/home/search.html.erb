@@ -1,0 +1,35 @@
+<div id="search_result">
+  <div id="search_result_nav">
+    <% if !@users.empty? && !@articles.empty? %>
+      <button class="search_btn btn btn-primary active">All</button>
+    <% end %>
+    <% if !@users.empty? %>
+      <button class="search_btn btn btn-primary">Gamers</button>
+    <% end %>
+    <% if !@articles.empty? %>
+      <button class="search_btn btn btn-primary">Articles</button>
+    <% end %>
+    <%= link_to "New search", root_path, class: "search_btn btn btn-primary" %>
+  </div>
+
+  <div id="search_result_content">
+    <% if !@users.empty? %>
+      <div id="users_search_result">
+        <% @users.each do |user| %>
+          <div id="user_search_result" class="border">
+            <p>Nikname: <%= link_to user.nickname, :controller => :users, :action => :show, :id => user.id %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <% if !@articles.empty? %>
+      <div id="articles_search_result" >
+        <% @articles.each do |article| %>
+          <div id="article_search_result" class="border">
+            <p>Title: <%= link_to article.title, article_path(article) %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
