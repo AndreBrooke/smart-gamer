@@ -34,7 +34,7 @@
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
-						<% if current_user.nickname != nil %>
+						<% if signed_in? && current_user.nickname != nil %>
 						<%= link_to current_user.nickname, current_user, role: "button"%>
 						
 						<% end %>
