@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# rake db:seed
+
 include ArticlesHelper
 
 url = "https://www.flaktest.com/studied-benefits-playing-esports/"
