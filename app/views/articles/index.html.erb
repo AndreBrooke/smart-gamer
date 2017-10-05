@@ -24,12 +24,17 @@
 			<% end %>
 		</div>
 
-    <% unless article.url %>
-      <%= link_to 'Reply This Article', new_article_comment_path(article) %>
-      <%= link_to 'Edit Article', edit_article_path(article) %>
-    <% end %>
+		<% if signed_in? %>
+			<% if current_user.admin? %>
+		    <% unless article.url %>
+		      <%= link_to 'Edit Article', edit_article_path(article) %>
+		    <% end %>
 
-		<%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+				<%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+		    <%= link_to 'Reply This Article', new_article_comment_path(article) %>
+	    <% end %>
+		<% end %>
 
 	</div>
 <% end %>

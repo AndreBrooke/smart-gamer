@@ -8,20 +8,30 @@
 @import 'articles';
 
 
+$white-font: #FFF;
+$background-dark: #363333;
 body{
-	color: #565A5C;
-	background-color: #F8F8F8;
-
+	color: $white-font;
+	background-color: $background-dark;
+	font-weight: 300;
 	.main-container{
+		font-family: 'Ubuntu', sans-serif !important;
 		padding-top: 100px;
 		margin-bottom: 60px;
+
 	}
 }
 html {
 	  position: relative;
 	  min-height: 100%;
+	  
 	}
 
+#navbar{
+	background-color: #272121;
+}
 
-
+#white-text{	
+	color: rgba(255,255,255,1);
+}
 

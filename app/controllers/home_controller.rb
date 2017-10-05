@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	include HomeHelper
-	def index
 
+	def index
 		# quote
 		response = get_quote
 		if response.code == 200
@@ -18,7 +18,12 @@ class HomeController < ApplicationController
 		end
 
 		# search results
-		@users = User.search(params[:search])
-		@articles = Article.search(params[:search])
+		@users = User.search(params[:search]).first(5)
+		@articles = Article.search(params[:search]).first(5)
 	end
+
+	def search
+    @users = User.search(params[:search])
+    @articles = Article.search(params[:search])
+  end
 end

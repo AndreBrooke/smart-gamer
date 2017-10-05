@@ -1,5 +1,5 @@
 <div><%= @article.title %></div>
-<div><%= @article.content %></div>
+<div class="article-content"><%= simple_format(@article.content) %></div>
 
 	<p><%= @comment.reply_article %></p>
 

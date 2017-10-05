@@ -5,7 +5,6 @@ class UserAchievementsController < ApplicationController
 
 	def create
 		@achievement = UserAchievement.new(achievement_params)
-		byebug
 		if @achievement.save
 			@achievement = UserAchievement.all
 			redirect_to user_path(current_user.id)

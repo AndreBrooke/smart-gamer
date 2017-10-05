@@ -8,15 +8,21 @@ class User < ApplicationRecord
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
   enum privacy: [ :public_profile, :friend_only, :private_profile]
+  scope :nickname, ->(nickname) { where "lower(nickname) like ?", "%#{nickname.downcase}%" }
+  scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
+  scope :uid, ->(uid) { where uid: uid }
 
   def self.search(search)
     if search
-      where("nickname ILIKE :search OR name ILIKE :search", search: "%#{search}%")
+      where("nickname ILIKE :search OR name ILIKE :search OR email ILIKE :search OR uid ILIKE :search", search: "%#{search}%")
+    else
+      all
     end
   end
 
   def self.update_playtime
     all.each do |x|
+      p x.id
       TrackJob.perform_later(x.id)
     end
   end
