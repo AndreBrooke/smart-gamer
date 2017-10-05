@@ -21,3 +21,11 @@
 
 	<div class="article-content"><%= simple_format(@article.content) %></div>
 </div>
+
+<% @article.comments.each do |comment| %>
+	<p><%= comment.reply_article %>
+		<%= link_to 'Edit Comment', edit_article_comment_path(@article, comment) if comment.user_id == current_user.id %>
+		<%= link_to 'Delete Comment', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+	</p>
+<% end %>
+

@@ -1,0 +1,6 @@
+<div><%= @article.title %></div>
+<div><%= @article.content %></div>
+
+	<p><%= @comment.reply_article %></p>
+
+<%= link_to 'Edit Comment', edit_article_comment_path(@article, @comment) if @comment.user_id == current_user.id %>
