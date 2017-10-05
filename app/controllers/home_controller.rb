@@ -19,6 +19,7 @@ class HomeController < ApplicationController
 	end
 
 	def search
-    byebug
+    @users = User.search(params[:search])
+    @articles = Article.search(params[:search])
   end
 end
