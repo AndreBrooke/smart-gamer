@@ -87,20 +87,26 @@
 				</div>
 			</div>
 
-			<table class="home-user-table">
-				<tr>
-					<th>User</th>
-					<th>Stat1</th>
-					<th>Stat2</th>
-				</tr>
-
-				<% @users_home.each do |user| %>
+			<table data-toggle="table" class="home-user-table">
+				<thead>
 					<tr>
-						<td><%= image_tag user.avatar_url, title: user.nickname, class: "" %> <%= user.nickname %></td>
-						<td></td>
-						<td></td>
+						<th data-sortable="true">User</th>
+						<th data-sortable="true">Today Playtime</th>
+						<th data-sortable="true">Total Playtime</th>
 					</tr>
-				<% end %>
+				</thead>
+
+				<tbody>
+					<% @users_home.each do |user| %>
+						<tr>
+							<td><%= image_tag user.avatar_url, title: user.nickname, class: "" %> <%= user.nickname %></td>
+							<% user_playtimes = user.playtimes %>
+							<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+							<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+							<td><%= user_total_playtime %></td>
+						</tr>
+					<% end %>
+				</tbody>
 			</table>
 		</div>
 
