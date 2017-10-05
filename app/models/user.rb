@@ -7,6 +7,12 @@ class User < ApplicationRecord
   enum status: [ :gamer, :admin ]
   enum privacy: [ :public_profile, :friend_only, :private_profile]
 
+  def self.search(search)
+    if search
+      where("nickname ILIKE :search OR name ILIKE :search", search: "%#{search}%")
+    end
+  end
+
   def self.update_playtime
     all.each do |x|
       TrackJob.perform_later(x.id)
