@@ -42,6 +42,10 @@ gem 'rest-client'
 
 gem 'sidekiq'
 
+gem "chartkick"
+
+gem 'groupdate'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

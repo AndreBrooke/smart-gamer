@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   def self.update_playtime
     all.each do |x|
+      p x.id
       TrackJob.perform_later(x.id)
     end
   end
