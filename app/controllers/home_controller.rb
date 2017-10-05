@@ -18,8 +18,8 @@ class HomeController < ApplicationController
 		end
 
 		# search results
-		@users_home = User.search(params[:search]).first(5)
-		@articles_home = Article.search(params[:search]).first(5)
+		@users_home = User.search(params[:search]).first(6)
+		@articles_home = Article.search(params[:search]).first(6)
 	end
 
 	def search

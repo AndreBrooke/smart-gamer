@@ -52,7 +52,8 @@
     padding: 5px;
     background-color: #272121;
     color: #fff;
-    font-size: 3em;  
+    font-size: 3em;
+    background-clip:content-box;  
     span {
         display: inline-block;
         vertical-align: middle;
@@ -78,7 +79,8 @@
     padding: 5px;
     background-color: #272121;
     color: #fff;
-    font-size: 2em;  
+    font-size: 2em; 
+    background-clip:content-box; 
     span {
         display: inline-block;
         vertical-align: middle;
@@ -108,6 +110,7 @@
     background-color: #272121;
     color: #fff;
     font-size: 2em;  
+    background-clip:content-box;
     span {
         display: inline-block;
         vertical-align: middle;
