@@ -8,3 +8,8 @@
 
 <div><%= @article.content %></div>
 
+<% @article.comments.each do |comment| %>
+	<p><%= comment.reply_article %>
+		<%= link_to 'Edit Comment', edit_article_comment_path(@article, comment) if comment.user_id == current_user.id %>
+	</p>
+<% end %>

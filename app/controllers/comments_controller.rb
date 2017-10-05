@@ -6,8 +6,9 @@ class CommentsController < ApplicationController
 
 	def create
 		@comment = Comment.new(comment_params)
+		byebug
 		if @comment.save
-			redirect_to article_comment_path(@comment.article_id, @comment.id)
+			redirect_to article_path(@comment.article.id)
 			flash[:success] = "Created the comments!"
 		else
 			render "new"
@@ -17,7 +18,24 @@ class CommentsController < ApplicationController
 
 	def show
 		@article = Article.find(params[:article_id])
-		@comment = Comment.where(article_id: params[:article_id])
+		@comment = Comment.find(params[:id])
+	end
+
+	def edit
+		@article = Article.find(params[:article_id])
+		@comment = Comment.find(params[:id]) 
+	end
+
+	def update
+		@article = Article.find(params[:article_id])
+		@comment = Comment.find(params[:id])
+		if @comment.update(comment_params)
+			flash[:success] = "Comment is updated successfully."
+			redirect_to article_path(@article)
+		else
+			flash[:danger] = "Error updating comment."
+			render 'edit'
+		end
 	end
 
 	private

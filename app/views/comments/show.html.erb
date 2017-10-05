@@ -1,6 +1,6 @@
-<div>Title: <%= @article.title %></div>
-<div>Content: <%= @article.content %></div>
+<div><%= @article.title %></div>
+<div><%= @article.content %></div>
 
-<% @comment.each do |all| %>
-	<p><%= all.reply_article %></p>
-<% end %>
+	<p><%= @comment.reply_article %></p>
+
+<%= link_to 'Edit Comment', edit_article_comment_path(@article, @comment) if @comment.user_id == current_user.id %>
