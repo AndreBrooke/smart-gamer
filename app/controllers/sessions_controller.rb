@@ -2,8 +2,8 @@ class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
 
   def create
-      @user = User.from_omniauth(request.env['omniauth.auth'])
-      @user.email = params[:user][:email] if params[:user]
+    @user = User.from_omniauth(request.env['omniauth.auth'])
+    @user.email = params[:user][:email] if params[:user]
     if !@user.save
       flash[:error] = "Login Fail"
     elsif @user.email == "example@na.com"
