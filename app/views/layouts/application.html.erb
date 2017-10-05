@@ -3,13 +3,14 @@
   <head>
     <title>SmartGamer</title>
     <%= csrf_meta_tags %>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    
+
     <!-- Bootstrap social -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
 
@@ -22,7 +23,6 @@
     <div class="container main-container">
       <%= yield %>
     </div>
-
   </body>
     <%= render 'shared/footer' %>
 </html>

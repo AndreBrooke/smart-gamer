@@ -28,7 +28,9 @@
       <button type="button" class="btn btn-primary">History</button>
       <button type="button" class="btn btn-primary">Overall</button>
     </div>
-    <div id="content" class="border"></div>
+    <div id="content" class="border">
+      <%= line_chart @chart, curve: false %>
+    </div>
   </div>
   <div id="right">
     <div id="about_me" class="border"></div>

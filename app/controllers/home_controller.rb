@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 	include HomeHelper
-	def index
 
+	def index
 		# quote
 		response = get_quote
 		if response.code == 200
