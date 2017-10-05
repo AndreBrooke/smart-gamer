@@ -1,0 +1,12 @@
+<%= form_for [@article, @comment], html: { class: 'form-horizontal' } do |form| %>
+	<%= render partial: '/comments/form', object: form %>
+
+	<%= form.hidden_field :user_id, :value => current_user.id %>
+	<%= form.hidden_field :article_id, :value => @article.id %>
+
+	<!-- Submit button to create comments -->
+  <div class="form-group text-center">
+      <%= form.submit 'Comment!', class: 'btn btn-default' %>
+  </div>
+
+<% end %>

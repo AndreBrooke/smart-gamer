@@ -16,7 +16,12 @@ class ArticlesController < ApplicationController
 		url = article_params["url"]
 		if url
 			share_params = get_shared_article_params(url)
-			@article = Article.new(share_params)
+			if share_params
+				@article = Article.new(share_params)
+			else
+				flash[:danger] = "Error creating article. Invalid link."
+				return redirect_back(fallback_location: root_path)
+			end
 		else
 			@article = Article.new(article_params)
 		end
@@ -32,6 +37,7 @@ class ArticlesController < ApplicationController
 
 	def edit
 		@article = Article.find(params[:id])
+
 	end
 
 	def update

@@ -24,8 +24,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users, only: :show
-
-  resources :articles
+  
+  resources :articles do
+    resources :comments
+  end
 
   resources :followers, only: [:create, :destroy]
 
