@@ -1,8 +1,11 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  validates :desired_playtime, numericality: { only_integer: true }
+
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
+  enum privacy: [ :public_profile, :friend_only, :private_profile]
 
   def self.update_playtime
     all.each do |x|
