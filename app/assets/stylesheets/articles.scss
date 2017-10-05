@@ -19,6 +19,7 @@
 	}
 	.article-content {
 		color: #000;
+		text-align: justify;
 	}
 	.article-social {
 		margin: 8px 0 8px 0;
@@ -29,6 +30,9 @@
 .article {
 	color: #000;
 	.article-image{
+		margin: 8px 0 8px 0;
+	}
+	.article-social {
 		margin: 8px 0 8px 0;
 	}
 }

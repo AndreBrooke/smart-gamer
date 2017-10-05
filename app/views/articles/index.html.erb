@@ -2,17 +2,17 @@
 
 	<div class="article-wrapper">
 		
-		<%= link_to article_path(article), target: "_self" do %>
-			<div class="article">	
+		<div class="article">	
+			<%= link_to article_path(article), target: "_self" do %>
 				<div class="article-title"><%= article.title %></div>
 
 				<% if article.url %>
 					<div class="article-image"><%= image_tag(article.image, height: '200') %></div>
 				<% end %>
-
-				<div class="article-content"><%= article.content %></div>
-			</div>
-		<% end %>
+			<% end %>
+			
+			<div class="article-content"><%= simple_format(article.content) %></div>
+		</div>
 		
 		<div class="article-social">
 			<%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
