@@ -21,4 +21,9 @@ class HomeController < ApplicationController
 		@users = User.search(params[:search]).first(5)
 		@articles = Article.search(params[:search]).first(5)
 	end
+
+	def search
+    @users = User.search(params[:search])
+    @articles = Article.search(params[:search])
+  end
 end
