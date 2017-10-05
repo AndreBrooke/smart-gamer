@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
 	include HomeHelper
 	def index
+
+		# quote
 		response = get_quote
 		if response.code == 200
 			# FIXME - not working if quoteText contains double quoted string
@@ -14,5 +16,9 @@ class HomeController < ApplicationController
 		else
 			@quote = fallback_quote
 		end
+
+		# search results
+		@users = User.search(params[:search])
+		@articles = Article.search(params[:search])
 	end
 end

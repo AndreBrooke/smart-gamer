@@ -1,0 +1,19 @@
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+<%= form.label :nickname %>
+<%= form.text_field :nickname %>
+
+<%= form.label :email %>
+<% if @user.email == "example@na.com" %>
+  <%= form.email_field :email, :value => nil, placeholder: "Enter Your Email" %>
+<% else %>
+  <%= form.email_field :email, disabled: true %>  
+<% end %>
+
+<%= form.label :desired_playtime %>
+<%= form.text_field :desired_playtime %>
+
+<%= form.label :privacy %>
+<%= form.select :privacy, User.privacies.keys.to_a %>
+

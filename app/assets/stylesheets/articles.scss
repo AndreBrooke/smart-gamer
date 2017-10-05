@@ -1,3 +1,12 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-wrapper {
+	border: 1px solid #efefef;
+	background-color: #fff;
+	border-radius: 4px;
+	margin: 8px;
+	padding: 16px 18px 16px 18px;
+	width: 80%;
+}

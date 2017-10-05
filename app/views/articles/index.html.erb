@@ -1,32 +1,34 @@
 <% @articles.each do |article| %>
 
-	<%= link_to article_path(article), target: "_self" do %>
-		<div class="">	
-			<% if article.url %>
-				<div><%= article.url %></div>
-				<div><%= image_tag(article.image, height: '200') %></div>
-			<% end %>
+	<div class="article-wrapper">
+		
+		<%= link_to article_path(article), target: "_self" do %>
+			<div class="article">	
+				<% if article.url %>
+					<div><%= article.url %></div>
+					<div><%= image_tag(article.image, height: '200') %></div>
+				<% end %>
 
-			<div><%= article.title %></div>
+				<div><%= article.title %></div>
 
-			<div><%= article.content %></div>
-		</div>
-	<% end %>
-	
-	<%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
-    <span class="fa fa-facebook"></span>
-	<% end %>
+				<div><%= article.content %></div>
+			</div>
+		<% end %>
+		
+		<%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
+	    <span class="fa fa-facebook"></span>
+		<% end %>
 
-	<%= link_to "http://twitter.com/home?status=#{article.title} #{article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
-		<span class="fa fa-twitter"></span>
-	<% end %>
+		<%= link_to "http://twitter.com/home?status=#{article.title} #{article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
+			<span class="fa fa-twitter"></span>
+		<% end %>
 
-	<% unless article.url %>
+    <% unless article.url %>
+      <%= link_to 'Reply This Article', new_article_comment_path(article) %>
+      <%= link_to 'Edit Article', edit_article_path(article) %>
+    <% end %>
 
-	<%= link_to 'Reply This Article', new_article_comment_path(article) %>
+		<%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
 
-		<%= link_to 'Edit Article', edit_article_path(article) %>
-	<% end %>
-
-	<%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+	</div>
 <% end %>
