@@ -116,11 +116,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'create achievements', new_user_achievement_path %>
-<p>List Of Achievements!</p>
-  <% @achievement.each do |list| %>
-    <p><%= list.image %></p>
-    <p><%= list.name %></p>
-    <p><%= list.description %></p>
-  <% end %>
