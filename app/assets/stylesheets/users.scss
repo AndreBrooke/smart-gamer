@@ -59,6 +59,7 @@ $background-dark: #403F48;
   @include box_size(400px);
 }
 
+
 .steam-avatar {
   height: 90px;
   width: 90px;
@@ -84,5 +85,9 @@ $background-dark: #403F48;
 .progress-bar {
   text-align: left;
   transition-duration: 3s;
+
+.inline {
+  display: inline-block;
+
 }
 

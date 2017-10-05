@@ -1,10 +1,25 @@
+
 <div id="header" class="border border background-color-div">
   <div class ="row">
     <div class="col-lg-6">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
           <%= image_tag current_user.avatar_url, class:"steam-avatar"%>
-        </div>
+        </div> <!-- Follow button--> 
+         <% if User.check_follower(params[:id], current_user.id) && params[:id].to_i != current_user.id %>
+        <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+          <%= f.hidden_field :user_id, value: params[:id] %>
+          <%= f.hidden_field :follower_id, value: current_user.id %>
+          <%= f.button "Follow", class: "btn btn-primary"  %>
+        <% end %>
+      <% elsif params[:id].to_i != current_user.id %>
+        <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+          <%= f.hidden_field :user_id, value: params[:id] %>
+          <%= f.hidden_field :follower_id, value: current_user.id %>
+          <%= f.button "Unfollow", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+         <!-- Follow button end -->
           <div class="col-sm-3">
           <%= current_user.name%><br>
           <%= current_user.nickname %><br>
@@ -57,7 +72,7 @@
     <div class="tab-content">
       <div id="overall" class="tab-pane fade in active">
         <h3>Overall</h3>
-        <p>content</p>
+        <%= line_chart @chart, curve: false %>
       </div>
       <div id="stats" class="tab-pane fade">
         <h3>Stats</h3>
@@ -72,21 +87,9 @@
         <p>Settings content</p>
       </div>
     </div>
-   <!--  <div class="btn-group btn-group-lg btn-group-justified">
-      <div class ='btn-group'>
-        <button type="button" class="btn btn-danger">Overall</button>
-      </div>
-      <div class ='btn-group'>
-        <button type="button" class="btn btn-danger">Stats</button>
-      </div>
-      <div class ='btn-group'>
-        <button type="button" class="btn btn-danger">History</button>
-      </div>
-      <div class ='btn-group'>
-        <button type="button" class="btn btn-danger">Settings</button>
-      </div>
-    </div> -->
+  
     <div id="content" class="border background-color-div"></div>
+
   </div>
   <div id="right">
     <div id="about_me" class="border background-color-div">
