@@ -10,12 +10,12 @@ class User < ApplicationRecord
   scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
 
-
-  def self.search(search_params)
-    user = User.nickname(search_params)
-    user += User.email(search_params)
-    user += User.uid(search_params)
-    user
+  def self.search(search)
+    if search
+      where("nickname ILIKE :search OR name ILIKE :search OR email ILIKE :search OR uid ILIKE search", search: "%#{search}%")
+    else
+      all
+    end
   end
 
   def self.update_playtime

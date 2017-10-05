@@ -21,8 +21,15 @@
 		<div class="col-sm-6">
 
 			
-
-			<img src='/assets/placeholder.jpg' alt="Main article image" class="article-image-main">
+			<% first_article = @articles.first %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, class: "article-image-main" %>
+				<% else %>
+					<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div style='background-image: url(/assets/placeholder.jpg); background-size: contain;' class="text-center article-image-main"><%= first_article.title %></div>
+				<% end %>
+			<% end %>
 
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
 

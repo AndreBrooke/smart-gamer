@@ -16,10 +16,9 @@ class HomeController < ApplicationController
 		else
 			@quote = fallback_quote
 		end
-	end
 
-	def search
-    @users = User.search(params[:search])
-    @articles = Article.search(params[:search])
-  end
+		# search results
+		@users = User.search(params[:search]).first(5)
+		@articles = Article.search(params[:search]).first(5)
+	end
 end
