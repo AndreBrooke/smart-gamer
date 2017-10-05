@@ -30,7 +30,7 @@
         </div>
         </div>
     <div class="col-lg-6">
-      <div class="row">
+      <div class="row" id="skill-bar">
         <div class="container-fluid">
         <!-- Skill Bars -->
             <div class="progress skill-bar ">
@@ -72,25 +72,25 @@
     </ul>
 
     <div class="tab-content">
-      <div id="overall" class="tab-pane fade in active">
+      <div id="overall" class="tab-pane fade in active background-color-div">
         <h3>Overall</h3>
-        <%= line_chart @chart, curve: false %>
+          <%= render partial: 'users/overall'%>
       </div>
-      <div id="stats" class="tab-pane fade">
+      <div id="stats" class="tab-pane fade background-color-div">
         <h3>Stats</h3>
         <p>Stat content</p>
       </div>
-      <div id="history" class="tab-pane fade">
+      <div id="history" class="tab-pane fade background-color-div">
         <h3>History</h3>
         <p>history content</p>
       </div>
-      <div id="settings" class="tab-pane fade">
+      <div id="settings" class="tab-pane fade background-color-div">
         <h3>Settings</h3>
         <p>Settings content</p>
       </div>
     </div>
   
-    <div id="content" class="border background-color-div"></div>
+    
 
   </div>
   <div id="right">
@@ -106,6 +106,33 @@
     </div>
     <div id="my_achievements" class="border background-color-div">
       <h3>My Achievements</h3>
+        Create Achievements
+        <%= link_to 'Create', new_user_achievement_path %> 
+        <% @achievement.each do |list| %>
+          <p><%= list.image %></p>
+          <p><%= list.name %></p>
+          <p><%= list.description %></p>
+        <% end %>
     </div>
   </div>
 </div>
+
+
+<%= link_to 'create achievements', new_user_achievement_path %>
+<p>List Of Achievements!</p>
+  <% @achievement.each do |list| %>
+    <p><%= list.image %></p>
+    <p><%= list.name %></p>
+    <p><%= list.description %></p>
+  <% end %>
+
+<script>
+   $(document).ready(function() {
+      $('.progress .progress-bar').css("width",
+                function() {
+                    return $(this).attr("aria-valuenow") + "%";
+                }
+        )
+    });
+</script>
+
