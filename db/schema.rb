@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005024558) do
+ActiveRecord::Schema.define(version: 20171005073913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "achievements", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "articles", force: :cascade do |t|
     t.string "url"
@@ -27,6 +22,15 @@ ActiveRecord::Schema.define(version: 20171005024558) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_badges_on_achievement_id"
+    t.index ["user_id"], name: "index_badges_on_user_id"
   end
 
   create_table "commendations", force: :cascade do |t|
@@ -62,6 +66,14 @@ ActiveRecord::Schema.define(version: 20171005024558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_playtimes_on_user_id"
+  end
+
+  create_table "user_achievements", force: :cascade do |t|
+    t.string "image"
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

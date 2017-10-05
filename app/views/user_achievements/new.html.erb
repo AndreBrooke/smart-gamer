@@ -1,0 +1,9 @@
+<%= form_for @achievement, html: { class: 'form-horizontal' } do |form| %>
+	<%= render partial: '/user_achievements/form', object: form %>
+
+	<!-- Submit button to create article -->
+  <div class="form-group text-center">
+      <%= form.submit 'Create Achivements', class: 'btn btn-default' %>
+  </div>
+
+<% end %>
