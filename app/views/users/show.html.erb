@@ -5,7 +5,13 @@
        <div class="row" id="user-profile">
         <div class="col-sm-3">
           <%= image_tag current_user.avatar_url, class:"steam-avatar"%>
-        </div> <!-- Follow button--> 
+        </div>
+
+          <div class="col-sm-3">
+          <%= current_user.name%><br>
+          <%= current_user.nickname %><br>
+          <%= current_user.email %>   
+          <!-- Follow button--> 
          <% if User.check_follower(params[:id], current_user.id) && params[:id].to_i != current_user.id %>
         <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
           <%= f.hidden_field :user_id, value: params[:id] %>
@@ -20,10 +26,6 @@
         <% end %>
       <% end %>
          <!-- Follow button end -->
-          <div class="col-sm-3">
-          <%= current_user.name%><br>
-          <%= current_user.nickname %><br>
-          <%= current_user.email %>   
           </div>
         </div>
         </div>
