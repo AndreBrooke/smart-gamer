@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users, only: :show
+
+  resources :user_achievements, only: [:index, :new, :create]
   
   resources :articles do
     resources :comments

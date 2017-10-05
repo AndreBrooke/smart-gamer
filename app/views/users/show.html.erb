@@ -106,6 +106,13 @@
     </div>
     <div id="my_achievements" class="border background-color-div">
       <h3>My Achievements</h3>
+        Create Achievements
+        <%= link_to 'Create', new_user_achievement_path %> 
+        <% @achievement.each do |list| %>
+          <p><%= list.image %></p>
+          <p><%= list.name %></p>
+          <p><%= list.description %></p>
+        <% end %>
     </div>
   </div>
 </div>
