@@ -33,7 +33,7 @@
 					<% first_article = @articles_home.first %>
 					<%= link_to article_path(first_article), target: "_self" do %>
 						<% if first_article.image %>
-							<%= image_tag first_article.image, title: article.title, class: "article-image-main" %>
+							<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
 						<% else %>
 							<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
 							<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
@@ -80,26 +80,27 @@
 
 	<div class="row">
 
+		<!-- Users table -->
 		<div class="col-sm-6">
 			<div class="row">
-				<div class="col-sm-9"><h3 class="h3-title">People</h3></div>
+				<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamer (by today playtime)</h3></div>
 				<div class="col-sm-3">
 				</div>
 			</div>
 
-			<table data-toggle="table" class="home-user-table">
+			<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
 				<thead>
 					<tr>
 						<th data-sortable="true">User</th>
-						<th data-sortable="true">Today Playtime</th>
-						<th data-sortable="true">Total Playtime</th>
+						<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+						<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
 					</tr>
 				</thead>
 
 				<tbody>
-					<% @users_home.each do |user| %>
+					<% @users_top5.each do |user| %>
 						<tr>
-							<td><%= image_tag user.avatar_url, title: user.nickname, class: "" %> <%= user.nickname %></td>
+							<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
 							<% user_playtimes = user.playtimes %>
 							<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
 							<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
@@ -110,14 +111,43 @@
 			</table>
 		</div>
 
-
-		<div class="col-sm-6">
-			<div class="row">
-				<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
-				<div class="col-sm-3">
+		<!-- Followers table -->
+		<!-- signed_in? <=> true -->
+		<% if signed_in? %>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
+					<div class="col-sm-3">
+					</div>
 				</div>
+
+				<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
+					<thead>
+						<tr>
+							<th data-sortable="true">User</th>
+							<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+							<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<!-- FIXME - to find top 5 followers by today_playtime -->
+						<!-- current_user <=> User.last -->
+						<% followers = current_user.followers.first(5) %>
+						<% followers.each do |follower| %>
+							<% user = @users.find(follower.follower_id) %>
+							<tr>
+								<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+								<% user_playtimes = user.playtimes %>
+								<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+								<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+								<td><%= user_total_playtime %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
 			</div>
-		</div>
+		<% end %>
 	</div>
 
 
