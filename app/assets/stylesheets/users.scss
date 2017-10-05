@@ -1,14 +1,15 @@
+
+
 @mixin box_size($height) {
   width: 100%;
   height: $height;
   margin-bottom: 10px;
 }
 
-.border {
-  border: 1px solid black;
-}
+
 
 #body {
+  
   width:100%;
   display: flex;
   text-align: center;
@@ -24,8 +25,16 @@
   margin: 30px auto;
 }
 
+$background-dark: #403F48;
+
+.background-color-div {
+  background-color: $background-dark;
+}
+
+
 
 #header {
+
   @include box_size(200px);
 }
 
@@ -38,18 +47,47 @@
 }
 
 #about_me {
+
   @include box_size(250px);
 }
 
 #my_games {
-  @include box_size(250px);
+  @include box_size(250px); 
 }
 
 #my_achievements {
   @include box_size(400px);
 }
 
+
+.steam-avatar {
+  height: 90px;
+  width: 90px;
+}
+
+.progress {
+  height: 35px;
+
+}
+.progress .skill {
+  
+
+  padding: 0;
+  margin: 0 0 0 20px;
+  text-transform: uppercase;
+}
+.progress .skill .val {
+  float: right;
+  font-style: normal;
+  margin: 0 20px 0 0;
+}
+
+.progress-bar {
+  text-align: left;
+  transition-duration: 3s;
+
 .inline {
   display: inline-block;
+
 }
 
