@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
+    chart1.transform_values! {|value| value/60 }
+    chart2 = chart1.transform_values {|value| @user.desired_playtime}
+    @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
   end
 
   def admin_page
