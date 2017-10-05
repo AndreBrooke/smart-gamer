@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20171004074457) do
   create_table "followers", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "follower_id"
+    t.boolean "status", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_followers_on_status"
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 

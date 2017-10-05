@@ -4,11 +4,17 @@
 <div id="body">
   <div id="left">
     <div id="button" class="border">
-      <% if params[:id].to_i != current_user.id  %>
+      <% if User.check_follower(params[:id], current_user.id) && params[:id].to_i != current_user.id %>
         <%= form_for :follower, url: followers_path, method: :post do |f| %>
           <%= f.hidden_field :user_id, value: params[:id] %>
           <%= f.hidden_field :follower_id, value: current_user.id %>
           <%= f.submit "Follow"  %>
+        <% end %>
+      <% elsif params[:id].to_i != current_user.id %>
+        <%= form_for :follower, url: followers_path, method: :post do |f| %>
+          <%= f.hidden_field :user_id, value: params[:id] %>
+          <%= f.hidden_field :follower_id, value: current_user.id %>
+          <%= f.submit "Unfollow"  %>
         <% end %>
       <% end %>
     </div>
