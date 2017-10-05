@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Clearance::User
-
+  has_many  :comments, dependent: :destroy
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
 

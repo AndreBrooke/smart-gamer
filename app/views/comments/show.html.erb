@@ -1,0 +1,6 @@
+<div>Title: <%= @article.title %></div>
+<div>Content: <%= @article.content %></div>
+
+<% @comment.each do |all| %>
+	<p><%= all.reply_article %></p>
+<% end %>

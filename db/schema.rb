@@ -35,8 +35,13 @@ ActiveRecord::Schema.define(version: 20171004074457) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.string "reply_article"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "followers", force: :cascade do |t|
@@ -72,4 +77,6 @@ ActiveRecord::Schema.define(version: 20171004074457) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
+  add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "users"
 end
