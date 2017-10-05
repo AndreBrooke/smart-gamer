@@ -46,6 +46,8 @@ gem "chartkick"
 
 gem 'groupdate'
 
+# Use bootstrap-table-rails to sort table
+gem "bootstrap-table-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
