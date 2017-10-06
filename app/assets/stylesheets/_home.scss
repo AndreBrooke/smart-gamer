@@ -3,6 +3,12 @@
     padding-bottom: 75px;
 }
 
+.container-quote{
+    width: 50%;
+    margin: 75px auto 0 auto;
+    overflow: hidden;
+}
+
 .section{
     padding-top: 75px;
     padding-bottom: 75px;
@@ -43,8 +49,22 @@
 	width: 555px;
 	height: 390px;
 	padding: 5px;
-    background-color: #000;
+}
+
+.article-text-main {
+    width: 555px;
+    height: 390px;
+    line-height: 390px;
+    padding: 5px;
+    background-color: #272121;
     color: #fff;
+    font-size: 3em;
+    background-clip:content-box;  
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
 }
 
 .article-image-second{
@@ -53,6 +73,25 @@
 	width: 195px;
 	height: 195px;
 	padding: 5px;
+}
+
+.article-text-second {
+    display: inline-block;
+    position: relative;
+    right: 30px;
+    width: 195px;
+    height: 195px;
+    line-height: 195px;
+    padding: 5px;
+    background-color: #272121;
+    color: #fff;
+    font-size: 2em; 
+    background-clip:content-box; 
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
 }
 
 .activity-pic{
@@ -66,6 +105,25 @@
 	padding: 5px;
 	position: relative;
 }
+
+.article-text-second-long {
+    display: inline-block;
+    position: relative;
+    width: 275px;
+    height: 195px;
+    line-height: 195px;
+    padding: 5px;
+    background-color: #272121;
+    color: #fff;
+    font-size: 2em;  
+    background-clip:content-box;
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+    } 
+}
+
 
 .h3-title{
 	width: 585px;
@@ -180,6 +238,7 @@
 
 /* Search page content */
 #search_result{
+    min-height: calc(65vh - 70px);
     margin-top: -40px;
     padding: 0;
 }
@@ -190,10 +249,35 @@
 
 #search_result_content {
     width:60%;
-    text-align: center;
-    margin: 0 auto;
+    text-align: left;
+    margin: 80px auto;
 }
 
 #search_result_content div {
-    margin: 20px 0;
+    margin: 30px 0;
+}
+
+#navbar-avatar {
+    height: 50px;
+    width: 50px;
+    padding-top: 0px;
+}
+
+.home-user-table {
+  width: 100%;
+  th, td {
+    border: 1px solid #fff;
+    padding: 8px;
+    a {
+      color: inherit;
+    }
+  }
+  tbody tr:hover td {
+    background: #666666;
+  }
+}
+
+
+#navbar-drop {
+    padding: 0px;
 }

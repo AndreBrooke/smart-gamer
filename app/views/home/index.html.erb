@@ -1,14 +1,12 @@
 
-<header >
+<header>
 	<div class="row">
-		<div class="col-sm-4">
-			<h1 class="display-3">SmartGamer</h1>
-		</div>
+			<h1 class="display-3 text-center">SmartGamer</h1>
 	</div>
 </header>
 
 <div class="container-quote">
-	<blockquote class="blockquote col-sm-offset-3 col-sm-6">
+	<blockquote class="blockquote">
 		<p><%= @quote["quoteText"] %></p>
 		<% quote_author = @quote["quoteAuthor"] %>
 		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
@@ -17,30 +15,56 @@
 
 <div class="container" >
 	<div class="row">
-		<h3 class="h3-title">Articles</h3>
-		<div class="col-sm-6">
-
+		<div class="col-sm-8">
 			
-			<% first_article = @articles.first %>
-			<%= link_to article_path(first_article), target: "_self" do %>
-				<% if first_article.image %>
-					<%= image_tag first_article.image, class: "article-image-main" %>
-				<% else %>
-					<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
-					<div style='background-image: url(/assets/placeholder.jpg); background-size: contain;' class="text-center article-image-main"><%= first_article.title %></div>
-				<% end %>
-			<% end %>
+			<div class="row">
+				<div class="col-sm-9"><h3 class="h3-title">Articles</h3></div>
+				<div class="col-sm-3">
+					<%= link_to articles_path, class: 'btn btn-default align-bottom' do %>
+						View all articles
+					<% end %>
+				</div>
+			</div>
+			
+			<div class="row">			
+				<div class="col-sm-9">
+					<% first_article = @articles_home.first %>
+					<%= link_to article_path(first_article), target: "_self" do %>
+						<% if first_article.image %>
+							<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+						<% else %>
+							<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+							<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+						<% end %>
+					<% end %>
+			
+					<% second_articles = @articles_home.slice(1..2) %>
+					<% second_articles.each do |article| %>
+						<%= link_to article_path(article), target: "_self" do %>
+							<% if article.image %>
+								<%= image_tag article.image, title: article.title, class: "article-image-second-long" %>
+							<% else %>
+								<div class="text-center article-text-second-long"><span><%= article.title %></span></div>
+							<% end %>
+						<% end %>
+					<% end %>
+				</div>
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
+				<div class="col-sm-3">
+					<% second_articles = @articles_home.slice(3..6) %>
+					<% second_articles.each do |article| %>
+						<%= link_to article_path(article), target: "_self" do %>
+							<% if article.image %>
+								<%= image_tag article.image, title: article.title, class: "article-image-second" %>
+							<% else %>
+								<div class="text-center article-text-second"><span><%= article.title %></span></div>
+							<% end %>
+						<% end %>
+					<% end %>
+				</div>
+			</div>
 		</div>
-		<div class="col-sm-2">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-		</div>
+
 		<div class="col-sm-4">
 			<h3 class="h3-title">Activity</h3>
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
@@ -48,36 +72,86 @@
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
 		</div>
-
 	</div>
+
+
 	<div class="row">
-		<div class="col-sm-2-1">
-		<h3 class="h3-title">People</h3>
-		</div>
-		<div class="col-md-6">
-			<img src='/assets/placeholder.jpg' alt="Main article image" class="article-image-main">
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+		<!-- Users table -->
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamer (by today playtime)</h3></div>
+				<div class="col-sm-3">
+				</div>
+			</div>
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+			<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
+				<thead>
+					<tr>
+						<th data-sortable="true">User</th>
+						<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+						<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+					</tr>
+				</thead>
 
+				<tbody>
+					<% @users_top5.each do |user| %>
+						<tr>
+							<td>
+								<%= link_to user_path(user), target: "_self" do %>
+									<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+								<% end %>
+							</td>
+							<% user_playtimes = user.playtimes %>
+							<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+							<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+							<td><%= user_total_playtime %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
-		<div class="col-sm-2">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-		</div>
-		<div class="col-sm-4">
-		<h3 class="h3-title">People</h3>
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-		</div>
-			<div class="col-sm-2">
 
-		</div>
+		<!-- Followers table -->
+		<!-- signed_in? <=> true -->
+		<% if signed_in? %>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
+					<div class="col-sm-3">
+					</div>
+				</div>
+
+				<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
+					<thead>
+						<tr>
+							<th data-sortable="true">User</th>
+							<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+							<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<!-- FIXME - to find top 5 followers by today_playtime -->
+						<!-- current_user <=> User.last -->
+						<% followers = current_user.followers.first(5) %>
+						<% followers.each do |follower| %>
+							<% user = @users.find(follower.follower_id) %>
+							<tr>
+								<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+								<% user_playtimes = user.playtimes %>
+								<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+								<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+								<td><%= user_total_playtime %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
 	</div>
+
+
 	<div class="row">
 		<h3 class="h3-title">Meetups</h3>
 		<div class="col-md-6">
@@ -86,7 +160,6 @@
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
 
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
 		</div>
 		<div class="col-sm-2">
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
@@ -103,9 +176,5 @@
 		<div class="col-sm-2">
 
 		</div>
-
-
 	</div>
-
-
 </div>
