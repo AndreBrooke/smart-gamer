@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:edit, :update]
 
-
+  get 'new_age/index' => "new_age#index"
   get "/admin" => "users#admin_page", as: "admin"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
