@@ -105,26 +105,18 @@
       <ul>game3</ul>
     </div>
     <div id="my_achievements" class="border background-color-div">
-      <h3>My Achievements</h3>
-        Create Achievements
-        <%= link_to 'Create', new_user_achievement_path %> 
-        <% @achievement.each do |list| %>
-          <p><%= list.image %></p>
-          <p><%= list.name %></p>
-          <p><%= list.description %></p>
-        <% end %>
+      <h3>Achievements</h3>
+      <% @badges.each do |badge| %>
+        <div class="<%= 'achieved' if @user.achievements.find_by(badge_id: badge.id).status %>">
+          <%= badge.image %>
+          <%= badge.name %>
+          <%= badge.description %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-
-<%= link_to 'create achievements', new_user_achievement_path %>
-<p>List Of Achievements!</p>
-  <% @achievement.each do |list| %>
-    <p><%= list.image %></p>
-    <p><%= list.name %></p>
-    <p><%= list.description %></p>
-  <% end %>
 
 <script>
    $(document).ready(function() {
@@ -135,4 +127,3 @@
         )
     });
 </script>
-

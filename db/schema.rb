@@ -16,8 +16,14 @@ ActiveRecord::Schema.define(version: 20171005073913) do
   enable_extension "plpgsql"
 
   create_table "achievements", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "badge_id"
+    t.boolean "status", default: false
+    t.integer "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_achievements_on_badge_id"
+    t.index ["user_id"], name: "index_achievements_on_user_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -30,12 +36,12 @@ ActiveRecord::Schema.define(version: 20171005073913) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "achievement_id"
+    t.string "image"
+    t.string "name"
+    t.string "description"
+    t.integer "goal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["achievement_id"], name: "index_badges_on_achievement_id"
-    t.index ["user_id"], name: "index_badges_on_user_id"
   end
 
   create_table "commendations", force: :cascade do |t|
@@ -71,14 +77,6 @@ ActiveRecord::Schema.define(version: 20171005073913) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_playtimes_on_user_id"
-  end
-
-  create_table "user_achievements", force: :cascade do |t|
-    t.string "image"
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

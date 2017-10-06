@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       chart1.transform_values! {|value| value/60 }
       chart2 = chart1.transform_values {|value| @user.desired_playtime}
       @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
-      @achievement = UserAchievement.all
+      @badges = Badge.all
     else
       flash[:notice] = "User not found"
       redirect_to root_path
