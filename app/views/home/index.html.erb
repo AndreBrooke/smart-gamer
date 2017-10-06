@@ -72,8 +72,8 @@
 				<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
 						<div class="feed-item">
-							<div class="date"><%= Date.parse(activity.created_at.to_s) %></div>
-							<div class="text"><%= activity.content %></div>
+							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
+							<div class="text"><%= link_to user_path(activity.user), target: "_self" do %><%= activity.user.nickname %><% end %><%= activity.content %></div>
 						</div>
 					<% end %>
 				</div>

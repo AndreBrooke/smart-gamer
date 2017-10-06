@@ -83,7 +83,7 @@ class User < ApplicationRecord
 
   def create_activity
     if self.activities.empty?
-      self.activities.create(content: "#{self.nickname} joined SmartGamer")
+      self.activities.create(content: " joined SmartGamer")
     end
   end
 end

@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
       unless achievement.status
         if achievement.progress == badge.goal
           achievement.update_attribute(:status, true) 
-          self.user.activities.create(content: "#{self.user.nickname} unlocked a new badge - #{badge.name}")
+          self.user.activities.create(content: " unlocked a new badge - #{badge.name}")
         end
       end
     end
@@ -19,7 +19,7 @@ class Comment < ApplicationRecord
 
   def create_activity
     unless self == Comment.last
-      self.user.activities.create(content: "#{self.user.nickname} posted a comment to #{self.article.title}")
+      self.user.activities.create(content: " posted a comment to #{self.article.title}")
     end
   end
 end
