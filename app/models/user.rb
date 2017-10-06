@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many  :comments, dependent: :destroy
   has_many :followers
   has_many :commendations, dependent: :destroy
+  has_many :activities, dependent: :destroy
   validates :desired_playtime, numericality: { only_integer: true }
   has_many  :playtimes
   enum status: [ :gamer, :admin ]
@@ -12,7 +13,7 @@ class User < ApplicationRecord
   scope :nickname, ->(nickname) { where "lower(nickname) like ?", "%#{nickname.downcase}%" }
   scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
-  after_save :create_achievements
+  after_save :create_achievements, :create_activity
   after_create :create_achievements # for seed file
 
   def self.search(search)
@@ -81,4 +82,9 @@ class User < ApplicationRecord
     end
   end
 
+  def create_activity
+    if self.activities.empty?
+      self.activities.create(content: "#{self.nickname} joined SmartGamer")
+    end
+  end
 end

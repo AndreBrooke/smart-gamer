@@ -9,9 +9,9 @@
 // articles#index
 .article-wrapper {
 	border: 1px solid #efefef;
-	background-color: #fff;
+	background-color: #ddd;
 	border-radius: 4px;
-	margin: 8px;
+	margin-bottom: 18px;
 	padding: 16px 18px 16px 18px;
 	width: 80%;
 	.article-title {
@@ -37,4 +37,8 @@
 	.article-social {
 		margin: 8px 0 8px 0;
 	}
+}
+
+.topofpage {
+	margin-top: 100px;
 }

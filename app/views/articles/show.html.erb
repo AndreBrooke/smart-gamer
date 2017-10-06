@@ -1,14 +1,15 @@
-<div class="article">	
+<a name="topofpage"></a>
+<div class="article">
 
 	<div class="article-title h1"><%= @article.title %></div>
-	
+
 	<% if @article.url %>
 		<div class="article-image"><%= image_tag(@article.image, width: '500') %></div>
 		<%= link_to @article.url, target: "_blank", class: 'btn btn-default' do %>
 			View article from original source
 		<% end %>
 	<% end %>
-	
+
 	<% if signed_in? && current_user.admin? %>
     <% unless @article.url %>
       <%= link_to 'Edit Article', edit_article_path(@article) %>
@@ -30,8 +31,11 @@
 	<div class="article-content"><%= simple_format(@article.content) %></div>
 </div>
 
+<% message = "Leave a Comment and Join the Discussion" %>
 <% if signed_in? %>
-	<%= link_to 'Reply This Article', new_article_comment_path(@article) %>
+	<%= link_to message, new_article_comment_path(@article) %>
+<% else %>
+	<%= link_to message, '/auth/steam' %>
 <% end %>
 
 <% @article.comments.each do |comment| %>
@@ -43,3 +47,6 @@
 	</p>
 <% end %>
 
+<div class="topofpage">
+	<a href="#topofpage"><span class="fa fa-arrow-up"></span> Top of page</a>
+</div>

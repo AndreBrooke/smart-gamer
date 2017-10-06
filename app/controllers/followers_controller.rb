@@ -5,19 +5,16 @@ class FollowersController < ApplicationController
     @follower = followers.find_or_initialize_by(follower_params)
     if @follower.id
       @follower.update(status: false)
+      flash[:notice] = "You unfollow #{@user.nickname}"
       redirect_to user_path(@user)
     else
       if @follower.save
-        flash[:notice] = "You follow #{@user}"
+        flash[:notice] = "You follow #{@user.nickname}"
         redirect_to user_path(@user)
       else
         flash[:warning] = "#{@follower.errors.messages[0]}"
       end
     end
-  end
-
-  def destroy
-
   end
 
   private

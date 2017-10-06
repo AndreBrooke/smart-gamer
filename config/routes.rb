@@ -25,13 +25,17 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :users, only: :show
- 
+
   resources :user_achievements, only: [:new, :index, :create, :show]
-  
+
+  resources :users do
+    resources :commendation
+  end
+
   resources :articles do
     resources :comments
   end
 
-  resources :followers, only: [:create, :destroy]
+  resources :followers, only: [:create]
 
 end

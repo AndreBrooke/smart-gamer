@@ -65,6 +65,7 @@
 			</div>
 		</div>
 
+
 		<div class="col-lg-4 background-color-div">
 			<h3 class="h3-title">Activity</h3>
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
@@ -88,34 +89,27 @@
 					<% end %>
 				</div>
 
-			</div>
 
-			<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
-				<thead>
-					<tr>
-						<th data-sortable="true">User</th>
-						<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
-						<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% @users_top5.each do |user| %>
-						<tr>
-							<td>
-								<%= link_to user_path(user), target: "_self" do %>
-									<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
-								<% end %>
-							</td>
-							<% user_playtimes = user.playtimes %>
-							<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
-							<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
-							<td><%= user_total_playtime %></td>
-						</tr>
+		<!-- Activity feed -->
+		<% if signed_in? %>
+			<div class="col-sm-4">
+				<h3 class="h3-title">Activity Feed</h3>
+				<div class="activity-feed">
+					<% @activities_home.each do |activity| %>
+						<div class="feed-item">
+							<div class="date"><%= Date.parse(activity.created_at.to_s) %></div>
+							<div class="text"><%= activity.content %></div>
+						</div>
 					<% end %>
-				</tbody>
-			</table>
-		</div>
+				</div>
+
+			</div>
+		<% end %>
+	</div>
+
+	<div class="container">
+		<div class="row">
+
 
 		<!-- Followers table -->
 		<!-- signed_in? <=> true -->
@@ -124,6 +118,20 @@
 				<div class="row">
 					<div class="col-lg-9"><h3 class="h3-title">Followers</h3></div>
 					<div class="col-lg-3">
+
+			<!-- Users table -->
+			<div class="col-sm-6">
+				<div class="row">
+
+					<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
+					<div class="col-sm-3">
+						<%#= link_to articles_path, class: 'btn btn-default align-bottom' do %>
+							View all users
+						<%# end %>
+					</div>
+
+					<div class="col-sm-3">
+
 					</div>
 				</div>
 
@@ -137,13 +145,13 @@
 					</thead>
 
 					<tbody>
-						<!-- FIXME - to find top 5 followers by today_playtime -->
-						<!-- current_user <=> User.last -->
-						<% followers = current_user.followers.first(5) %>
-						<% followers.each do |follower| %>
-							<% user = @users.find(follower.follower_id) %>
+						<% @users_top5.each do |user| %>
 							<tr>
-								<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+								<td>
+									<%= link_to user_path(user), target: "_self" do %>
+										<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+									<% end %>
+								</td>
 								<% user_playtimes = user.playtimes %>
 								<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
 								<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
@@ -153,7 +161,45 @@
 					</tbody>
 				</table>
 			</div>
-		<% end %>
+
+			<!-- Followers table -->
+			<!-- signed_in? <=> true -->
+			<% if signed_in? %>
+				<div class="col-sm-6">
+					<div class="row">
+						<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
+						<div class="col-sm-3">
+						</div>
+					</div>
+
+					<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
+						<thead>
+							<tr>
+								<th data-sortable="true">User</th>
+								<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+								<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<!-- FIXME - to find top 5 followers by today_playtime -->
+							<!-- current_user <=> User.last -->
+							<% followers = current_user.followers.first(5) %>
+							<% followers.each do |follower| %>
+								<% user = @users.find(follower.follower_id) %>
+								<tr>
+									<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+									<% user_playtimes = user.playtimes %>
+									<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+									<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+									<td><%= user_total_playtime %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			<% end %>
+		</div>
 	</div>
 
 

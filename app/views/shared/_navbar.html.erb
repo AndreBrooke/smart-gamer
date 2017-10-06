@@ -22,7 +22,7 @@
         </ul>
       <% else %>
         <ul class="nav navbar-nav">
-          <li><%= link_to 'Log In via Steam', '/auth/steam' %></li>
+          <li><%= link_to image_tag('steam_02', class: "steam_log_in"), '/auth/steam' %></li>
         </ul>
       <% end %>
       <% flash.each do |key, value| %>

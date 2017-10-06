@@ -142,6 +142,7 @@
 }
 
 #logo-font {
+    margin:3px 10px 0 0;
     font-family: 'Monofett', cursive;
     color: rgb(255, 255, 255);
     font-size: 50px;
@@ -152,7 +153,7 @@
 }
 
 #custom-search-input {
-        margin-top:7px;
+        margin-top:13px;
         display: inline-block;
         width:250px;
     }
@@ -292,6 +293,49 @@ table {
     width:49px;
 }
 
+
 tr:nth-child(even) {
     background: whitesmoke
+
+.steam_log_in {
+    margin-right:30px   ;
+    width:50px;
+}
+
+// Adapted from https://bootsnipp.com/snippets/7QXrr
+.activity-feed {
+    padding: 15px;
+    .feed-item {
+        position: relative;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        border-left: 2px solid #e4e8eb;
+        .date {
+            position: relative;
+            top: -5px;
+            color: #8c96a3;
+            text-transform: uppercase;
+            font-size: 13px;      
+        }
+        .text {
+            position: relative;
+            top: -3px;
+        }
+    }
+    .feed-item:last-child {
+        border-color: transparent;
+    }
+    .feed-item:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -6px;
+        width: 10px;
+        height: 10px;
+        border-radius: 6px;
+        background: #fff;
+        border: 1px solid #f37167;
+    }
+
 }

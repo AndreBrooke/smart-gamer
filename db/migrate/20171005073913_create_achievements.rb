@@ -4,7 +4,7 @@ class CreateAchievements < ActiveRecord::Migration[5.1]
     	t.references :user
     	t.references :badge
     	t.boolean :status, default: false
-    	t.integer :progress
+    	t.integer :progress, default: 0
       t.timestamps
     end
   end
