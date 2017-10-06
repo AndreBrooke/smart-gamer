@@ -4,24 +4,24 @@
     <div class="col-lg-6">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
-          <%= image_tag current_user.avatar_url, class:"steam-avatar"%>
+          <%= image_tag @user.avatar_url, class:"steam-avatar"%>
         </div>
 
           <div class="col-sm-3">
-          <%= current_user.name%><br>
-          <%= current_user.nickname %><br>
-          <%= current_user.email %>   
+          <%= @user.name%><br>
+          <%= @user.nickname %><br>
+          <%= @user.email %>   
           <!-- Follow button--> 
-         <% if User.check_follower(params[:id], current_user.id) && params[:id].to_i != current_user.id %>
+         <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != @user.id %>
         <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
           <%= f.hidden_field :user_id, value: params[:id] %>
-          <%= f.hidden_field :follower_id, value: current_user.id %>
+          <%= f.hidden_field :follower_id, value: @user.id %>
           <%= f.button "Follow", class: "btn btn-primary"  %>
         <% end %>
-      <% elsif params[:id].to_i != current_user.id %>
+      <% elsif params[:id].to_i != @user.id %>
         <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
           <%= f.hidden_field :user_id, value: params[:id] %>
-          <%= f.hidden_field :follower_id, value: current_user.id %>
+          <%= f.hidden_field :follower_id, value: @user.id %>
           <%= f.button "Unfollow", class: "btn btn-primary" %>
         <% end %>
       <% end %>
