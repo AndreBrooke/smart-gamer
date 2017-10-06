@@ -8,9 +8,9 @@
         </div>
 
           <div class="col-sm-3">
-          <%= current_user.name%><br>
-          <%= current_user.nickname %><br>
-          <%= current_user.email %>   
+          <%= @user.name%><br>
+          <%= @user.nickname %><br>
+          <%= @user.email %>   
           <!-- Follow button--> 
          <% if User.check_follower(params[:id], current_user.id) && params[:id].to_i != current_user.id %>
         <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
