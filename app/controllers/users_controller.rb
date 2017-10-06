@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	def edit
-    if current_user.id == params[:id].to_i
+    if signed_in? && (current_user.id == params[:id].to_i)
     	@user = User.find(params[:id])
     else
       flash[:notice] = "You are not authorise."
@@ -9,12 +9,17 @@ class UsersController < ApplicationController
   end
 
 	def update
-  	@user = User.find(params[:id])
-  	if @user.update(user_params)
-  	  redirect_to user_path(@user)
+    if signed_in? && (current_user.id == params[:id].to_i)
+    	@user = User.find(params[:id])
+    	if @user.update(user_params)
+    	  redirect_to user_path(@user)
+      else
+        flash[:notice] = "Incorrect Email"
+        render 'edit'
+      end
     else
-      flash[:notice] = "Incorrect Email"
-      render 'edit'
+      flash[:notice] = "You are not authorise"
+      redirect_to root_path
     end
   end
 
