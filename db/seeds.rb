@@ -30,12 +30,14 @@ Badge.create(name: "Login Novice", description: "Login for 7 days consecutively"
 Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "", goal: 5)
 Badge.create(name: "First Goal", description: "Achieve Goal for 1 day", image: "", goal: 1)
 
-User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
-User.create(email: "yizen@hotmail.com", password: SecureRandom.hex(10), uid: "100893614", nickname: "Peacemaker", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/55/55ba503630606e10ba2a99e8d9c1541be1d391d7_medium.jpg", profile_url: "http://steamcommunity.com/id/kooyizen/", name: "Koo Yi Zen")
-User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136990519", nickname: "Your Mum's Pussy", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198097256247/", name: "kit")
-User.create(email: "and_book66@hotmail.com", password: SecureRandom.hex(10), uid: "84861340", nickname: "Dernum-X", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d70116b67392386f1a1b64e82f319be6c0f165fe_medium.jpg", profile_url: "http://steamcommunity.com/id/Dernum-X/", name: "Andre Brooke")
-User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205485506", nickname: "Freecs", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198165751234", name: "Wilson")
-User.create(email: "leesc_91@hotmail.com", password: SecureRandom.hex(10), uid: "353559183", nickname: "leesc_91", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg", profile_url: "http://steamcommunity.com/id/leesc/", name: "")
+
+User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
+User.create(email: "yizen@hotmail.com", password: SecureRandom.hex(10), uid: "100893614", nickname: "Peacemaker", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/55/55ba503630606e10ba2a99e8d9c1541be1d391d7_full.jpg", profile_url: "http://steamcommunity.com/id/kooyizen/", name: "Koo Yi Zen")
+User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136990519", nickname: "Your Mum's Pussy", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198097256247/", name: "kit")
+User.create(email: "and_book66@hotmail.com", password: SecureRandom.hex(10), uid: "84861340", nickname: "Dernum-X", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d70116b67392386f1a1b64e82f319be6c0f165fe_full.jpg", profile_url: "http://steamcommunity.com/id/Dernum-X/", name: "Andre Brooke")
+User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205485506", nickname: "Freecs", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198165751234", name: "Wilson")
+
+
 
 User.all.each do |x|
   playtime = rand(1000..4000)

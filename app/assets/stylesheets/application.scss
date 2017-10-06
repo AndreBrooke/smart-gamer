@@ -13,8 +13,8 @@
 $white-font: #FFF;
 $background-dark: #363333;
 body{
-	color: $white-font;
-	background-color: $background-dark;
+	color: black;
+	background-color: white;
 	font-weight: 300;
 	.main-container{
 		font-family: 'Ubuntu', sans-serif !important;
@@ -30,7 +30,7 @@ html {
 	}
 
 #navbar{
-	background-color: #272121;
+	background: #333332;
 }
 
 #white-text{	
