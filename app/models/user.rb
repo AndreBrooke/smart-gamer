@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :badges, through: :achievements 
   has_many  :comments, dependent: :destroy
   has_many :followers
+  has_many :commendations, dependent: :destroy
   validates :desired_playtime, numericality: { only_integer: true }
   has_many  :playtimes
   enum status: [ :gamer, :admin ]

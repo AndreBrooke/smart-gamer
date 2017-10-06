@@ -42,16 +42,3 @@ class UsersController < ApplicationController
 		params.require(:user).permit(:name, :email, :nickname, :privacy, :desired_playtime)
 	end
 end
-
-#type of achievemenet 
-# User have a achievement badges (maybe point and level up bar)
-
-# model what kind of badge unlock 
-# different tier of badge bronze, silver, gold
-
-# list type of achievement conditions
-# 1. user login 7 days in a row +10 pts + badge (progressive)
-
-# 2. user reply to any article 5 times +10pts + badge (progressive)
-# 3. user achieve desired play time for today
-# 4. user achieve weekly total award badge
