@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
     badges = Badge.where("name ILIKE ?", "%reply%")
     badges.each do |badge|
       achievement = self.user.achievements.find_by(badge_id: badge.id)
-      achievement.increment!(:progress)
+      achievement.increment!(:progress) unless achievement.status
     end
   end
 end
