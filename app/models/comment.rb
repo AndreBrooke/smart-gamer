@@ -8,9 +8,11 @@ class Comment < ApplicationRecord
     badges.each do |badge|
       achievement = self.user.achievements.find_by(badge_id: badge.id)
       achievement.increment!(:progress) unless achievement.status
-      if achievement.progress == badge.goal
-        achievement.update_attribute(:status, true) 
-        self.user.activities.create(content: "#{self.user.nickname} unlocked a new badge - #{badge.name}")
+      unless achievement.status
+        if achievement.progress == badge.goal
+          achievement.update_attribute(:status, true) 
+          self.user.activities.create(content: "#{self.user.nickname} unlocked a new badge - #{badge.name}")
+        end
       end
     end
   end
