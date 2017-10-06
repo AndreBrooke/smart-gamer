@@ -19,12 +19,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
-    chart1.transform_values! {|value| value/60 }
-    chart2 = chart1.transform_values {|value| @user.desired_playtime}
-    @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
-    @achievement = UserAchievement.all
+    @user = User.find_by_id(params[:id])
+    if @user
+      chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
+      chart1.transform_values! {|value| value/60 }
+      chart2 = chart1.transform_values {|value| @user.desired_playtime}
+      @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
+      @achievement = UserAchievement.all
+    else
+      flash[:notice] = "User not found"
+      redirect_to root_path
+    end
   end
 
   def admin_page
