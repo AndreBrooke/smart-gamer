@@ -106,13 +106,22 @@
     </div>
     <div id="my_achievements" class="border background-color-div">
       <h3>Achievements</h3>
-      <% @badges.each do |badge| %>
-        <div class="<%= 'achieved' if @user.achievements.find_by(badge_id: badge.id).status %>">
-          <%= badge.image %>
-          <%= badge.name %>
-          <%= badge.description %>
-        </div>
-      <% end %>
+      <div class="text-left">      
+        <% @badges.each do |badge| %>
+          <div class="<%= 'achieved' if @user.achievements.find_by(badge_id: badge.id).status %> achievement-item">
+            <span class="achievement-image pull-left">
+              <%= image_tag(badge.image, width: '50', height: '50') %>
+            </span>
+            <span class="achievement-title">
+              <%= badge.name %>
+            </span>
+            <br>
+            <span class="achievement-description">
+              <%= badge.description %>
+            </span>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
