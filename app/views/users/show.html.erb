@@ -10,21 +10,21 @@
           <div class="col-sm-3">
           <%= @user.name%><br>
           <%= @user.nickname %><br>
-          <%= @user.email %>   
-          <!-- Follow button--> 
-         <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != @user.id %>
-        <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
-          <%= f.hidden_field :user_id, value: params[:id] %>
-          <%= f.hidden_field :follower_id, value: @user.id %>
-          <%= f.button "Follow", class: "btn btn-primary"  %>
-        <% end %>
-      <% elsif params[:id].to_i != @user.id %>
-        <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
-          <%= f.hidden_field :user_id, value: params[:id] %>
-          <%= f.hidden_field :follower_id, value: @user.id %>
-          <%= f.button "Unfollow", class: "btn btn-primary" %>
-        <% end %>
-      <% end %>
+          <%= @user.email %>
+          <!-- Follow button-->
+          <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != current_user.id %>
+            <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+              <%= f.hidden_field :user_id, value: params[:id] %>
+              <%= f.hidden_field :follower_id, value: @user.id %>
+              <%= f.button "Follow", class: "btn btn-primary"  %>
+            <% end %>
+          <% elsif params[:id].to_i != current_user.id %>
+            <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+              <%= f.hidden_field :user_id, value: params[:id] %>
+              <%= f.hidden_field :follower_id, value: @user.id %>
+              <%= f.button "Unfollow", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
          <!-- Follow button end -->
           </div>
         </div>
@@ -38,30 +38,30 @@
                     <span class="skill">Playtime today <i class="val">100%</i></span>
                 </div>
             </div>
-                
+
             <div class="progress skill-bar">
                 <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" >
                     <span class="skill">Playtime this week<i class="val">90%</i></span>
                 </div>
             </div>
-            
+
             <div class="progress skill-bar">
                 <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                     <span class="skill">Playtime this month<i class="val">75%</i></span>
                 </div>
-            </div>  
-            
+            </div>
+
             <div class="progress skill-bar">
                 <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
                     <span class="skill">Test<i class="val">55%</i></span>
                 </div>
-            </div>  
+            </div>
           </div>
         <!-- Skill Bars end -->
     </div>
     </div>
     </div>
- 
+
 </div>
   <div id="col-lg-6">
     <ul class="nav nav-pills">
@@ -104,7 +104,7 @@
       <div id="my_achievements" class="tab-pane fade background-color-div">
         <h3>Achievements</h3>
         <div class="text-left">
-        <% achievements = @user.achievements.order(status: :desc) %>      
+        <% achievements = @user.achievements.order(status: :desc) %>
         <% achievements.each do |achievement| %>
           <div class="<%= 'achieved' if achievement.status %> achievement-item">
             <span class="achievement-image pull-left">
@@ -124,7 +124,7 @@
     </div>
 
   </div>
-  
+
 
 
 
@@ -145,7 +145,7 @@
       <%= commendation.name %>
       <%= commendation.count %>
     </div>
-    
+
     <%= link_to '<i class="fa fa-plus-square-o"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %>
   <% end %>
 
