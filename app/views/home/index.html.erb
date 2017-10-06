@@ -74,8 +74,8 @@
 				<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
 						<div class="feed-item">
-							<div class="date"><%= Date.parse(activity.created_at.to_s) %></div>
-							<div class="text"><%= activity.content %></div>
+							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
+							<div class="text"><%= link_to user_path(activity.user), target: "_self" do %><%= activity.user.nickname %><% end %><%= activity.content %></div>
 						</div>
 					<% end %>
 				</div>
@@ -155,7 +155,11 @@
 							<% followers.each do |follower| %>
 								<% user = @users.find(follower.follower_id) %>
 								<tr>
-									<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+									<td>
+										<%= link_to user_path(follower.follower_id), target: "_self" do %>
+											<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+										<% end %>
+									</td>
 									<% user_playtimes = user.playtimes %>
 									<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
 									<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
