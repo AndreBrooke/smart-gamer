@@ -19,6 +19,7 @@ class HomeController < ApplicationController
 
 		# search results
 		@articles_home = Article.search(params[:search]).first(6)
+		@activities_home = Activity.first(5)
 		@users = User.search(params[:search])
 		@users_home = @users.first(6)
 		@users_top5 = @users.includes(:playtimes).order("playtimes.today_playtime").first(5)
