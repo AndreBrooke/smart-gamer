@@ -1,14 +1,12 @@
 
-<header >
+<header>
 	<div class="row">
-		<div class="col-sm-4">
-			<h1 class="display-3">SmartGamer</h1>
-		</div>
+			<h1 class="display-3 text-center">SmartGamer</h1>
 	</div>
 </header>
 
 <div class="container-quote">
-	<blockquote class="blockquote col-sm-offset-3 col-sm-6">
+	<blockquote class="blockquote">
 		<p><%= @quote["quoteText"] %></p>
 		<% quote_author = @quote["quoteAuthor"] %>
 		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
@@ -67,7 +65,6 @@
 			</div>
 		</div>
 
-
 		<div class="col-sm-4">
 			<h3 class="h3-title">Activity</h3>
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
@@ -100,7 +97,11 @@
 				<tbody>
 					<% @users_top5.each do |user| %>
 						<tr>
-							<td><%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %></td>
+							<td>
+								<%= link_to user_path(user), target: "_self" do %>
+									<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+								<% end %>
+							</td>
 							<% user_playtimes = user.playtimes %>
 							<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
 							<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
@@ -159,7 +160,6 @@
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
 
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-
 		</div>
 		<div class="col-sm-2">
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
@@ -176,9 +176,5 @@
 		<div class="col-sm-2">
 
 		</div>
-
-
 	</div>
-
-
 </div>
