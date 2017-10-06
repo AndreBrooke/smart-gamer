@@ -57,17 +57,21 @@
                 </div>
             </div>  
           </div>
+        <!-- Skill Bars end -->
     </div>
     </div>
     </div>
-  </div>
+ 
 </div>
-  <div id="left">
+  <div id="col-lg-6">
     <ul class="nav nav-pills">
       <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
       <li><a data-toggle="pill" href="#stats">Stats</a></li>
       <li><a data-toggle="pill" href="#history">History</a></li>
       <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <li><a data-toggle="pill" href="#about_me">About Me</a></li>
+      <li><a data-toggle="pill" href="#my_games">My Games</a></li>
+      <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
     </ul>
 
     <div class="tab-content">
@@ -85,27 +89,21 @@
       </div>
       <div id="settings" class="tab-pane fade background-color-div">
         <h3>Settings</h3>
-        <p>Settings content</p>
+        <%= render partial: 'users/form' %>
       </div>
-    </div>
-  
-    
-
-  </div>
-  <div id="right">
-    <div id="about_me" class="border background-color-div">
-      <h3>About me</h3>
+      <div id="about_me" class="tab-pane fade background-color-div">
+        <h3>About me</h3>
       <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="my_games" class="border background-color-div">
-      <h3>My Games</h3>
+      </div>
+      <div id="my_games" class="tab-pane fade background-color-div">
+        <h3>My Games</h3>
       <ul>game1</ul>
       <ul>game2</ul>
       <ul>game3</ul>
-    </div>
-    <div id="my_achievements" class="border background-color-div">
-      <h3>Achievements</h3>
-      <div class="text-left">
+      </div>
+      <div id="my_achievements" class="tab-pane fade background-color-div">
+        <h3>Achievements</h3>
+        <div class="text-left">
         <% achievements = @user.achievements.order(status: :desc) %>      
         <% achievements.each do |achievement| %>
           <div class="<%= 'achieved' if achievement.status %> achievement-item">
@@ -122,8 +120,11 @@
           </div>
         <% end %>
       </div>
+      </div>
     </div>
+
   </div>
+  
 
 
 
