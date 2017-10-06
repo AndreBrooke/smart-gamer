@@ -25,7 +25,6 @@ class User < ApplicationRecord
 
   def self.update_playtime
     all.each do |x|
-      p x.id
       TrackJob.perform_later(x.id)
     end
   end
@@ -39,6 +38,7 @@ class User < ApplicationRecord
       self.update(personastate: data[:personastate])
       playtime.update(total_playtime: data[:playtime_forever])
     end
+    check_online_status if playtime.today_playtime > self.desired_playtime
     TrackJob.set(wait: 10.minutes).perform_later(self.id)
   end
 
@@ -73,4 +73,11 @@ class User < ApplicationRecord
       end
     end 
   end
+
+  def check_online_status
+    if self.personastate == 1
+      NotificationJob.perform_later(self.id, "online_after_exceed")
+    end
+  end
+
 end
