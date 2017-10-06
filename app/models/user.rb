@@ -12,6 +12,7 @@ class User < ApplicationRecord
   scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
   after_save :create_achievements
+  after_create :create_achievements # for seed file
 
   def self.search(search)
     if search
@@ -65,7 +66,6 @@ class User < ApplicationRecord
   end
 
   def create_achievements
-    byebug
     if self.achievements.empty?
       Badge.all.each do |badge|
         self.achievements.create(badge_id: badge.id)
