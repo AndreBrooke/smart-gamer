@@ -8,6 +8,7 @@ class Comment < ApplicationRecord
     badges.each do |badge|
       achievement = self.user.achievements.find_by(badge_id: badge.id)
       achievement.increment!(:progress) unless achievement.status
+      achievement.update_attribute(:status, true) if achievement.progress == badge.goal
     end
   end
 end
