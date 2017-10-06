@@ -65,6 +65,7 @@ class User < ApplicationRecord
   end
 
   def create_achievements
+    byebug
     if self.achievements.empty?
       Badge.all.each do |badge|
         self.achievements.create(badge_id: badge.id)

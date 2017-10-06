@@ -44,7 +44,6 @@ User.all.each do |x|
     playtime += today_playtime
     x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
   end
-	x.achievements.create(badge_id: 2, status: false, progress: 1)
 
   other_users = (1..5).to_a - [x.id]
   rand(1..4).times do |i|
