@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       chart2 = chart1.transform_values {|value| @user.desired_playtime}
       @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
       @badges = Badge.all
-      @commendations = Commendation.all
+      @commendations = Commendation.where(user_id: params[:id])
     else
       flash[:notice] = "User not found"
       redirect_to root_path
