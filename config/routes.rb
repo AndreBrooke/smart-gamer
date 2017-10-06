@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   resources :users, only: :show
  
   resources :user_achievements, only: [:new, :index, :create, :show]
+
+  resources :users do 
+    resources :commendation
+  end
   
   resources :articles do
     resources :comments
