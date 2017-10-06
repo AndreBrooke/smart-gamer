@@ -127,3 +127,12 @@
         )
     });
 </script>
+
+<h3>Commendations</h3>
+  <% @commendations.each do |commendation| %>
+    <div>
+      <%= commendation.image %>
+      <%= commendation.name %>
+      <%= commendation.count %>
+    </div>
+  <% end %>

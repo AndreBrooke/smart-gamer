@@ -50,4 +50,8 @@ User.all.each do |x|
   rand(1..4).times do |i|
 	  x.followers.create(follower_id: other_users.delete(other_users.sample))
 	end
+
+	x.commendations.create(image: "", name: "Friendly")
+	x.commendations.create(image: "", name: "Teamwork")
+	x.commendations.create(image: "", name: "Tilt-Proof")
 end
