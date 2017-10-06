@@ -12,6 +12,7 @@ class User < ApplicationRecord
   scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
   after_save :create_achievements
+  after_create :create_achievements # for seed file
 
   def self.search(search)
     if search
