@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   	if @user.update(user_params)
   	  redirect_to user_path(@user)
     else
-      flash[:notice] = "Incorect Email"
+      flash[:notice] = "Incorrect Email"
       render 'edit'
     end
   end
