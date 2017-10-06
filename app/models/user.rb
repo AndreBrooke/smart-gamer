@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
-  has_many :badges, dependent: :destroy
-  has_many :user_achievements, through: :badges 
+  has_many :achievements, dependent: :destroy
+  has_many :badges, through: :achievements 
   has_many  :comments, dependent: :destroy
   has_many :followers
   validates :desired_playtime, numericality: { only_integer: true }
@@ -11,6 +11,7 @@ class User < ApplicationRecord
   scope :nickname, ->(nickname) { where "lower(nickname) like ?", "%#{nickname.downcase}%" }
   scope :email, ->(email) { where "lower(email) like ?", "%#{email.downcase}%" }
   scope :uid, ->(uid) { where uid: uid }
+  after_save :create_achievements
 
   def self.search(search)
     if search
@@ -61,5 +62,13 @@ class User < ApplicationRecord
       end
     end
     check
+  end
+
+  def create_achievements
+    if self.achievements.empty?
+      Badge.all.each do |badge|
+        self.achievements.create(badge_id: badge.id)
+      end
+    end 
   end
 end
