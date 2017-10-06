@@ -59,12 +59,12 @@
     background-color: #272121;
     color: #fff;
     font-size: 3em;
-    background-clip:content-box;  
+    background-clip:content-box;
     span {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
-    } 
+    }
 }
 
 .article-image-second{
@@ -85,13 +85,13 @@
     padding: 5px;
     background-color: #272121;
     color: #fff;
-    font-size: 2em; 
-    background-clip:content-box; 
+    font-size: 2em;
+    background-clip:content-box;
     span {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
-    } 
+    }
 }
 
 .activity-pic{
@@ -115,13 +115,13 @@
     padding: 5px;
     background-color: #272121;
     color: #fff;
-    font-size: 2em;  
+    font-size: 2em;
     background-clip:content-box;
     span {
         display: inline-block;
         vertical-align: middle;
         line-height: normal;
-    } 
+    }
 }
 
 
@@ -280,4 +280,8 @@
 
 #navbar-drop {
     padding: 0px;
+}
+
+.search {
+    width:49px;
 }
