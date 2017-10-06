@@ -64,32 +64,9 @@
 				</div>
 			</div>
 		</div>
+	
 
-
-		<div class="col-lg-4 background-color-div">
-			<h3 class="h3-title">Activity</h3>
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-		</div>
-	</div>
-
-
-	<div class="row">
-
-		<!-- Users table -->
-		<div class="col-lg-6 background-color-div">
-			<div class="row ">
-
-				<div class="col-lg-9 "><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
-				<div class="col-lg-3">
-					<%= link_to articles_path, class: 'btn btn-default align-bottom' do %>
-						View all players
-					<% end %>
-				</div>
-
-
+	
 		<!-- Activity feed -->
 		<% if signed_in? %>
 			<div class="col-sm-4">
@@ -109,16 +86,6 @@
 
 	<div class="container">
 		<div class="row">
-
-
-		<!-- Followers table -->
-		<!-- signed_in? <=> true -->
-		<% if signed_in? %>
-			<div class="col-lg-6 background-color-div">
-				<div class="row">
-					<div class="col-lg-9"><h3 class="h3-title">Followers</h3></div>
-					<div class="col-lg-3">
-
 			<!-- Users table -->
 			<div class="col-sm-6">
 				<div class="row">
@@ -133,7 +100,7 @@
 					<div class="col-sm-3">
 
 					</div>
-				</div>
+				</div>	
 
 				<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
 					<thead>
@@ -201,6 +168,7 @@
 			<% end %>
 		</div>
 	</div>
+
 
 
 
