@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>You have exceed your desired playtime. Stop playing! Get a life.</h1>
+    <p>
+      <%= @user.name %>, you have exceed your desired playtime - <%= @user.desired_playtime %>. You have played for <%= @user.playtimes.find_by(date: Date.today).today_playtime %>
+    </p>
+  </body>
+</html>
