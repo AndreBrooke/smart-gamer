@@ -1,8 +1,8 @@
 
 <header>
-	<div class="row">
+	
 			<h1 class="display-3 text-center">SmartGamer</h1>
-	</div>
+	
 </header>
 
 <div class="container-quote">
@@ -13,13 +13,13 @@
 	</blockquote>
 </div>
 
-<div class="container" >
-	<div class="row">
-		<div class="col-sm-8">
+	
+	<div class="row ">
+		<div class="col-lg-8 background-color-div ">
 			
 			<div class="row">
-				<div class="col-sm-9"><h3 class="h3-title">Articles</h3></div>
-				<div class="col-sm-3">
+				<div class="col-lg-9 "><h3 class="h3-title">Articles</h3></div>
+				<div class="col-lg-3">
 					<%= link_to articles_path, class: 'btn btn-default align-bottom' do %>
 						View all articles
 					<% end %>
@@ -27,7 +27,7 @@
 			</div>
 			
 			<div class="row">			
-				<div class="col-sm-9">
+				<div class="col-lg-9  ">
 					<% first_article = @articles_home.first %>
 					<%= link_to article_path(first_article), target: "_self" do %>
 						<% if first_article.image %>
@@ -50,7 +50,7 @@
 					<% end %>
 				</div>
 
-				<div class="col-sm-3">
+				<div class="col-lg-3">
 					<% second_articles = @articles_home.slice(3..6) %>
 					<% second_articles.each do |article| %>
 						<%= link_to article_path(article), target: "_self" do %>
@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-lg-4 background-color-div">
 			<h3 class="h3-title">Activity</h3>
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
 			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
@@ -78,18 +78,16 @@
 	<div class="row">
 
 		<!-- Users table -->
-		<div class="col-sm-6">
-			<div class="row">
+		<div class="col-lg-6 background-color-div">
+			<div class="row ">
 
-				<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
-				<div class="col-sm-3">
+				<div class="col-lg-9 "><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
+				<div class="col-lg-3">
 					<%= link_to articles_path, class: 'btn btn-default align-bottom' do %>
-						View all articles
+						View all players
 					<% end %>
 				</div>
 
-				<div class="col-sm-3">
-				</div>
 			</div>
 
 			<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
@@ -122,10 +120,10 @@
 		<!-- Followers table -->
 		<!-- signed_in? <=> true -->
 		<% if signed_in? %>
-			<div class="col-sm-6">
+			<div class="col-lg-6 background-color-div">
 				<div class="row">
-					<div class="col-sm-9"><h3 class="h3-title">Followers</h3></div>
-					<div class="col-sm-3">
+					<div class="col-lg-9"><h3 class="h3-title">Followers</h3></div>
+					<div class="col-lg-3">
 					</div>
 				</div>
 
@@ -159,29 +157,6 @@
 	</div>
 
 
-	<div class="row">
-		<h3 class="h3-title">Meetups</h3>
-		<div class="col-md-6">
-			<img src='/assets/placeholder.jpg' alt="Main article image" class="article-image-main">
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
+	
 
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second-long">
-		</div>
-		<div class="col-sm-2">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="article-image-second">
-		</div>
-		<div class="col-sm-4">
-			<h3 class="h3-title">Meet your friends</h3>
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-			<img src='/assets/placeholder.jpg' alt="secondary article image"  class="activity-pic">
-		</div>
-		<div class="col-sm-2">
-
-		</div>
-	</div>
-</div>

@@ -28,11 +28,11 @@
 $background-dark: #403F48;
 
 .background-color-div {
-  background-color: $background-dark;
+  background-color: whitesmoke;
 }
 
 .border {
-  border: 2px solid #00b5ad;
+  border: 0px solid #00b5ad;
   border-radius: 5px;
 }
 
@@ -64,8 +64,8 @@ $background-dark: #403F48;
 
 
 .steam-avatar {
-  height: 90px;
-  width: 90px;
+  
+  border-radius: 50%;
 }
 
 .progress {
