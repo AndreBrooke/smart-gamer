@@ -91,11 +91,25 @@ $background-dark: #403F48;
 
 }
 
-.achieved {
-  color: red;
-}
-
 #skill-bar {
   padding: 20px;
 }
 
+.achieved {
+  color: #39FF14;
+}
+
+.achievement-item {
+  margin: 8px;
+  padding: 8px;
+  overflow: hidden;
+  .achievement-title {
+    margin-left: 15px;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+  .achievement-description {
+    margin-left: 15px;
+    font-size: 0.8em;
+  }
+}
