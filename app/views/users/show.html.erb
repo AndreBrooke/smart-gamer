@@ -137,3 +137,15 @@
         )
     });
 </script>
+
+<h3>Commendations</h3>
+  <% @commendations.each do |commendation| %>
+    <div>
+      <%= commendation.image %>
+      <%= commendation.name %>
+      <%= commendation.count %>
+    </div>
+    
+    <%= link_to '<i class="fa fa-plus-square-o"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %>
+  <% end %>
+
