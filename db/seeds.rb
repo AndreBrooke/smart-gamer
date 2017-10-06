@@ -32,6 +32,10 @@ User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136
 User.create(email: "and_book66@hotmail.com", password: SecureRandom.hex(10), uid: "84861340", nickname: "Dernum-X", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d70116b67392386f1a1b64e82f319be6c0f165fe_medium.jpg", profile_url: "http://steamcommunity.com/id/Dernum-X/", name: "Andre Brooke")
 User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205485506", nickname: "Freecs", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_medium.jpg", profile_url: "http://steamcommunity.com/profiles/76561198165751234", name: "Wilson")
 
+Badge.create(name: "Login Novice", description: "Login for 7 days consecutively", image: "", goal: 7)
+Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "", goal: 5)
+Badge.create(name: "First Goal", description: "Achieve Goal for 1 day", image: "", goal: 1)
+
 User.all.each do |x|
   playtime = rand(1000..4000)
   x.playtimes.create(date: Date.today - 30, total_playtime: playtime)
@@ -39,6 +43,8 @@ User.all.each do |x|
     today_playtime = rand(100..1000)
     playtime += today_playtime
     x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
+
   end
+		x.achievements.create(badge_id: 2, status: false, progress: 1)
 end
 
