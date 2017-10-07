@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.bigint "user_id"
     t.bigint "badge_id"
     t.boolean "status", default: false
-    t.integer "progress", default: 0
+    t.integer "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["badge_id"], name: "index_achievements_on_badge_id"
