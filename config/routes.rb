@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:edit, :update]
 
+  get 'users/index' => "users#index"
   get 'new_age/index' => "new_age#index"
   get "/admin" => "users#admin_page", as: "admin"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
