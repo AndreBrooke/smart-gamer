@@ -147,7 +147,7 @@
                - 
               <span><%= commendation.count %></span>
             </div>
-              <% unless current_user.likes.find_by(commendation_id: commendation.id) %> 
+              <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
                 <div class="commendation-plus"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %></div>
               <% end %>
           </div>
