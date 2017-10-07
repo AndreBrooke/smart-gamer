@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   validates :desired_playtime, numericality: { only_integer: true }
   has_many  :playtimes
+  has_many :likes
   enum status: [ :gamer, :admin ]
   enum privacy: [ :public_profile, :friend_only, :private_profile]
   scope :nickname, ->(nickname) { where "lower(nickname) like ?", "%#{nickname.downcase}%" }
