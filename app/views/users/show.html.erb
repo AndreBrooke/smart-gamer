@@ -68,7 +68,11 @@
       <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
       <li><a data-toggle="pill" href="#stats">Stats</a></li>
       <li><a data-toggle="pill" href="#history">History</a></li>
+
+      <% if current_user == @user %>
+
       <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <% end %>
       <li><a data-toggle="pill" href="#about_me">About Me</a></li>
       <li><a data-toggle="pill" href="#my_games">My Games</a></li>
       <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>

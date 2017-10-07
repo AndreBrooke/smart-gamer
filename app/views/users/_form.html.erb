@@ -1,24 +1,28 @@
+<div class="container container-small"
 <%= form_for @user do |form| %>
-<%= form.label :name %>
-<%= form.text_field :name %>
+<%= form.label :name %><br>
+<%= form.text_field :name %><br>
 
-<%= form.label :nickname %>
-<%= form.text_field :nickname %>
+<%= form.label :nickname %><br>
+<%= form.text_field :nickname %><br>
 
-<%= form.label :email %>
+<%= form.label :email %><br>
 <% if @user.email == "example@na.com" %>
   <%= form.email_field :email, :value => nil, placeholder: "Enter Your Email" %>
 <% else %>
-  <%= form.email_field :email, disabled: true %>  
+  <%= form.email_field :email, disabled: true %><br>  
 <% end %>
+</div>
+<div class="container container-small"
+<%= form.label :desired_playtime %><br>
+<%= form.text_field :desired_playtime %><br>
 
-<%= form.label :desired_playtime %>
-<%= form.text_field :desired_playtime %>
+<%= form.label :privacy %><br>
+<%= form.select :privacy, User.privacies.keys.to_a %><br>
 
-<%= form.label :privacy %>
-<%= form.select :privacy, User.privacies.keys.to_a %>
+ <hr>
+   <%= form.submit %><br>
+</div>
 
- 
-  <%= form.submit %>
 
 <% end %>
