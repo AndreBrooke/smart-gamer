@@ -29,35 +29,41 @@
 			<div class="row">			
 				<div class="col-lg-9  ">
 					<% first_article = @articles_home.first %>
-					<%= link_to article_path(first_article), target: "_self" do %>
-						<% if first_article.image %>
-							<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
-						<% else %>
-							<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
-							<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+					<% if first_article %>
+						<%= link_to article_path(first_article), target: "_self" do %>
+							<% if first_article.image %>
+								<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+							<% else %>
+								<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+								<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+							<% end %>
 						<% end %>
 					<% end %>
 			
 					<% second_articles = @articles_home.slice(1..2) %>
-					<% second_articles.each do |article| %>
-						<%= link_to article_path(article), target: "_self" do %>
-							<% if article.image %>
-								<%= image_tag article.image, title: article.title, class: "article-image-second-long" %>
-							<% else %>
-								<div class="text-center article-text-second-long"><span><%= article.title %></span></div>
+					<% if second_articles %>
+						<% second_articles.each do |article| %>
+							<%= link_to article_path(article), target: "_self" do %>
+								<% if article.image %>
+									<%= image_tag article.image, title: article.title, class: "article-image-second-long" %>
+								<% else %>
+									<div class="text-center article-text-second-long"><span><%= article.title %></span></div>
+								<% end %>
 							<% end %>
 						<% end %>
 					<% end %>
 				</div>
 
 				<div class="col-lg-3">
-					<% second_articles = @articles_home.slice(3..6) %>
-					<% second_articles.each do |article| %>
-						<%= link_to article_path(article), target: "_self" do %>
-							<% if article.image %>
-								<%= image_tag article.image, title: article.title, class: "article-image-second" %>
-							<% else %>
-								<div class="text-center article-text-second"><span><%= article.title %></span></div>
+					<% third_articles = @articles_home.slice(3..6) %>
+					<% if third_articles %>
+						<% third_articles.each do |article| %>
+							<%= link_to article_path(article), target: "_self" do %>
+								<% if article.image %>
+									<%= image_tag article.image, title: article.title, class: "article-image-second" %>
+								<% else %>
+									<div class="text-center article-text-second"><span><%= article.title %></span></div>
+								<% end %>
 							<% end %>
 						<% end %>
 					<% end %>
