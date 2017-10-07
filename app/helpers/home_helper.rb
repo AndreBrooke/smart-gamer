@@ -8,13 +8,17 @@ module HomeHelper
 	end
 
 	def get_activities
-		current_user_activities = current_user.activities
-		followers_activities = current_user_activities.to_a
-		current_user.followers.each do |follower|
-			if follower.status
-				followers_activities += User.find(follower.follower_id).activities.to_a
+		if signed_in?
+			current_user_activities = current_user.activities
+			followers_activities = current_user_activities.to_a
+			current_user.followers.each do |follower|
+				if follower.status
+					followers_activities += User.find(follower.follower_id).activities.to_a
+				end
 			end
+			followers_activities
+		else
+			[]
 		end
-		followers_activities
 	end
 end
