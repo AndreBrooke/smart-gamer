@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006124039) do
+ActiveRecord::Schema.define(version: 20171006124040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20171006124039) do
     t.bigint "user_id"
     t.bigint "badge_id"
     t.boolean "status", default: false
-    t.integer "progress"
+    t.integer "progress", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["badge_id"], name: "index_achievements_on_badge_id"
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(version: 20171006124039) do
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
+  create_table "likes", id: :serial, force: :cascade do |t|
+    t.boolean "vote_type", default: false
+    t.integer "user_id"
+    t.integer "commendation_id"
+    t.index ["commendation_id"], name: "index_likes_on_commendation_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "playtimes", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "today_playtime", default: 0
@@ -116,4 +124,6 @@ ActiveRecord::Schema.define(version: 20171006124039) do
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
   add_foreign_key "followers", "users"
+  add_foreign_key "likes", "commendations"
+  add_foreign_key "likes", "users"
 end
