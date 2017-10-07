@@ -31,36 +31,36 @@
         </div>
     <div class="col-lg-6">
       <div class="row" id="skill-bar">
-        <div class="container-fluid">
         <!-- Skill Bars -->
-            <div class="progress skill-bar ">
-                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                    <span class="skill">Playtime today <i class="val">100%</i></span>
-                </div>
-            </div>
+        <div class="container-fluid">
+          <div class="progress skill-bar ">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Playtime today <i class="val">100%</i></span>
+              </div>
+          </div>
 
-            <div class="progress skill-bar">
-                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" >
-                    <span class="skill">Playtime this week<i class="val">90%</i></span>
-                </div>
-            </div>
+          <div class="progress skill-bar">
+            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" >
+              <span class="skill">Playtime this week<i class="val">90%</i></span>
+              </div>
+          </div>
 
-            <div class="progress skill-bar">
-                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                    <span class="skill">Playtime this month<i class="val">75%</i></span>
-                </div>
-            </div>
-
-            <div class="progress skill-bar">
-                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                    <span class="skill">Test<i class="val">55%</i></span>
-                </div>
+          <div class="progress skill-bar">
+            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Playtime this month<i class="val">75%</i></span>
             </div>
           </div>
+
+          <div class="progress skill-bar">
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+              <span class="skill">Test<i class="val">55%</i></span>
+            </div>
+          </div>
+        </div>
         <!-- Skill Bars end -->
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 
 </div>
   <div id="col-lg-6">
@@ -72,61 +72,84 @@
       <li><a data-toggle="pill" href="#about_me">About Me</a></li>
       <li><a data-toggle="pill" href="#my_games">My Games</a></li>
       <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
+      <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
     </ul>
 
     <div class="tab-content">
+      <!-- Overall  -->
       <div id="overall" class="tab-pane fade in active background-color-div">
         <h3>Overall</h3>
           <%= render partial: 'users/overall'%>
       </div>
+
+      <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
         <h3>Stats</h3>
         <p>Stat content</p>
       </div>
+      
+      <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
         <h3>History</h3>
         <p>history content</p>
       </div>
+
+      <!-- Settings -->
       <div id="settings" class="tab-pane fade background-color-div">
         <h3>Settings</h3>
         <%= render partial: 'users/form' %>
       </div>
+
+      <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
         <h3>About me</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
       </div>
+
+      <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
         <h3>My Games</h3>
-      <ul>game1</ul>
-      <ul>game2</ul>
-      <ul>game3</ul>
+        <ul>game1</ul>
+        <ul>game2</ul>
+        <ul>game3</ul>
       </div>
+  
+      <!-- Achievements -->
       <div id="my_achievements" class="tab-pane fade background-color-div">
         <h3>Achievements</h3>
         <div class="text-left">
-        <% achievements = @user.achievements.order(status: :desc) %>
-        <% achievements.each do |achievement| %>
-          <div class="<%= 'achieved' if achievement.status %> achievement-item">
-            <span class="achievement-image pull-left">
-              <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
-            </span>
-            <span class="achievement-title">
-              <%= achievement.badge.name %>
-            </span>
-            <br>
-            <span class="achievement-description">
-              <%= achievement.badge.description %>
-            </span>
+          <% achievements = @user.achievements.order(status: :desc) %>
+          <% achievements.each do |achievement| %>
+            <div class="<%= 'achieved' if achievement.status %> achievement-item">
+              <span class="achievement-image pull-left">
+                <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
+              </span>
+              <span class="achievement-title">
+                <%= achievement.badge.name %>
+              </span>
+              <br>
+              <span class="achievement-description">
+                <%= achievement.badge.description %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Commendations -->
+      <div id="my_commendations" class="tab-pane fade-background-color-div">
+        <h3>Commendations</h3>
+        <% @commendations.each do |commendation| %>
+          <div>
+            <%= commendation.image %>
+            <%= commendation.name %>
+            <%= commendation.count %>
+            <%= link_to '<i class="fa fa-plus-square-o"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %>
           </div>
         <% end %>
       </div>
-      </div>
     </div>
-
   </div>
-
-
-
 
 <script>
    $(document).ready(function() {
@@ -138,14 +161,4 @@
     });
 </script>
 
-<h3>Commendations</h3>
-  <% @commendations.each do |commendation| %>
-    <div>
-      <%= commendation.image %>
-      <%= commendation.name %>
-      <%= commendation.count %>
-    </div>
-
-    <%= link_to '<i class="fa fa-plus-square-o"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %>
-  <% end %>
 
