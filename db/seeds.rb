@@ -26,9 +26,9 @@ Article.create(title: "Tournament", content: "month-long tournament")
 url = "http://www.psychologyofgames.com/2016/12/deliberate-practice-and-getting-good/"
 Article.create(get_shared_article_params(url))
 
-Badge.create(name: "Login Novice", description: "Login for 7 days consecutively", image: "", goal: 7)
-Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "", goal: 5)
-Badge.create(name: "First Goal", description: "Achieve Goal for 1 day", image: "", goal: 1)
+Badge.create(name: "Login Novice", description: "Login for 7 days consecutively", image: "ProfileIcon3017.png", goal: 7)
+Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "Champ_Mastery_Ab.png", goal: 5)
+Badge.create(name: "First Goal", description: "Achieve Goal for 1 day", image: "Champ_Mastery_Bb.png", goal: 1)
 
 
 User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
