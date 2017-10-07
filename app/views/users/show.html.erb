@@ -139,16 +139,16 @@
       <!-- Commendations -->
       <div id="my_commendations" class="tab-pane fade-background-color-div">
         <h3>Commendations</h3>
-        <% @commendations.each do |commendation| %>
+        <% @commendations.each_with_index do |commendation, index| %>
           <div>
             <%= commendation.image %>
             <div class="commendation-item">
               <span class="commendation-name"><%= commendation.name %></span>
                - 
-              <span><%= commendation.count %></span>
+              <span class="commendation-count"><%= commendation.count %></span>
             </div>
-              <% unless current_user.likes.find_by(commendation_id: commendation.id) %> 
-                <div class="commendation-plus"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %></div>
+              <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
+                <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
               <% end %>
           </div>
         <% end %>
