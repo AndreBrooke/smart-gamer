@@ -26,14 +26,20 @@ body{
 html {
 	  position: relative;
 	  min-height: 100%;
-	  
+
 	}
 
 #navbar{
 	background: #333332;
 }
 
-#white-text{	
+#white-text{
 	color: rgba(255,255,255,1);
 }
 
+.alert {
+	margin-top: -35px;
+	background-color: #F5F5F5;
+	text-align: center;
+	font-size:20px;
+}
