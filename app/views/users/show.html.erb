@@ -107,7 +107,11 @@
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
         <h3>About me</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <% if @user.about %>
+          <%= simple_format(@user.about) %>
+        <% else %>
+          <p>Tell something about yourself.</p>
+        <% end %>
       </div>
 
       <!-- My Games -->
