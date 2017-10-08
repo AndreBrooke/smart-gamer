@@ -31,20 +31,23 @@
 	<div class="article-content"><%= simple_format(@article.content) %></div>
 </div>
 
+<% @article.comments.each do |comment| %>
+	<div class="comment-wrapper">
+		<div>
+			<%= comment.reply_article %>
+		</div>
+		<% if comment.user_id == current_user.id %>
+			<%= link_to 'Edit Comment', edit_article_comment_path(@article, comment) %>
+			<%= link_to 'Delete Comment', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
+	</div>
+<% end %>
+
 <% message = "Leave a Comment and Join the Discussion" %>
 <% if signed_in? %>
 	<%= link_to message, new_article_comment_path(@article), id: "new_comment", remote:true %>
 <% else %>
 	<%= link_to message, '/auth/steam' %>
-<% end %>
-
-<% @article.comments.each do |comment| %>
-	<p><%= comment.reply_article %>
-		<% if comment.user_id == current_user.id %>
-			<%= link_to 'Edit Comment', edit_article_comment_path(@article, comment) %>
-			<%= link_to 'Delete Comment', article_comment_path(@article, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
-		<% end %>
-	</p>
 <% end %>
 
 <div class="topofpage">
