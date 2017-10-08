@@ -270,6 +270,7 @@ table {
 
 .home-user-table {
   width: 100%;
+  background-color: whitesmoke;
 
   th, td {
     border: 0px solid black;
@@ -294,8 +295,8 @@ table {
 }
 
 
-tr:nth-child(even) {
-    background: whitesmoke;
+tr:nth-child(odd) {
+    background: #d7dce2;
 }
 
 .steam_log_in {
@@ -339,4 +340,9 @@ tr:nth-child(even) {
         background: #fff;
         border: 1px solid #f37167;
     }
+}
+
+.avatar-small {
+    width: 36px;
+    height: 36px;
 }

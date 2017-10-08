@@ -99,7 +99,9 @@
 					<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
 					<div class="col-sm-3">
 						<%#= link_to articles_path, class: 'btn btn-default align-bottom' do %>
-							View all users
+						
+						<br>
+						
 							<%= link_to 'View all users', users_index_path %>
 						<%# end %>
 					</div>
@@ -123,7 +125,7 @@
 							<tr>
 								<td>
 									<%= link_to user_path(user), target: "_self" do %>
-										<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+										<%= image_tag user.avatar_url, title: user.nickname, class: "avatar-small" %> <%= user.nickname %>
 									<% end %>
 								</td>
 								<% user_playtimes = user.playtimes %>
@@ -164,7 +166,7 @@
 								<tr>
 									<td>
 										<%= link_to user_path(follower.follower_id), target: "_self" do %>
-											<%= image_tag user.avatar_url, title: user.nickname, class: "d" %> <%= user.nickname %>
+											<%= image_tag user.avatar_url, title: user.nickname, class: "avatar-small" %> <%= user.nickname %>
 										<% end %>
 									</td>
 									<% user_playtimes = user.playtimes %>
