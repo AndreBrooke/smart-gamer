@@ -39,6 +39,29 @@
 	}
 }
 
+.comment-wrapper {
+	border: 1px solid #d5d5d5;
+	background-color: #fff;
+	border-radius: 4px;
+	margin-bottom: 18px;
+	padding: 16px 18px 16px 18px;
+	width: 50%;
+	.comment-author {
+		font-size: 1.2em;
+		font-weight: 700;
+	}
+	.comment-date {
+		font-size: 0.8em;
+		color: #959595;
+	}
+}
+
+.new_comment_link a {
+	color: #000;
+	font-size: 1.5em;
+	font-weight: 600;	
+}
+
 .topofpage {
-	margin-top: 100px;
+	margin-top: 20px;
 }
