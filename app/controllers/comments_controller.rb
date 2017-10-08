@@ -7,8 +7,12 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new(comment_params)
 		if @comment.save
-			redirect_to article_path(@comment.article.id)
-			flash[:success] = "Created the comments!"
+			respond_to do |format|
+	      format.html { redirect_to article_path(@comment.article.id), flash: { success: "Created the comments!" } }
+	      format.js
+	    end
+			# redirect_to article_path(@comment.article.id)
+			# flash[:success] = "Created the comments!"
 		else
 			render "new"
 			flash[:notice] = "Didnt work"
