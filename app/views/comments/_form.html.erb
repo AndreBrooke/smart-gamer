@@ -3,8 +3,8 @@
 	<!-- Comment reply -->
 	<div class="form-group">
 	  <%= form.label :reply_article, class: 'col-sm-2 control-label' %>
-	  <div class="col-sm-9">
-		  <%= form.text_area :reply_article, required: true, class: 'form-control' %>
+	  <div class="col-sm-6">
+		  <%= form.text_area :reply_article, placeholder: 'Enter your comment here...', required: true, class: 'form-control' %>
 	  </div>
 	</div>
 
@@ -12,8 +12,10 @@
 	<%= form.hidden_field :article_id, :value => @article.id %>
 
 	<!-- Submit button to create comments -->
-  <div class="form-group text-center">
-      <%= form.submit 'Comment!', class: 'btn btn-default' %>
-  </div>
+	<div class="row">
+	  <div class="form-group col-sm-8 text-right">
+	     <%= form.submit 'Post Comment', class: 'btn btn-default' %>
+	  </div>
+	</div>
 
 <% end %>
