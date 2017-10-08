@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.string "profile_url"
     t.string "name"
     t.integer "personastate"
+    t.text "about"
     t.integer "status", default: 0
     t.integer "privacy", default: 0
     t.integer "desired_playtime", default: 2
