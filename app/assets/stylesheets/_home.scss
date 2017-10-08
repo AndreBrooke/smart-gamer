@@ -271,17 +271,21 @@ table {
 .home-user-table {
   width: 100%;
   background-color: whitesmoke;
-
   th, td {
     border: 0px solid black;
     padding: 4px;
-
     a {
       color: inherit;
     }
   }
   tbody tr:hover td {
     background: #666666;
+  }
+  td .table-user-avatar {
+    display: inline-block;
+    img {
+        width: 50%;
+    }
   }
 }
 

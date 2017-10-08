@@ -1,25 +1,25 @@
 <table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
-					<thead>
-						<tr>
-							<th data-sortable="true">User</th>
-							<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
-							<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
-						</tr>
-					</thead>
+	<thead>
+		<tr>
+			<th data-sortable="true">User</th>
+			<th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+			<th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+		</tr>
+	</thead>
 
-					<tbody>
-						<% @users.each do |user| %>
-							<tr>
-								<td>
-									<%= link_to user_path(user), target: "_self" do %>
-										<%= image_tag user.avatar_url, title: user.nickname, class: "avatar-small" %> <%= user.nickname %>
-									<% end %>
-								</td>
-								<% user_playtimes = user.playtimes %>
-								<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
-								<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
-								<td><%= user_total_playtime %></td>
-							</tr>
-						<% end %>
-					</tbody>
-				</table>
+	<tbody>
+		<% @users.each do |user| %>
+			<tr>
+				<td>
+					<%= link_to user_path(user), target: "_self" do %>
+						<span class="table-user-avatar"><%= image_tag user.avatar_url, title: user.nickname, class: "d" %></span> <%= user.nickname %>
+					<% end %>
+				</td>
+				<% user_playtimes = user.playtimes %>
+				<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+				<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+				<td><%= user_total_playtime %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
