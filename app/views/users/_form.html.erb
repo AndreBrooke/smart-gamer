@@ -43,4 +43,10 @@
       <%= form.submit 'Update User', class: 'btn btn-default' %>
   	</div>
   </div>
+
+	<div class="form-group">
+  	<div class="col-sm-offset-2 col-sm-3">
+      <%= link_to 'Log Out', logout_path, method: :delete, class: 'btn btn-default btn-signout' %>
+  	</div>
+  </div>
 <% end %>

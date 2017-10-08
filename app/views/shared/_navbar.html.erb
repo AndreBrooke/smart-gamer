@@ -16,11 +16,7 @@
         <% end %>
       </div>
 
-      <% if signed_in?  %>
-        <ul class="nav navbar-nav pull-right">
-          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
-        </ul>
-      <% else %>
+      <% unless signed_in?  %>
         <ul class="nav navbar-nav">
           <li><%= link_to image_tag('steam_01', class: "steam_log_in"), '/auth/steam' %></li>
         </ul>
