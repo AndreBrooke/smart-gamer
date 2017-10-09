@@ -16,7 +16,7 @@
       <div id="users_search_result">
         <% @users.each do |user| %>
           <div id="user_search_result" class="border">
-            <p>Nikname: <%= link_to user.nickname, :controller => :users, :action => :show, :id => user.id %></p>
+            <p>Nickname: <%= link_to user.nickname, :controller => :users, :action => :show, :id => user.id %></p>
           </div>
         <% end %>
       </div>

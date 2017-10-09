@@ -25,9 +25,7 @@
 
 		<div class="collapse navbar-collapse" id="navbar">
         <% if signed_in?  %>
-        <ul class="nav navbar-nav pull-right">
-          <li><%= link_to 'Log Out', logout_path, method: :delete, class:"nav-text"%></li>
-        </ul>
+        
       <% else %>
         <ul class="nav navbar-nav pull-right">
 
