@@ -8,9 +8,8 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-	resources :users, only: [:edit, :update]
+	resources :users, only: [:edit, :update, :index]
 
-  get 'users/index' => "users#index"
   get 'new_age/index' => "new_age#index"
   post'users/:id/updatechart' => "users#update_chart", as: "update_chart"
   get "/admin" => "users#admin_page", as: "admin"
