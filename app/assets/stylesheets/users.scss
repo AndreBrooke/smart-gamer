@@ -221,3 +221,11 @@ background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(84,163,238,1)
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 ); /* IE6-9 */
 }
 
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: white !important;
+  background-color: #00b5ad !important;
+}
+
+.pill-overwrite {
+  color: #00b5ad !important;
+}
