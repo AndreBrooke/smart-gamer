@@ -60,9 +60,10 @@ $background-dark: #403F48;
 
 #my_achievements {
   @include box_size(400px);
-  display: inline-block;
 }
 
+.tab-content {
+}
 
 .steam-avatar {
   
@@ -93,6 +94,10 @@ $background-dark: #403F48;
 .inline {
   display: inline-block;
 
+}
+
+.h3-pill {
+  margin-top: 0px;
 }
 
 #skill-bar {
