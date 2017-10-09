@@ -1,11 +1,14 @@
 
-<div id="header" class="border border background-color-div">
-  <div class ="row">
+<div id="header" class="border border profile-background">
+  <div class ="row ">
     <div class="col-lg-6">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
           <div class="circleborder">
           <%= image_tag @user.avatar_url, size:"124", class:"steam-avatar"%>
+        </div>
+        <div class="col-sm-6">
+        <p class=" level">25</p>
         </div>
         </div>
 
@@ -46,7 +49,7 @@
       <div class="row" id="skill-bar">
         <!-- Skill Bars -->
         <div class="container-fluid">
-          <div class="progress skill-bar ">
+          <!-- <div class="progress skill-bar ">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
               <span class="skill">Playtime today <i class="val">100%</i></span>
               </div>
@@ -62,7 +65,7 @@
             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
               <span class="skill">Playtime this month<i class="val">75%</i></span>
             </div>
-          </div>
+          </div> -->
 
           <div class="progress skill-bar">
             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
@@ -73,6 +76,7 @@
         <!-- Skill Bars end -->
       </div>
     </div>
+
   </div>
 
 </div>
@@ -83,18 +87,18 @@
 <% else %>
   <div>
     <ul class="nav nav-pills">
-      <li class="active active-pill"><a data-toggle="pill" href="#overall">Overall</a></li>
-      <li><a data-toggle="pill" href="#stats">Stats</a></li>
-      <li><a data-toggle="pill" href="#history">History</a></li>
+      <li class="active active-pill"><a data-toggle="pill" href="#overall" class="pill-overwrite">Overall</a></li>
+      <li><a data-toggle="pill" href="#stats" class="pill-overwrite">Stats</a></li>
+      <li><a data-toggle="pill" href="#history" class="pill-overwrite">History</a></li>
 
       
-      <li><a data-toggle="pill" href="#about_me">About Me</a></li>
-      <li><a data-toggle="pill" href="#my_games">My Games</a></li>
-      <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
-      <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
+      <li><a data-toggle="pill" href="#about_me" class="pill-overwrite">About Me</a></li>
+      <li><a data-toggle="pill" href="#my_games" class="pill-overwrite">My Games</a></li>
+      <li><a data-toggle="pill" href="#my_achievements" class="pill-overwrite">Achievements</a></li>
+      <li><a data-toggle="pill" href="#my_commendations" class="pill-overwrite">Commendations</a></li>
       <% if current_user == @user %>
 
-      <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <li><a data-toggle="pill" href="#settings" class="pill-overwrite">Settings</a></li>
       <% end %>
     </ul>
 

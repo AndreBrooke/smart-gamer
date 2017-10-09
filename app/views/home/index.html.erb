@@ -5,7 +5,7 @@
 	
 </header>
 
-<div class="container-quote">
+<div class="container-quote ">
 	<blockquote class="blockquote">
 		<p><%= @quote["quoteText"] %></p>
 		<% quote_author = @quote["quoteAuthor"] %>
@@ -15,7 +15,7 @@
 
 	
 	<div class="row ">
-		<div class="col-lg-8 background-color-div ">
+		<div class="col-lg-8 profile-background ">
 			
 			<div class="row">
 				<div class="col-lg-9 "><h3 class="h3-title">Articles</h3></div>
@@ -79,7 +79,7 @@
 				<h3 class="h3-title">Activity Feed</h3>
 				<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
-						<div class="feed-item">
+						<div class="feed-item profile-background">
 							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
 							<div class="text"><%= link_to user_path(activity.user), target: "_self" do %><%= activity.user.nickname %><% end %><%= activity.content %></div>
 						</div>

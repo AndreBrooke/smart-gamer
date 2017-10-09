@@ -1,5 +1,7 @@
 {
   "name": "smart-gamer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "pnotify": "^3.2.1"
+  }
 }

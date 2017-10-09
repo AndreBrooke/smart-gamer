@@ -1,6 +1,9 @@
 $(document).ready(function() {
-	$('.comment-wrapper-parent').on('ajax:success', function() {
+	$('.comment-wrapper-parent:not(.registered').on('ajax:success', function() {
+		var commentSplit = this.id.split('-');
+		var $target = $("#edit_comment_link" + commentSplit[1])
+		$target.hide();
 		$(this).after('<%= j render("form") %>')
-	})
+	}).addClass('registered');
 });
 
