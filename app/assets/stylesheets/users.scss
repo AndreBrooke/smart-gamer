@@ -2,7 +2,7 @@
 
 @mixin box_size($height) {
   width: 100%;
-  height: $height;
+  min-height: $height;
   margin-bottom: 10px;
 }
 
@@ -49,20 +49,9 @@ $background-dark: #403F48;
   @include box_size(860px);
 }
 
-#about_me {
-
+#stats, #history, #about_me, #my_games, #my_achievements, #my_commendations {
   @include box_size(250px);
 }
-
-#my_games {
-  @include box_size(250px); 
-}
-
-#my_achievements {
-  @include box_size(400px);
-  display: inline-block;
-}
-
 
 .steam-avatar {
   
