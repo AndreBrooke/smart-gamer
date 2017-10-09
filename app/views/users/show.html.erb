@@ -118,6 +118,17 @@
       <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
         <p>history content</p>
+        <% if @recent_games.nil? %>
+          <%= "" %>
+        <% else %>
+        <% @recent_games.each do |recent_game| %>
+          <% url = recent_game["img_icon_url"] %>
+          <% game_id = recent_game["appid"] %>
+          <%= image_tag("http://media.steampowered.com/steamcommunity/public/images/apps/#{game_id}/#{url}.jpg") %>
+          <%= recent_game["name"] %>
+          <%= recent_game["playtime_2weeks"].to_i / 60 %> hours
+          <% end %>
+        <% end %>
       </div>
 
       <!-- Settings -->
