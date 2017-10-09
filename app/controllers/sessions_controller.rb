@@ -4,9 +4,9 @@ class SessionsController < ApplicationController
   def create
     @user = User.from_omniauth(request.env['omniauth.auth'])
     @user.email = params[:user][:email] if params[:user]
-    @user.commendations.create(image: "", name: "Friendly")
-    @user.commendations.create(image: "", name: "Teamwork")
-    @user.commendations.create(image: "", name: "Tilt-Proof")
+    @user.commendations.create(name: "Friendly")
+    @user.commendations.create(name: "Teamwork")
+    @user.commendations.create(name: "Tilt-Proof")
     if !@user.save
       flash[:error] = "Login Fail"
     elsif @user.email == "example@na.com"
