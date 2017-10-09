@@ -88,31 +88,31 @@
     <div class="tab-content">
       <!-- Overall  -->
       <div id="overall" class="tab-pane fade in active background-color-div">
-        <h3>Overall</h3>
+        <h3 class="h3-pill">Overall</h3>
           <%= render partial: 'users/overall'%>
       </div>
 
       <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
-        <h3>Stats</h3>
+        <h3 class="h3-pill">Stats</h3>
         <p>Stat content</p>
       </div>
       
       <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
-        <h3>History</h3>
+        <h3 class="h3-pill">History</h3>
         <p>history content</p>
       </div>
 
       <!-- Settings -->
       <div id="settings" class="tab-pane fade background-color-div">
-        <h3>Settings</h3>
+        <h3 class="h3-pill">Settings</h3>
         <%= render partial: 'users/form' %>
       </div>
 
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
-        <h3>About me</h3>
+        <h3 class="h3-pill">About me</h3>
         <% if @user.about %>
           <%= simple_format(@user.about) %>
         <% else %>
@@ -122,15 +122,16 @@
 
       <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
-        <h3>My Games</h3>
+        <h3 class="h3-pill">My Games</h3>
         <ul>game1</ul>
         <ul>game2</ul>
         <ul>game3</ul>
       </div>
+     
   
       <!-- Achievements -->
       <div id="my_achievements" class="tab-pane fade background-color-div">
-        <h3>Achievements</h3>
+        <h3 class="h3-pill">Achievements</h3>
         <div class="text-left">
           <% achievements = @user.achievements.order(status: :desc) %>
           <div class="achievements-wrapper">
@@ -154,7 +155,7 @@
 
       <!-- Commendations -->
       <div id="my_commendations" class="tab-pane fade background-color-div">
-        <h3>Commendations</h3>
+        <h3 class="h3-pill">Commendations</h3>
         <% @commendations.each_with_index do |commendation, index| %>
           <div>
             <%= commendation.image %>

@@ -53,6 +53,9 @@ $background-dark: #403F48;
   @include box_size(250px);
 }
 
+.tab-content {
+}
+
 .steam-avatar {
   
   border-radius: 50%;
@@ -82,6 +85,10 @@ $background-dark: #403F48;
 .inline {
   display: inline-block;
 
+}
+
+.h3-pill {
+  margin-top: 0px;
 }
 
 #skill-bar {
