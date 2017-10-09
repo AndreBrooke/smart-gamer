@@ -52,6 +52,10 @@ class UsersController < ApplicationController
           response = get_owned_games(@user) 
           game = JSON.parse(response.body)
           @games = game["response"]["games"]
+
+          response1 = get_recent_games(@user)
+          recent_game = JSON.parse(response1.body)
+          @recent_games = recent_game["response"]["games"]
           
           @badges = Badge.all
           @commendations = @user.commendations
