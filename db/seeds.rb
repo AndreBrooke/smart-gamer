@@ -98,6 +98,8 @@ rand(1...user_count).times do |i|
   User.third.followers.create(follower_id: other_users.delete(other_users.sample))
 end
 
-User.all.commendations.create(image: "", name: "Friendly")
-User.all.commendations.create(image: "", name: "Teamwork")
-User.all.commendations.create(image: "", name: "Tilt-Proof")
+User.all.each do |user|
+  user.commendations.create(image: "", name: "Friendly")
+  user.commendations.create(image: "", name: "Teamwork")
+  user.commendations.create(image: "", name: "Tilt-Proof")
+end
