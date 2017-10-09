@@ -3,6 +3,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def create_user_notifications
+    if signed_in?
+      render json: current_user.create_user_notifications
+    end
+  end
+
 	def edit
     if signed_in? && (current_user.id == params[:id].to_i)
     	@user = User.find(params[:id])

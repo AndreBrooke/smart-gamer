@@ -18,3 +18,35 @@
 //= require bootstrap-table
 //= require turbolinks
 //= require_tree .
+
+
+function my_function(){
+  $.ajax({
+    url: "/user/create_user_notifications",
+    dataType: "json",
+    type: 'GET',
+    success: function(data) {
+      console.log(data);
+      if (data <= 60){
+        new PNotify({
+         title: 'Desktop Notification',
+         text: "Remain 60 minutes left to play to reach the desired time.",
+         desktop: {
+            desktop: true,
+            icon: null
+         }
+        });
+      } else if(data <= 5) {
+        new PNotify({
+         title: 'Desktop Notification',
+         text: "It's time to stop game if you want to reach the desired time.",
+         desktop: {
+            desktop: true,
+            icon: null
+         }
+        });
+      }
+    }
+  });
+};
+setInterval(my_function, 300000);
