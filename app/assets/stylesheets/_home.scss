@@ -196,6 +196,7 @@
 #navbar-main {
     overflow: hidden;
     background-color: #333;
+    height: fixed;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
@@ -221,7 +222,10 @@
       overflow: hidden;
       background-color: #27B1BE;
       width: 100%;
-      height: 260px;
+      height: 200px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
     }
 
 .footer-icon {
@@ -271,7 +275,7 @@ table {
 
 .home-user-table {
   width: 100%;
-  background-color: #D4D6C8;
+  background-color: #ECECEC;
   th, td {
     border: 0px solid black;
     padding: 4px;
@@ -301,7 +305,7 @@ table {
     
 
 tr:nth-child(odd) {
-    background: #9A9B94;
+    background: #F5F5F5;
 }
 
 .steam_log_in {
@@ -363,11 +367,28 @@ tr:nth-child(odd) {
 }
 
 .nav-text {
-    height: 60px;
-    color: #777777;
+    height: 60px; 
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "ubuntu", Sans-serif; 
+
+}
+
+.navbar-header a:hover {
+    background: #ECECEC;
+    text-decoration: none;
 }
 
 .navbar-logo {
     position: relative;
     bottom: 10px;
+}
+
+.home-button {
+    padding-top: 20px !important;
+}
+
+.navbar-title {
+    padding: 20px;
 }

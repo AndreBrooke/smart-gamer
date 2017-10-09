@@ -22,7 +22,7 @@ body{
 		font-family: 'Ubuntu', sans-serif !important;
 		padding-top: 100px;
 		margin-bottom: 60px;
-		min-height: 780px;
+		min-height: calc(100vh - 60px);
 
 	}
 }
