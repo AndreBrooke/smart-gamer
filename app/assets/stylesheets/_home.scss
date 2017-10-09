@@ -153,9 +153,10 @@
 }
 
 #custom-search-input {
-        margin-top:7px;
+        margin-top: 12px;
+        padding-left: 50px;
         display: inline-block;
-        width:250px;
+        width: 400px;
     }
 
     #custom-search-input .search-query {
@@ -362,6 +363,7 @@ tr:nth-child(odd) {
 }
 
 .nav-text {
+    height: 60px;
     color: #777777;
 }
 
