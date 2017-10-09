@@ -1,8 +1,10 @@
-<nav class="navbar navbar-default navbar-static-top" id="navbar-main">
-	<div class="container-nav">
+<nav class=" navbar-fixed-top" id="navbar-main" >
+ 
+	<div class="container">
+    
 		<div class="navbar-header ">
-
-			<%= link_to "SmartGamer", root_path, class: "navbar-brand text-white", id: "logo-font" %>
+      <%= link_to (image_tag 'smart-logo.png', class: "smart-logo"), root_path, class: "navbar-logo" %>
+			
 
       <!-- Searchbar -->
       <div id="custom-search-input">
@@ -16,37 +18,38 @@
         <% end %>
       </div>
 
-      <% if signed_in?  %>
-        <ul class="nav navbar-nav pull-right">
-          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
-        </ul>
-      <% else %>
-        <ul class="nav navbar-nav">
-          <li><%= link_to image_tag('steam_02', class: "steam_log_in"), '/auth/steam' %></li>
-        </ul>
-      <% end %>
-      <% flash.each do |key, value| %>
-      	<%= content_tag :div, value, :id => key %>
-      <% end %>
-      <%= link_to "Create Articles", articles_path, class: "navbar-brand" if current_user && current_user.admin? %>
+
+
+      <%= link_to "Create Articles", articles_path, class: "navbar-brand nav-text" if current_user && current_user.admin?%>
 		</div>
 
 		<div class="collapse navbar-collapse" id="navbar">
+        <% if signed_in?  %>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to 'Log Out', logout_path, method: :delete, class:"nav-text"%></li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav pull-right">
+
+          <li><%= link_to image_tag('steam_01', class: "steam_log_in"), '/auth/steam' %></li>
+        </ul>
+      <% end %>
 			<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<% if signed_in? && current_user.nickname != nil %>
-						<%= link_to current_user.nickname, current_user, role: "button"%>
+						<%= link_to current_user.nickname, current_user, role: "button", class:'nav-text'%>
 
 						<% end %>
 
 					</li>
-
+        <!-- messages>
 				<li>
 					<a href="#"><i class="fa fa-envelope-o"></i> Messages</a>
 				</li>
-
+        <!-->
 
 			</ul>
 		</div>
-	</div>
+  </div>
+	
 </nav>

@@ -28,9 +28,11 @@ ActiveRecord::Schema.define(version: 20171006124040) do
 
   create_table "activities", force: :cascade do |t|
     t.bigint "user_id"
+    t.integer "comment_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_activities_on_comment_id"
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
@@ -86,6 +88,8 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.boolean "vote_type", default: false
     t.integer "user_id"
     t.integer "commendation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["commendation_id"], name: "index_likes_on_commendation_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
@@ -113,6 +117,7 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.string "profile_url"
     t.string "name"
     t.integer "personastate"
+    t.text "about"
     t.integer "status", default: 0
     t.integer "privacy", default: 0
     t.integer "desired_playtime", default: 2
@@ -120,6 +125,7 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
+  add_foreign_key "activities", "comments"
   add_foreign_key "activities", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"

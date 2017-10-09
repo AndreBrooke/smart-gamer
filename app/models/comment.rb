@@ -1,7 +1,9 @@
 class Comment < ApplicationRecord
 	belongs_to :user
   belongs_to :article
+  has_many :activities, autosave: true, dependent: :destroy
   before_save :update_achievement_progress, :create_activity
+  after_create :update_activity
 
   def update_achievement_progress
     badges = Badge.where("name ILIKE ?", "%reply%")
@@ -19,7 +21,11 @@ class Comment < ApplicationRecord
 
   def create_activity
     unless self == Comment.last
-      self.user.activities.create(content: " posted a comment to #{self.article.title}")
+      self.user.activities.create(content: " posted a comment to #{self.article.title}", comment_id: self.id)
     end
+  end
+
+  def update_activity
+    Activity.first.update_attribute(:comment_id, self.id)
   end
 end

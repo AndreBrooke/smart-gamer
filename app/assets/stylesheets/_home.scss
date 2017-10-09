@@ -1,4 +1,4 @@
-.container{
+.container-table{
     padding-top: 75px;
     padding-bottom: 75px;
 }
@@ -153,7 +153,7 @@
 }
 
 #custom-search-input {
-        margin-top:13px;
+        margin-top:7px;
         display: inline-block;
         width:250px;
     }
@@ -270,17 +270,22 @@ table {
 
 .home-user-table {
   width: 100%;
-
+  background-color: whitesmoke;
   th, td {
     border: 0px solid black;
     padding: 4px;
-
     a {
       color: inherit;
     }
   }
   tbody tr:hover td {
     background: #666666;
+  }
+  td .table-user-avatar {
+    display: inline-block;
+    img {
+        width: 50%;
+    }
   }
 }
 
@@ -294,13 +299,14 @@ table {
 }
 
 
-tr:nth-child(even) {
-    background: whitesmoke;
+tr:nth-child(odd) {
+    background: #d7dce2;
 }
 
 .steam_log_in {
+    margin-top: -2px;
     margin-right:30px   ;
-    width:50px;
+    width:95px;
 }
 
 // Adapted from https://bootsnipp.com/snippets/7QXrr
@@ -316,7 +322,7 @@ tr:nth-child(even) {
             top: -5px;
             color: #8c96a3;
             text-transform: uppercase;
-            font-size: 13px;      
+            font-size: 13px;
         }
         .text {
             position: relative;
@@ -338,4 +344,28 @@ tr:nth-child(even) {
         background: #fff;
         border: 1px solid #f37167;
     }
+}
+
+.avatar-small {
+    width: 36px;
+    height: 36px;
+}
+
+.smart-logo {
+
+    width: 36px;
+    height: 36px;
+}
+
+#navbar-main {
+    background-color: #333332;
+}
+
+.nav-text {
+    color: #777777;
+}
+
+.navbar-logo {
+    position: relative;
+    bottom: 10px;
 }

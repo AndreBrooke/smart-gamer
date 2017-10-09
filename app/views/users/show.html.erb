@@ -68,11 +68,16 @@
       <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
       <li><a data-toggle="pill" href="#stats">Stats</a></li>
       <li><a data-toggle="pill" href="#history">History</a></li>
-      <li><a data-toggle="pill" href="#settings">Settings</a></li>
+
+      
       <li><a data-toggle="pill" href="#about_me">About Me</a></li>
       <li><a data-toggle="pill" href="#my_games">My Games</a></li>
       <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
       <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
+      <% if current_user == @user %>
+
+      <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <% end %>
     </ul>
 
     <div class="tab-content">
@@ -103,7 +108,11 @@
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
         <h3>About me</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <% if @user.about %>
+          <%= simple_format(@user.about) %>
+        <% else %>
+          <p>Tell something about yourself.</p>
+        <% end %>
       </div>
 
       <!-- My Games -->
@@ -137,18 +146,18 @@
       </div>
 
       <!-- Commendations -->
-      <div id="my_commendations" class="tab-pane fade-background-color-div">
+      <div id="my_commendations" class="tab-pane fade background-color-div">
         <h3>Commendations</h3>
-        <% @commendations.each do |commendation| %>
+        <% @commendations.each_with_index do |commendation, index| %>
           <div>
             <%= commendation.image %>
             <div class="commendation-item">
               <span class="commendation-name"><%= commendation.name %></span>
                - 
-              <span><%= commendation.count %></span>
+              <span class="commendation-count"><%= commendation.count %></span>
             </div>
-              <% unless current_user.likes.find_by(commendation_id: commendation.id) %> 
-                <div class="commendation-plus"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put  %></div>
+              <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
+                <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
               <% end %>
           </div>
         <% end %>

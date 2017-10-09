@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :profile_url
       t.string :name
       t.integer :personastate
+      t.text :about
     end
 
     # add_index :users, :email

@@ -1,7 +1,21 @@
-<!-- Comment reply -->
-<div class="form-group">
-  <%= form.label :reply_article, class: 'col-sm-2 control-label' %>
-  <div class="col-sm-9">
-	  <%= form.text_field :reply_article, required: true, class: 'form-control' %>
-  </div>
-</div>
+<%= form_for [@article, @comment], html: { class: 'form-horizontal', id: 'new_comment' }, remote:true do |form| %>
+
+	<!-- Comment reply -->
+	<div class="form-group">
+	  <%= form.label :reply_article, class: 'col-sm-2 control-label' %>
+	  <div class="col-sm-6">
+		  <%= form.text_area :reply_article, placeholder: 'Enter your comment here...', required: true, class: 'form-control' %>
+	  </div>
+	</div>
+
+	<%= form.hidden_field :user_id, :value => current_user.id %>
+	<%= form.hidden_field :article_id, :value => @article.id %>
+
+	<!-- Submit button to create comments -->
+	<div class="row">
+	  <div class="form-group col-sm-8 text-right">
+	     <%= form.submit 'Post Comment', class: 'btn btn-default' %>
+	  </div>
+	</div>
+
+<% end %>

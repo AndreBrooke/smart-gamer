@@ -1,0 +1,8 @@
+$(document).ready(function() {
+	$('.commendation-plus:not(.registered)').on('ajax:success', function() {
+		$(this).remove();
+		var commendationSplit = this.id.split('-');
+		var $target = $(".commendation-count")[parseInt(commendationSplit[2])];
+		$target.innerHTML = parseInt($target.innerHTML) + 1;
+	}).addClass('registered');
+});
