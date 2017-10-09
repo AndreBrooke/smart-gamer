@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
   has_many :achievements, dependent: :destroy
-  has_many :badges, through: :achievements 
+  has_many :badges, through: :achievements
   has_many  :comments, dependent: :destroy
   has_many :followers
   has_many :commendations, dependent: :destroy
@@ -74,7 +74,7 @@ class User < ApplicationRecord
       Badge.all.each do |badge|
         self.achievements.create(badge_id: badge.id)
       end
-    end 
+    end
   end
 
   def check_online_status
@@ -87,5 +87,11 @@ class User < ApplicationRecord
     if self.activities.empty?
       self.activities.create(content: " joined SmartGamer")
     end
+  end
+
+  def create_user_notifications
+    today_playtime = self.playtimes.where(date: Date.today)[0].today_playtime
+    desired_playtime = self.desired_playtime * 60
+    desired_playtime - today_playtime
   end
 end
