@@ -122,7 +122,13 @@
 								</td>
 								<% user_playtimes = user.playtimes %>
 								<% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
-								<td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+								<td>
+                   <% if user_total_playtime %>
+                     <%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %>
+                   <% else %>
+                     0
+                   <% end %>
+                 </td>
 								<td><%= user_total_playtime %></td>
 							</tr>
 						<% end %>
