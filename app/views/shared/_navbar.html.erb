@@ -2,22 +2,22 @@
  
 	<div class="container">
     
-		<div class="navbar-header ">
-      <%= link_to (image_tag 'smart-logo.png', class: "smart-logo"), root_path, class: "navbar-logo" %>
-			
-
+		<div class="navbar-header flex ">
+      <%= image_tag 'smart-logo.png', class: "smart-logo navbar-logo"%>
+      <%= link_to "Smartgamer", root_path, class: "navbar-logo nav-text navbar-title" %>
+      
       <!-- Searchbar -->
       <div id="custom-search-input">
         <%= form_tag search_path, method: 'get' do %>
           <div class="input-group">
             <!-- FIXME - change message from "Please fill out this field." -->
-            <%= text_field_tag :search, params[:search], placeholder: 'Search', required: true, class: 'form-control' %>
+            <%= text_field_tag :search, params[:search], placeholder: 'Search for players or articles', required: true, class: 'form-control' %>
             <!-- FIXME - Change Go! to search icon -->
             <span class="input-group-btn"><%= image_submit_tag("search", class: 'btn btn-default search') %></span>
           </div>
         <% end %>
       </div>
-
+      
 
 
       <%= link_to "Create Articles", articles_path, class: "navbar-brand nav-text" if current_user && current_user.admin?%>
@@ -32,7 +32,7 @@
 			<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<% if signed_in? && current_user.nickname != nil %>
-						<%= link_to current_user.nickname, current_user, role: "button", class:'nav-text'%>
+						<%= link_to "My Profile", current_user, role: "button", class:'nav-text'%>
 
 						<% end %>
 
