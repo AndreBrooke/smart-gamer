@@ -37,6 +37,7 @@
         PNotify.desktop.permission();
         var notofication_text = $(".alert").text().substring(1);
         if (notofication_text.length > 0) {
+          sound();
           new PNotify({
              title: 'Desktop Notification',
              text: notofication_text,
