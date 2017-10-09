@@ -24,7 +24,7 @@
         <p> No information given. </p>
         <% else %>
           <p>NAME: <%= @user.name%></p>
-          
+
           <p>EMAIL: <%= @user.email %></p>
           <!-- Follow button-->
           <% unless @user.id == current_user.id %>
@@ -93,7 +93,7 @@
       <li><a data-toggle="pill" href="#stats" class="pill-overwrite">Stats</a></li>
       <li><a data-toggle="pill" href="#history" class="pill-overwrite">History</a></li>
 
-      
+
       <li><a data-toggle="pill" href="#about_me" class="pill-overwrite">About Me</a></li>
       <li><a data-toggle="pill" href="#my_games" class="pill-overwrite">My Games</a></li>
       <li><a data-toggle="pill" href="#my_achievements" class="pill-overwrite">Achievements</a></li>
@@ -114,7 +114,7 @@
       <div id="stats" class="tab-pane fade background-color-div">
         <p>Stat content</p>
       </div>
-      
+
       <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
         <p>history content</p>
@@ -167,8 +167,8 @@
         <% end %>
         <% end %>
       </div>
-     
-  
+
+
       <!-- Achievements -->
       <div id="my_achievements" class="tab-pane fade background-color-div">
         <div class="text-left">
@@ -197,13 +197,12 @@
         <div class="commendation-wrapper">
           <% @commendations.each_with_index do |commendation, index| %>
             <div class="commendation-item-wrapper pull-left">
-              <%= commendation.image %>
               <div class="commendation-item">
                 <span class="commendation-name"><%= commendation.name %></span>
-                 - 
+                 -
                 <span class="commendation-count"><%= commendation.count %></span>
               </div>
-                <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
+                <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %>
                   <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
                 <% end %>
             </div>
