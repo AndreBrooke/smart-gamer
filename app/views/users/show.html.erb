@@ -27,17 +27,19 @@
           
           <p>EMAIL: <%= @user.email %></p>
           <!-- Follow button-->
-          <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != current_user.id %>
-            <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
-              <%= f.hidden_field :user_id, value: params[:id] %>
-              <%= f.hidden_field :follower_id, value: @user.id %>
-              <%= f.button "Follow", class: "btn btn-primary"  %>
-            <% end %>
-          <% elsif params[:id].to_i != current_user.id %>
-            <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
-              <%= f.hidden_field :user_id, value: params[:id] %>
-              <%= f.hidden_field :follower_id, value: @user.id %>
-              <%= f.button "Unfollow", class: "btn btn-primary" %>
+          <% unless @user.id == current_user.id %>
+            <% unless User.check_follower(current_user.id, @user.id) %>
+              <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :follower_id, value: @user.id %>
+                <%= f.button "Follow", class: "btn btn-primary"  %>
+              <% end %>
+            <% else %>
+              <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
+                <%= f.hidden_field :user_id, value: current_user.id %>
+                <%= f.hidden_field :follower_id, value: @user.id %>
+                <%= f.button "Unfollow", class: "btn btn-primary" %>
+              <% end %>
             <% end %>
           <% end %>
          <!-- Follow button end -->
