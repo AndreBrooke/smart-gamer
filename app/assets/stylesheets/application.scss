@@ -8,6 +8,7 @@
 @import 'bootstrap-table';
 @import 'flatpickr-calendar';
 @import 'articles';
+@import 'search';
 
 
 
@@ -15,13 +16,13 @@ $white-font: #FFF;
 $background-dark: #363333;
 body{
 	color: black;
-	background-color: white;
+	background-color: #ECECEC;
 	font-weight: 300;
 	.main-container{
 		font-family: 'Ubuntu', sans-serif !important;
 		padding-top: 100px;
 		margin-bottom: 60px;
-		min-height: 780px;
+		min-height: calc(100vh - 60px);
 
 	}
 }
@@ -31,9 +32,7 @@ html {
 
 	}
 
-#navbar{
-	background: #333332;
-}
+
 
 #white-text{
 	color: rgba(255,255,255,1);

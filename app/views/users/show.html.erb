@@ -1,11 +1,14 @@
 
-<div id="header" class="border border background-color-div">
-  <div class ="row">
+<div id="header" class="border border profile-background">
+  <div class ="row ">
     <div class="col-lg-6">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
           <div class="circleborder">
           <%= image_tag @user.avatar_url, size:"124", class:"steam-avatar"%>
+        </div>
+        <div class="col-sm-6">
+        <p class=" level">25</p>
         </div>
         </div>
 
@@ -15,13 +18,14 @@
             <%= link_to "http://steamcommunity.com/profiles/#{@user.uid.to_i + 76561197960265728}" do %>
             <i class="fa fa-steam-square fa-2x profile-icon" aria-hidden="true"></i>
             <% end %>
-            <i class="fa fa-facebook fa-2x profile-icon" aria-hidden="true"></i>
             </div>
             <br>
-        
-          <p>Name: <%= @user.name%></p><br>
+        <% if @private == true %>
+        <p> No information given. </p>
+        <% else %>
+          <p>NAME: <%= @user.name%></p>
           
-          <p>Email: <%= @user.email %></p>
+          <p>EMAIL: <%= @user.email %></p>
           <!-- Follow button-->
           <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != current_user.id %>
             <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
@@ -37,6 +41,7 @@
             <% end %>
           <% end %>
          <!-- Follow button end -->
+         <% end %>
           </div>
         </div>
         </div>
@@ -44,7 +49,7 @@
       <div class="row" id="skill-bar">
         <!-- Skill Bars -->
         <div class="container-fluid">
-          <div class="progress skill-bar ">
+          <!-- <div class="progress skill-bar ">
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
               <span class="skill">Playtime today <i class="val">100%</i></span>
               </div>
@@ -60,7 +65,7 @@
             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
               <span class="skill">Playtime this month<i class="val">75%</i></span>
             </div>
-          </div>
+          </div> -->
 
           <div class="progress skill-bar">
             <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
@@ -71,82 +76,88 @@
         <!-- Skill Bars end -->
       </div>
     </div>
+
   </div>
 
 </div>
 
 <% if @private == true %>
-  <div>Profile Private</div>
+  <div class= "background-color-div private-div"><h3 class="private-text">This profile is private.</h3></div>
+
 <% else %>
-  <div id="col-lg-6">
+  <div>
     <ul class="nav nav-pills">
-      <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
-      <li><a data-toggle="pill" href="#stats">Stats</a></li>
-      <li><a data-toggle="pill" href="#history">History</a></li>
+      <li class="active active-pill"><a data-toggle="pill" href="#overall" class="pill-overwrite">Overall</a></li>
+      <li><a data-toggle="pill" href="#stats" class="pill-overwrite">Stats</a></li>
+      <li><a data-toggle="pill" href="#history" class="pill-overwrite">History</a></li>
 
       
-      <li><a data-toggle="pill" href="#about_me">About Me</a></li>
-      <% if current_user == @user %>
-      <li><a data-toggle="pill" href="#my_games">My Games</a></li>
-      <% else %>
-      <li><a data-toggle="pill" href="#my_games">Games</a></li>
-      <% end %>
-
-      <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
-      <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
+      <li><a data-toggle="pill" href="#about_me" class="pill-overwrite">About Me</a></li>
+      <li><a data-toggle="pill" href="#my_games" class="pill-overwrite">My Games</a></li>
+      <li><a data-toggle="pill" href="#my_achievements" class="pill-overwrite">Achievements</a></li>
+      <li><a data-toggle="pill" href="#my_commendations" class="pill-overwrite">Commendations</a></li>
       <% if current_user == @user %>
 
-      <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <li><a data-toggle="pill" href="#settings" class="pill-overwrite">Settings</a></li>
       <% end %>
     </ul>
 
     <div class="tab-content">
       <!-- Overall  -->
       <div id="overall" class="tab-pane fade in active background-color-div">
-        <h3 class="h3-pill">Overall</h3>
           <%= render partial: 'users/overall'%>
       </div>
 
       <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">Stats</h3>
         <p>Stat content</p>
       </div>
       
       <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">History</h3>
         <p>history content</p>
       </div>
 
       <!-- Settings -->
       <div id="settings" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">Settings</h3>
         <%= render partial: 'users/form' %>
       </div>
 
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">About me</h3>
         <% if @user.about %>
-          <%= simple_format(@user.about) %>
+          <p class="about_me_content"><%= @user.about %></p>
         <% else %>
-          <p>Tell something about yourself.</p>
+          <p class="about_me_content">Tell something about yourself.</p>
+        <% end %>
+        <% if current_user == @user %>
+          <p><%= button_tag 'Edit',  id: "btn_about" %></p>
+          <%= form_for @user do |f| %>
+            <%= f.text_area :about, class: "hidden about_area" %>
+            <%= f.submit "Submit", class: "hidden about_area" %>
+          <% end %>
         <% end %>
       </div>
 
       <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">My Games</h3>
-        <ul>game1</ul>
-        <ul>game2</ul>
-        <ul>game3</ul>
+        <% if @games.nil? %>
+          <%= "You Don't Owned Any Games" %>
+        <% else %>
+        <% @games.each do |game| %>
+          <% url = game["img_icon_url"] %>
+          <% game_id = game["appid"] %>
+          <% if !url.empty? %>
+            <%= image_tag("http://media.steampowered.com/steamcommunity/public/images/apps/#{game_id}/#{url}.jpg") %>
+          <% end %>
+          <p class="inline"><%= game["name"] %></p><br>
+        <% end %>
+        <% end %>
       </div>
      
   
       <!-- Achievements -->
       <div id="my_achievements" class="tab-pane fade background-color-div">
-        <h3 class="h3-pill">Achievements</h3>
         <div class="text-left">
           <% achievements = @user.achievements.order(status: :desc) %>
           <div class="achievements-wrapper">
@@ -170,7 +181,6 @@
 
       <!-- Commendations -->
       <div id="my_commendations" class="tab-pane fade background-color-div">
-        <h3>Commendations</h3>
         <div class="commendation-wrapper">
           <% @commendations.each_with_index do |commendation, index| %>
             <div class="commendation-item-wrapper pull-left">
@@ -200,6 +210,17 @@
                 }
         )
     });
+    $("#btn_about").click(function(){
+      $(".about_area").toggleClass("hidden");
+      if ($(".about_area").attr("class") == "about_area hidden") {
+        $('btn_about').text("Edit");
+        $('.about_me_content').removeClass("hidden")
+      }
+      else {
+        $('btn_about').text("Close Edit")
+        $('.about_me_content').addClass("hidden")
+      }
+    })
 </script>
 
 

@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  include UsersHelper
   def index
     @users = User.all
+  end
+
+  def create_user_notifications
+    if signed_in? && current_user.personastate == 1
+      render json: current_user.create_user_notifications
+    end
   end
 
 	def edit
@@ -42,6 +49,10 @@ class UsersController < ApplicationController
           chart1.transform_values! {|value| value/60 }
           chart2 = chart1.transform_values {|value| @user.desired_playtime}
           @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
+          response = get_owned_games(@user) 
+          game = JSON.parse(response.body)
+          @games = game["response"]["games"]
+          
           @badges = Badge.all
           @commendations = @user.commendations
           @like = Like.find_by(params[:commendation_id])
@@ -85,6 +96,6 @@ class UsersController < ApplicationController
   private
 
 	def user_params
-		params.require(:user).permit(:name, :email, :nickname, :privacy, :desired_playtime)
+		params.require(:user).permit(:name, :email, :nickname, :privacy, :desired_playtime, :about)
 	end
 end

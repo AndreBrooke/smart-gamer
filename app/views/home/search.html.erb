@@ -11,24 +11,81 @@
     <% end %>
   </div>
 
-  <div id="search_result_content">
+  
     <% if !@users.empty? %>
-      <div id="users_search_result">
+      
+       <table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table" id="users_search_result">
+          <thead>
+            <tr>
+              <th data-sortable="true">User</th>
+              <th data-field="today_playtime" data-sortable="true">Today Playtime</th>
+              <th data-field="total_playtime" data-sortable="true">Total Playtime</th>
+            </tr>
+          </thead>
+          <tbody>
         <% @users.each do |user| %>
-          <div id="user_search_result" class="border">
-            <p>Nickname: <%= link_to user.nickname, :controller => :users, :action => :show, :id => user.id %></p>
-          </div>
-        <% end %>
-      </div>
+            <tr>
+                <td>
+                  <%= link_to user_path(user), target: "_self" do %>
+                    <%= image_tag user.avatar_url, title: user.nickname, class: "avatar-small" %> <%= user.nickname %>
+                  <% end %>
+                </td>
+                <% user_playtimes = user.playtimes %>
+                <% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+                <td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+                <td><%= user_total_playtime %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+     
     <% end %>
     <% if !@articles.empty? %>
       <div id="articles_search_result" >
         <% @articles.each do |article| %>
-          <div id="article_search_result" class="border">
-            <p>Title: <%= link_to article.title, article_path(article) %></p>
-          </div>
+          <div class="search-wrapper">
+    
+    <div class="article"> 
+      <%= link_to article_path(article), target: "_self" do %>
+        <div class="article-title"><%= article.title %></div>
+
+        <% if article.url %>
+          <div class="article-image"><%= image_tag(article.image, height: '200') %></div>
+        <% end %>
+      <% end %>
+
+      <div class="article-content minimize"><%= simple_format(article.content) %></div>
+    </div>
+    
+    <div class="article-social">
+      <%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
+        <span class="fa fa-facebook"></span>
+      <% end %>
+
+      <%= link_to "http://twitter.com/home?status=#{article.title} #{article.url}", target: "_blank", class: "btn btn-social-icon btn-twitter" do %>
+        <span class="fa fa-twitter"></span>
+      <% end %>
+    </div>
+
+    <% message = "Leave a Comment and Join the Discussion" %>
+    <% if signed_in? %>
+      <% if current_user.admin? %>
+        <% unless article.url %>
+          <%= link_to 'Edit Article', edit_article_path(article) %>
+        <% end %>
+
+        <%= link_to 'Delete Article', article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        <%= link_to 'Reply This Article', new_article_comment_path(article) %>
+      <% end %>
+      <%= link_to message, new_article_comment_path(article), id: "new_comment_link", remote:true %>
+          <% else %>
+        <%= link_to message, '/auth/steam' %>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+      </div>
+      <% end %>
+
+  
 </div>

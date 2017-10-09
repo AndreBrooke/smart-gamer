@@ -3,6 +3,8 @@
   <head>
     <title>SmartGamer</title>
     <%= csrf_meta_tags %>
+    <script type="text/javascript" src="pnotify.custom.min.js"></script>
+    <link href="pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -29,8 +31,23 @@
     <%= render 'shared/navbar' %>
     <div class="container main-container">
       <%= flash_messages %>
+
       <%= yield %>
+      <script type="text/javascript">
+        PNotify.desktop.permission();
+        var notofication_text = $(".alert").text().substring(1);
+        if (notofication_text.length > 0) {
+          sound();
+          new PNotify({
+             title: 'Desktop Notification',
+             text: notofication_text,
+             desktop: {
+                desktop: true,
+                icon: null
+             }
+          });
+        }
+      </script>
     </div>
   </body>
-    <%= render 'shared/footer' %>
 </html>

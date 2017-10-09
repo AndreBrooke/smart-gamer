@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 		if @comment.update(comment_params)
 			respond_to do |format|
 	      format.html { redirect_to article_path(@article), flash: { success: "Comment is updated successfully." } }
-	      # format.js
+	      format.js {}
 	    end
 			# flash[:success] = "Comment is updated successfully."
 			# redirect_to article_path(@article)

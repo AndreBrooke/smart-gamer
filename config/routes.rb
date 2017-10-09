@@ -38,4 +38,6 @@ Rails.application.routes.draw do
 
   resources :followers, only: [:create]
 
+  get "/user/create_user_notifications" => "users#create_user_notifications"
+
 end

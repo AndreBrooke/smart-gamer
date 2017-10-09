@@ -1,25 +1,20 @@
 
-<header>
-	
-			<h1 class="display-3 text-center">SmartGamer</h1>
-	
-</header>
 
-<div class="container-quote">
+<!-- <div class="container-quote ">
 	<blockquote class="blockquote">
 		<p><%= @quote["quoteText"] %></p>
 		<% quote_author = @quote["quoteAuthor"] %>
 		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
 	</blockquote>
-</div>
+</div> -->
 
 	
 	<div class="row ">
-		<div class="col-lg-8 background-color-div ">
+		<div class="col-lg-8 profile-background ">
 			
 			<div class="row">
 				<div class="col-lg-9 "><h3 class="h3-title">Articles</h3></div>
-				<div class="col-lg-3">
+				<div class="col-lg-3  home-button">
 					<%= link_to articles_path, class: 'btn btn-default' do %>
 						View all articles
 					<% end %>
@@ -79,7 +74,7 @@
 				<h3 class="h3-title">Activity Feed</h3>
 				<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
-						<div class="feed-item">
+						<div class="feed-item profile-background">
 							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
 							<div class="text"><%= link_to user_path(activity.user), target: "_self" do %><%= activity.user.nickname %><% end %><%= activity.content %></div>
 						</div>
@@ -97,7 +92,7 @@
 				<div class="row">
 
 					<div class="col-sm-9"><h3 class="h3-title">Top 5 Gamers (by today playtime)</h3></div>
-					<div class="col-sm-3">
+					<div class="col-sm-3  home-button">
 						<%= link_to users_path, class: 'btn btn-default align-bottom' do %>
 							View all users
 						<% end %>
