@@ -1,5 +1,10 @@
 $(document).ready(function() {
 	$('.comment-wrapper-parent').on('ajax:success', function() {
+		console.log(this);
+		var commentSplit = this.id.split('-');
+		var $target = $("#edit_comment_link<%= commentSplit[1].to_i %>")
+		console.log($target);
+		$target.hide();
 		$(this).after('<%= j render("form") %>')
 	})
 });
