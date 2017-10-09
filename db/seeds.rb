@@ -26,9 +26,21 @@ Article.create(title: "Tournament", content: "month-long tournament")
 url = "http://www.psychologyofgames.com/2016/12/deliberate-practice-and-getting-good/"
 Article.create(get_shared_article_params(url))
 
-Badge.create(name: "Login Novice", description: "Login for 7 days consecutively", image: "ProfileIcon3017.png", goal: 7)
-Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "Champ_Mastery_Ab.png", goal: 5)
-Badge.create(name: "First Goal", description: "Achieve Goal for 1 day", image: "Champ_Mastery_Bb.png", goal: 1)
+Badge.create(name: "Login Novice", description: "Login for 7 days consecutively", image: "Champ_Mastery_Db.png", goal: 7)
+Badge.create(name: "Log-athon", description: "Login for 14 days consecutively", image: "Champ_Mastery_Cb.png", goal: 14)
+Badge.create(name: "Everyday I'm Login-ing", description: "Login for 30 days consecutively", image: "Champ_Mastery_Bb.png", goal: 30)
+
+Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "ProfileIcon3015.png", goal: 5)
+Badge.create(name: "Reply Pro", description: "Reply 15 articles", image: "ProfileIcon3016.png", goal: 15)
+Badge.create(name: "Reply Guru", description: "Reply 50 articles", image: "ProfileIcon3017.png", goal: 50)
+
+Badge.create(name: "First Step To A Bigger Goal", description: "Achieve Goal for 1 day", image: "bronze.png", goal: 1)
+Badge.create(name: "Good Discipline Goal", description: "Achieve Goal for 1 week", image: "silver.png", goal: 7)
+Badge.create(name: "I Can Do It", description: "Achieve Goal for 1 month ", image: "gold.png", goal: 30)
+
+Badge.create(name: "5 Badges", description: "Obtained 5 Badges", image: "BronzeBadgeSeason2.png", goal: 5)
+Badge.create(name: "50 Badges", description: "Obtained 50 Badges", image: "SilverBadgeSeason2.png", goal: 50)
+Badge.create(name: "100 Badges", description: "Obtained 100 Baddges", image: "GoldBadgeSeason2.png", goal: 100)
 
 
 User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
