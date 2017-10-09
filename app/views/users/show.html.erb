@@ -9,10 +9,19 @@
         </div>
         </div>
 
-          <div class="col-sm-3">
-          <%= @user.name%><br>
-          <%= @user.nickname %><br>
-          <%= @user.email %>
+          <div class="col-sm-9">
+            <div>
+          <span class="profile-nickname"><%= @user.nickname %></span>
+            <%= link_to "http://steamcommunity.com/profiles/#{@user.uid.to_i + 76561197960265728}" do %>
+            <i class="fa fa-steam-square fa-2x profile-icon" aria-hidden="true"></i>
+            <% end %>
+            <i class="fa fa-facebook fa-2x profile-icon" aria-hidden="true"></i>
+            </div>
+            <br>
+        
+          <p>Name: <%= @user.name%></p><br>
+          
+          <p>Email: <%= @user.email %></p>
           <!-- Follow button-->
           <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != current_user.id %>
             <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
