@@ -30,9 +30,9 @@ Badge.create(name: "Login Novice", description: "Login for 7 days consecutively"
 Badge.create(name: "Log-athon", description: "Login for 14 days consecutively", image: "Champ_Mastery_Cb.png", goal: 14)
 Badge.create(name: "Everyday I'm Login-ing", description: "Login for 30 days consecutively", image: "Champ_Mastery_Bb.png", goal: 30)
 
-Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "ProfileIcon3015.png", goal: 5)
-Badge.create(name: "Reply Pro", description: "Reply 15 articles", image: "ProfileIcon3016.png", goal: 15)
-Badge.create(name: "Reply Guru", description: "Reply 50 articles", image: "ProfileIcon3017.png", goal: 50)
+Badge.create(name: "Reply Novice", description: "Reply 5 articles", image: "bronze1.png", goal: 5)
+Badge.create(name: "Reply Pro", description: "Reply 15 articles", image: "silver1.png", goal: 15)
+Badge.create(name: "Reply Guru", description: "Reply 50 articles", image: "gold1.png", goal: 50)
 
 Badge.create(name: "First Step To A Bigger Goal", description: "Achieve Goal for 1 day", image: "bronze.png", goal: 1)
 Badge.create(name: "Good Discipline Goal", description: "Achieve Goal for 1 week", image: "silver.png", goal: 7)
