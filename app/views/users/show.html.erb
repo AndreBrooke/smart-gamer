@@ -141,14 +141,17 @@
 
       <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
+        <% if @games.nil? %>
+          <%= "You Don't Owned Any Games" %>
+        <% else %>
         <% @games.each do |game| %>
-          
           <% url = game["img_icon_url"] %>
           <% game_id = game["appid"] %>
           <% if !url.empty? %>
             <%= image_tag("http://media.steampowered.com/steamcommunity/public/images/apps/#{game_id}/#{url}.jpg") %>
           <% end %>
           <p class="inline"><%= game["name"] %></p><br>
+        <% end %>
         <% end %>
       </div>
      
