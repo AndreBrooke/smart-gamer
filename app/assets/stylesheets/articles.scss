@@ -39,7 +39,7 @@
 	}
 }
 
-.comment-wrapper {
+.comment-wrapper-child {
 	border: 1px solid #d5d5d5;
 	background-color: #fff;
 	border-radius: 4px;
@@ -64,4 +64,8 @@
 
 .topofpage {
 	margin-top: 20px;
+}
+
+.comment-highlight {
+	background-color: #eee;
 }
