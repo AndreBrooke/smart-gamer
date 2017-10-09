@@ -18,7 +18,16 @@
 //= require bootstrap-table
 //= require turbolinks
 //= require_tree .
-
+function create_notification(remain_time){
+  new PNotify({
+   title: 'Desktop Notification',
+   text: "Remain " + remain_time + " minutes left to play to reach the desired time.",
+   desktop: {
+      desktop: true,
+      icon: null
+   }
+  });
+};
 
 function my_function(){
   $.ajax({
@@ -27,16 +36,7 @@ function my_function(){
     type: 'GET',
     success: function(data) {
       console.log(data);
-      if (data <= 60){
-        new PNotify({
-         title: 'Desktop Notification',
-         text: "Remain 60 minutes left to play to reach the desired time.",
-         desktop: {
-            desktop: true,
-            icon: null
-         }
-        });
-      } else if(data <= 5) {
+      if (data <= 5){
         new PNotify({
          title: 'Desktop Notification',
          text: "It's time to stop game if you want to reach the desired time.",
@@ -45,8 +45,20 @@ function my_function(){
             icon: null
          }
         });
+      } else if(data <= 10) {
+        create_notification(10);
+      } else if(data <= 20) {
+        create_notification(20);
+      } else if(data <= 30) {
+        create_notification(30);
+      } else if(data <= 40) {
+        create_notification(40);
+      } else if(data <= 50) {
+        create_notification(50);
+      } else if(data <= 60) {
+        create_notification(60);
       }
     }
   });
 };
-setInterval(my_function, 300000);
+setInterval(my_function, 600000);

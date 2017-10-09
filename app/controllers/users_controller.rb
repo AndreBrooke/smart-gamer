@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def create_user_notifications
-    if signed_in?
+    if signed_in? && current_user.personastate == 1
       render json: current_user.create_user_notifications
     end
   end
