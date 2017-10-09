@@ -68,11 +68,14 @@
 }
 
 .article-image-second{
-	position: relative;
-	right: 30px;
-	width: 195px;
-	height: 195px;
-	padding: 5px;
+	position: absolute;
+    position: absolute;
+    top: -999px;
+    bottom: -999px;
+    left: -300px;
+    right: -99px;
+    margin: auto;
+	
 }
 
 .article-text-second {
@@ -406,5 +409,22 @@ tr:nth-child(odd) {
 .navbar-signin {
     position: relative;
     bottom: -10px;
+}
+
+.article-parent{
+    position: relative;
+    overflow:  hidden;
+    width: 195px;
+    height: 195px;
+
+}
+
+.article-col-3 {
+    padding-left: 0px !important;
+}
+
+.article-col-9 {
+    margin-right: -10px !important;
+    padding-right: 0px !important;
 }
 
