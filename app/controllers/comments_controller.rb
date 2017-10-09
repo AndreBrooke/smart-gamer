@@ -49,7 +49,10 @@ class CommentsController < ApplicationController
 		@article = Article.find(params[:article_id])
 		@comment = Comment.find(params[:id])
 		@comment.destroy
-		redirect_to article_path(@article)
+		respond_to do |format|
+      format.html { redirect_to article_path(@article), flash: { success: "Comment is deleted successfully." } }
+      format.js
+    end
 	end
 
 	private
