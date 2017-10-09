@@ -141,9 +141,15 @@
 
       <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
-        <ul>game1</ul>
-        <ul>game2</ul>
-        <ul>game3</ul>
+        <% @games.each do |game| %>
+          
+          <% url = game["img_icon_url"] %>
+          <% game_id = game["appid"] %>
+          <% if !url.empty? %>
+            <%= image_tag("http://media.steampowered.com/steamcommunity/public/images/apps/#{game_id}/#{url}.jpg") %>
+          <% end %>
+          <p class="inline"><%= game["name"] %></p><br>
+        <% end %>
       </div>
      
   
