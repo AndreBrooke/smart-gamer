@@ -1,0 +1,5 @@
+// $('#chart-1').remove();
+console.log("work")
+$('#chart-1').children().remove();
+$('#chart-1').html("<%= escape_javascript(line_chart @chart, curve: false) %>");
+

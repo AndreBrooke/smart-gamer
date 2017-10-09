@@ -47,6 +47,9 @@ gem 'groupdate'
 # Use bootstrap-table-rails to sort table
 gem "bootstrap-table-rails"
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-flatpickr-calendar'
+end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
