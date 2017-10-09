@@ -64,10 +64,6 @@ rand(1...user_count).times do |i|
   User.first.followers.create(follower_id: other_users.delete(other_users.sample))
 end
 
-User.first.commendations.create(image: "", name: "Friendly")
-User.first.commendations.create(image: "", name: "Teamwork")
-User.first.commendations.create(image: "", name: "Tilt-Proof")
-
 #second user
 playtime = 112235
 today_playtime = rand(100..300)
@@ -85,10 +81,6 @@ rand(1...user_count).times do |i|
   User.second.followers.create(follower_id: other_users.delete(other_users.sample))
 end
 
-User.second.commendations.create(image: "", name: "Friendly")
-User.second.commendations.create(image: "", name: "Teamwork")
-User.second.commendations.create(image: "", name: "Tilt-Proof")
-
 #third user
 playtime = 207901
 today_playtime = rand(100..300)
@@ -105,3 +97,7 @@ other_users = (1..user_count).to_a - [User.third.id]
 rand(1...user_count).times do |i|
   User.third.followers.create(follower_id: other_users.delete(other_users.sample))
 end
+
+User.all.commendations.create(image: "", name: "Friendly")
+User.all.commendations.create(image: "", name: "Teamwork")
+User.all.commendations.create(image: "", name: "Tilt-Proof")
