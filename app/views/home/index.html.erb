@@ -79,7 +79,7 @@
 				<h3 class="h3-title">Activity Feed</h3>
 				<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
-						<div class="feed-item">
+						<div class="feed-item profile-background">
 							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
 							<div class="text"><%= link_to user_path(activity.user), target: "_self" do %><%= activity.user.nickname %><% end %><%= activity.content %></div>
 						</div>
