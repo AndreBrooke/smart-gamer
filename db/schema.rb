@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(version: 20171006124040) do
   end
 
   create_table "commendations", force: :cascade do |t|
-    t.string "image"
     t.string "name"
     t.integer "count", default: 0
     t.bigint "user_id"
