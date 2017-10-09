@@ -53,6 +53,9 @@ $background-dark: #403F48;
   @include box_size(250px);
 }
 
+.tab-content {
+}
+
 .steam-avatar {
   
   border-radius: 50%;
@@ -82,6 +85,10 @@ $background-dark: #403F48;
 .inline {
   display: inline-block;
 
+}
+
+.h3-pill {
+  margin-top: 0px;
 }
 
 #skill-bar {
@@ -143,4 +150,29 @@ $background-dark: #403F48;
 
 .btn-signout {
   background-color: #aaa !important;
+}
+
+.circleborder {
+width: 124px;
+height: 124px;
+border-radius: 150px;
+-webkit-border-radius: 150px;
+-moz-border-radius: 150px;
+background: url(URL) no-repeat;
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#user-profile {
+  padding: 20px;
+}
+
+.profile-nickname{
+  font-size: 24px;
+  font-weight: 800px;
+}
+
+.profile-icon {
+  padding-left: 20px;
 }
