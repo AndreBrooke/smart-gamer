@@ -30,14 +30,21 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     if @user
-      chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
-      chart1.transform_values! {|value| value/60 }
-      chart2 = chart1.transform_values {|value| @user.desired_playtime}
-      @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
-      @badges = Badge.all
-      @commendations = @user.commendations
-      @like = Like.find_by(params[:commendation_id])
-
+      if signed_in?
+        @private = @user.privacy_check(current_user)
+        @private = false if current_user.id == params[:id].to_i
+      else
+        @private = @user.privacy_check
+      end
+        if @private == false
+          chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
+          chart1.transform_values! {|value| value/60 }
+          chart2 = chart1.transform_values {|value| @user.desired_playtime}
+          @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
+          @badges = Badge.all
+          @commendations = @user.commendations
+          @like = Like.find_by(params[:commendation_id])
+        end
     else
       flash[:notice] = "User not found"
       redirect_to root_path

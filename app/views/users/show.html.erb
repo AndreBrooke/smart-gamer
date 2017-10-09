@@ -4,13 +4,24 @@
     <div class="col-lg-6">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
+          <div class="circleborder">
           <%= image_tag @user.avatar_url, size:"124", class:"steam-avatar"%>
         </div>
+        </div>
 
-          <div class="col-sm-3">
-          <%= @user.name%><br>
-          <%= @user.nickname %><br>
-          <%= @user.email %>
+          <div class="col-sm-9">
+            <div>
+          <span class="profile-nickname"><%= @user.nickname %></span>
+            <%= link_to "http://steamcommunity.com/profiles/#{@user.uid.to_i + 76561197960265728}" do %>
+            <i class="fa fa-steam-square fa-2x profile-icon" aria-hidden="true"></i>
+            <% end %>
+            <i class="fa fa-facebook fa-2x profile-icon" aria-hidden="true"></i>
+            </div>
+            <br>
+        
+          <p>Name: <%= @user.name%></p><br>
+          
+          <p>Email: <%= @user.email %></p>
           <!-- Follow button-->
           <% if User.check_follower(params[:id], @user.id) && params[:id].to_i != current_user.id %>
             <%= form_for :follower, url: followers_path, method: :post, :html => {:class => "inline"} do |f| %>
@@ -63,6 +74,10 @@
   </div>
 
 </div>
+
+<% if @private == true %>
+  <div>Profile Private</div>
+<% else %>
   <div id="col-lg-6">
     <ul class="nav nav-pills">
       <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
@@ -83,31 +98,31 @@
     <div class="tab-content">
       <!-- Overall  -->
       <div id="overall" class="tab-pane fade in active background-color-div">
-        <h3>Overall</h3>
+        <h3 class="h3-pill">Overall</h3>
           <%= render partial: 'users/overall'%>
       </div>
 
       <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
-        <h3>Stats</h3>
+        <h3 class="h3-pill">Stats</h3>
         <p>Stat content</p>
       </div>
       
       <!-- History -->
       <div id="history" class="tab-pane fade background-color-div">
-        <h3>History</h3>
+        <h3 class="h3-pill">History</h3>
         <p>history content</p>
       </div>
 
       <!-- Settings -->
       <div id="settings" class="tab-pane fade background-color-div">
-        <h3>Settings</h3>
+        <h3 class="h3-pill">Settings</h3>
         <%= render partial: 'users/form' %>
       </div>
 
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
-        <h3>About me</h3>
+        <h3 class="h3-pill">About me</h3>
         <% if @user.about %>
           <p class="about_me_content"><%= @user.about %></p>
         <% else %>
@@ -124,53 +139,60 @@
 
       <!-- My Games -->
       <div id="my_games" class="tab-pane fade background-color-div">
-        <h3>My Games</h3>
+        <h3 class="h3-pill">My Games</h3>
         <ul>game1</ul>
         <ul>game2</ul>
         <ul>game3</ul>
       </div>
+     
   
       <!-- Achievements -->
       <div id="my_achievements" class="tab-pane fade background-color-div">
-        <h3>Achievements</h3>
+        <h3 class="h3-pill">Achievements</h3>
         <div class="text-left">
           <% achievements = @user.achievements.order(status: :desc) %>
-          <% achievements.each do |achievement| %>
-            <div class="<%= 'achieved' if achievement.status %> achievement-item">
-              <span class="achievement-image pull-left">
-                <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
-              </span>
-              <span class="achievement-title">
-                <%= achievement.badge.name %>
-              </span>
-              <br>
-              <span class="achievement-description">
-                <%= achievement.badge.description %>
-              </span>
-            </div>
-          <% end %>
+          <div class="achievements-wrapper">
+            <% achievements.each do |achievement| %>
+              <div class="<%= 'achieved' if achievement.status %> achievement-item pull-left">
+                <span class="achievement-image">
+                  <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
+                </span>
+                <span class="achievement-title">
+                  <%= achievement.badge.name %>
+                </span>
+                <br>
+                <span class="achievement-description">
+                  <%= achievement.badge.description %>
+                </span>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 
       <!-- Commendations -->
       <div id="my_commendations" class="tab-pane fade background-color-div">
         <h3>Commendations</h3>
-        <% @commendations.each_with_index do |commendation, index| %>
-          <div>
-            <%= commendation.image %>
-            <div class="commendation-item">
-              <span class="commendation-name"><%= commendation.name %></span>
-               - 
-              <span class="commendation-count"><%= commendation.count %></span>
+        <div class="commendation-wrapper">
+          <% @commendations.each_with_index do |commendation, index| %>
+            <div class="commendation-item-wrapper pull-left">
+              <%= commendation.image %>
+              <div class="commendation-item">
+                <span class="commendation-name"><%= commendation.name %></span>
+                 - 
+                <span class="commendation-count"><%= commendation.count %></span>
+              </div>
+                <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
+                  <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
+                <% end %>
             </div>
-              <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
-                <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
-              <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+<% end %>
+
 
 <script>
    $(document).ready(function() {
