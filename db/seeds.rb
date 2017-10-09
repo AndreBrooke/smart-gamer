@@ -44,52 +44,64 @@ Badge.create(name: "100 Badges", description: "Obtained 100 Baddges", image: "Go
 
 
 User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
-User.create(email: "yizen@hotmail.com", password: SecureRandom.hex(10), uid: "100893614", nickname: "Peacemaker", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/55/55ba503630606e10ba2a99e8d9c1541be1d391d7_full.jpg", profile_url: "http://steamcommunity.com/id/kooyizen/", name: "Koo Yi Zen")
 User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136990519", nickname: "Your Mum's Pussy", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198097256247/", name: "kit")
 User.create(email: "and_book66@hotmail.com", password: SecureRandom.hex(10), uid: "84861340", nickname: "Dernum-X", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d70116b67392386f1a1b64e82f319be6c0f165fe_full.jpg", profile_url: "http://steamcommunity.com/id/Dernum-X/", name: "Andre Brooke")
-User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205485506", nickname: "Freecs", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198165751234", name: "Wilson")
-User.create(email: "leesc_91@hotmail.com", password: SecureRandom.hex(10), uid: "353559183", nickname: "leesc_91", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/id/leesc/", name: "")
-
-
-
-  playtime = 50612
+  
+#first user
+playtime = 50612
+today_playtime = rand(100..300)
+User.first.playtimes.create(date: Date.today, total_playtime: playtime, today_playtime: today_playtime)
+loop = 1
+while User.first.playtimes.last.total_playtime > 300
+  playtime = playtime - today_playtime
   today_playtime = rand(100..300)
-  User.first.playtimes.create(date: Date.today, total_playtime: playtime, today_playtime: today_playtime)
-  loop = 1
-  while User.first.playtimes.last.total_playtime > 300
-    playtime = playtime - today_playtime
-    today_playtime = rand(100..300)
-    User.first.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime)
-    loop += 1
-  end
-  user_count = User.all.count
-  other_users = (1..user_count).to_a - [User.first.id]
-  rand(1...user_count).times do |i|
-    User.first.followers.create(follower_id: other_users.delete(other_users.sample))
-  end
+  User.first.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime)
+  loop += 1
+end
+user_count = User.all.count
+other_users = (1..user_count).to_a - [User.first.id]
+rand(1...user_count).times do |i|
+  User.first.followers.create(follower_id: other_users.delete(other_users.sample))
+end
 
-  User.all.each do |user|
-    user.commendations.create(image: "", name: "Friendly")
-    user.commendations.create(image: "", name: "Teamwork")
-    user.commendations.create(image: "", name: "Tilt-Proof")
-  end
+User.first.commendations.create(image: "", name: "Friendly")
+User.first.commendations.create(image: "", name: "Teamwork")
+User.first.commendations.create(image: "", name: "Tilt-Proof")
 
-# User.all.each do |x|
-#   playtime = rand(1000..4000)
-#   x.playtimes.create(date: Date.today - 30, total_playtime: playtime)
-#   29.downto(0) do |loop|
-#     today_playtime = rand(100..200)
-#     playtime += today_playtime
-#     x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
-#   end
+#second user
+playtime = 112235
+today_playtime = rand(100..300)
+User.second.playtimes.create(date: Date.today, total_playtime: playtime, today_playtime: today_playtime)
+loop = 1
+while User.second.playtimes.last.total_playtime > 300
+  playtime = playtime - today_playtime
+  today_playtime = rand(100..300)
+  User.second.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime)
+  loop += 1
+end
+user_count = User.all.count
+other_users = (1..user_count).to_a - [User.second.id]
+rand(1...user_count).times do |i|
+  User.second.followers.create(follower_id: other_users.delete(other_users.sample))
+end
 
-#   user_count = User.all.count
-#   other_users = (1..user_count).to_a - [x.id]
-#   rand(1...user_count).times do |i|
-# 	  x.followers.create(follower_id: other_users.delete(other_users.sample))
-# 	end
+User.second.commendations.create(image: "", name: "Friendly")
+User.second.commendations.create(image: "", name: "Teamwork")
+User.second.commendations.create(image: "", name: "Tilt-Proof")
 
-# 	x.commendations.create(image: "", name: "Friendly")
-# 	x.commendations.create(image: "", name: "Teamwork")
-# 	x.commendations.create(image: "", name: "Tilt-Proof")
-# end
+#third user
+playtime = 207901
+today_playtime = rand(100..300)
+User.third.playtimes.create(date: Date.today, total_playtime: playtime, today_playtime: today_playtime)
+loop = 1
+while User.third.playtimes.last.total_playtime > 300
+  playtime = playtime - today_playtime
+  today_playtime = rand(100..300)
+  User.third.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime)
+  loop += 1
+end
+user_count = User.all.count
+other_users = (1..user_count).to_a - [User.third.id]
+rand(1...user_count).times do |i|
+  User.third.followers.create(follower_id: other_users.delete(other_users.sample))
+end
