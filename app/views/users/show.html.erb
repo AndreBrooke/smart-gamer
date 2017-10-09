@@ -71,12 +71,7 @@
 
       
       <li><a data-toggle="pill" href="#about_me">About Me</a></li>
-      <% if current_user == @user %>
       <li><a data-toggle="pill" href="#my_games">My Games</a></li>
-      <% else %>
-      <li><a data-toggle="pill" href="#my_games">Games</a></li>
-      <% end %>
-
       <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
       <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
       <% if current_user == @user %>
@@ -114,9 +109,16 @@
       <div id="about_me" class="tab-pane fade background-color-div">
         <h3>About me</h3>
         <% if @user.about %>
-          <%= simple_format(@user.about) %>
+          <p class="about_me_content"><%= @user.about %></p>
         <% else %>
-          <p>Tell something about yourself.</p>
+          <p class="about_me_content">Tell something about yourself.</p>
+        <% end %>
+        <% if current_user == @user %>
+          <p><%= button_tag 'Edit',  id: "btn_about" %></p>
+          <%= form_for @user do |f| %>
+            <%= f.text_area :about, class: "hidden about_area" %>
+            <%= f.submit "Submit", class: "hidden about_area" %>
+          <% end %>
         <% end %>
       </div>
 
