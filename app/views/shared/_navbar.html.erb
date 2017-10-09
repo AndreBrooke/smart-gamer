@@ -23,10 +23,11 @@
       <%= link_to "Create Articles", articles_path, class: "navbar-brand nav-text" if current_user && current_user.admin?%>
 		</div>
 
-		<div class="collapse navbar-collapse" id="navbar">
+		<div class="collapse navbar-collapse " id="navbar">
       <% unless signed_in?  %>
-        <ul class=" navbar-nav pull-right">
-          <ul><%= link_to image_tag('steam_01', class: "steam_log_in"), '/auth/steam' %></ul>
+        <ul class="navbar-nav pull-right   navbar-signin">
+   
+          <ul> <%= image_tag 'steam-icon-large.png', class: "steam_log_in"%><%= link_to "Sign in with steam", '/auth/steam', class: "navbar-title nav-text" %></ul>
         </ul>
       <% end %>
 			<ul class="nav navbar-nav navbar-right">

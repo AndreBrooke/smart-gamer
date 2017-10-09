@@ -309,9 +309,8 @@ tr:nth-child(odd) {
 }
 
 .steam_log_in {
-    margin-top: 8px;
-    margin-right:30px   ;
-    width:120px;
+    
+    width:40px;
 }
 
 // Adapted from https://bootsnipp.com/snippets/7QXrr
@@ -391,4 +390,20 @@ tr:nth-child(odd) {
 
 .navbar-title {
     padding: 20px;
+}
+
+.steam-signin-text {
+
+}
+
+
+
+.navbar-nav a:hover {
+    background: #ECECEC;
+    text-decoration: none;
+}
+
+.navbar-signin {
+    position: relative;
+    bottom: -10px;
 }
