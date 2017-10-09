@@ -51,7 +51,7 @@ class UsersController < ApplicationController
           response = get_owned_games(@user) 
           game = JSON.parse(response.body)
           @games = game["response"]["games"]
-   
+          
           @badges = Badge.all
           @commendations = @user.commendations
           @like = Like.find_by(params[:commendation_id])
