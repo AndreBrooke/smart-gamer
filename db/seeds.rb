@@ -49,7 +49,7 @@ User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136
 User.create(email: "and_book66@hotmail.com", password: SecureRandom.hex(10), uid: "84861340", nickname: "Dernum-X", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/d7/d70116b67392386f1a1b64e82f319be6c0f165fe_full.jpg", profile_url: "http://steamcommunity.com/id/Dernum-X/", name: "Andre Brooke")
 User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205485506", nickname: "Freecs", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198165751234", name: "Wilson")
 User.create(email: "leesc_91@hotmail.com", password: SecureRandom.hex(10), uid: "353559183", nickname: "leesc_91", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/id/leesc/", name: "")
-  
+
 
 
   playtime = 50612
@@ -68,9 +68,11 @@ User.create(email: "leesc_91@hotmail.com", password: SecureRandom.hex(10), uid: 
     User.first.followers.create(follower_id: other_users.delete(other_users.sample))
   end
 
-  User.first.commendations.create(image: "", name: "Friendly")
-  User.first.commendations.create(image: "", name: "Teamwork")
-  User.first.commendations.create(image: "", name: "Tilt-Proof")
+  User.all.each do |user|
+    user.commendations.create(image: "", name: "Friendly")
+    user.commendations.create(image: "", name: "Teamwork")
+    user.commendations.create(image: "", name: "Tilt-Proof")
+  end
 
 # User.all.each do |x|
 #   playtime = rand(1000..4000)
