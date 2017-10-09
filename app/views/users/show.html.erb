@@ -213,11 +213,11 @@
     $("#btn_about").click(function(){
       $(".about_area").toggleClass("hidden");
       if ($(".about_area").attr("class") == "about_area hidden") {
-        $('button').text("Edit");
+        $('btn_about').text("Edit");
         $('.about_me_content').removeClass("hidden")
       }
       else {
-        $('button').text("Close Edit")
+        $('btn_about').text("Close Edit")
         $('.about_me_content').addClass("hidden")
       }
     })
