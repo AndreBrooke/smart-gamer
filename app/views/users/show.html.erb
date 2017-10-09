@@ -17,7 +17,9 @@
             <% end %>
             </div>
             <br>
-        
+        <% if @private == true %>
+        <p> No information given. </p>
+        <% else %>
           <p>NAME: <%= @user.name%></p>
           
           <p>EMAIL: <%= @user.email %></p>
@@ -36,6 +38,7 @@
             <% end %>
           <% end %>
          <!-- Follow button end -->
+         <% end %>
           </div>
         </div>
         </div>
@@ -75,9 +78,10 @@
 </div>
 
 <% if @private == true %>
-  <div>Profile Private</div>
+  <div class= "background-color-div private-div"><h3 class="private-text">This profile is private.</h3></div>
+
 <% else %>
-  <div id="col-lg-6">
+  <div>
     <ul class="nav nav-pills">
       <li class="active active-pill"><a data-toggle="pill" href="#overall">Overall</a></li>
       <li><a data-toggle="pill" href="#stats">Stats</a></li>
