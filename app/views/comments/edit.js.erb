@@ -1,0 +1,6 @@
+$(document).ready(function() {
+	$('.comment-wrapper-parent').on('ajax:success', function() {
+		$(this).after('<%= j render("form") %>')
+	})
+});
+
