@@ -1,8 +1,9 @@
 <%= form_tag(update_chart_path, method: :post, id: "form", remote: true) do %>
-  
-  <input id="graph-date" class="flatpickr flatpickr-input active" name="chart[date]" type="text" placeholder="<%= Date.today %>" data-id="datetime" readonly="readonly">
-  <%= select_tag :chart_option, options_for_select(['day','week','month'],'day') %>
-  <%= submit_tag("Update", class: "btn btn-primary") %>
+  <div class="input-group">
+  <input id="graph-date" class="flatpickr flatpickr-input active date-picker graph-form" name="chart[date]" type="text" placeholder="<%= Date.today %>" data-id="datetime" readonly="readonly">
+  <%= select_tag :chart_option, options_for_select(['day','week','month'],'day'), class: "graph-form" %>
 
+  <%= submit_tag("Update", class: "graph-form") %>
+	</div>
 <% end %>
 <%= line_chart @chart, curve: false %>

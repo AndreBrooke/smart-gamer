@@ -30,6 +30,7 @@ $background-dark: #403F48;
 .background-color-div {
   background-color: #F5F5F5;
   padding-top: 20px;
+  padding-left: 20px;
 }
 
 .border {
@@ -230,4 +231,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 
 .pill-overwrite {
   color: #00b5ad !important;
+}
+
+.date-picker {
+    margin-left: 20px;
+}
+
+.graph-form {
+  height: 30px;
 }
