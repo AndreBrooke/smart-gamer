@@ -120,22 +120,29 @@ $background-dark: #403F48;
   }
 }
 
+.commendation-wrapper {
+  overflow: hidden;
+  .commendation-item-wrapper {
+    margin-right: 20px;
+    .commendation-item {
+      display: inline-block;
+      background-color: #e6e9ec;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      .commendation-name {
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+    }
 
-.commendation-item {
-  display: inline-block;
-  background-color: #e6e9ec;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  .commendation-name {
-    font-weight: 600;
-    letter-spacing: 2px;
+    .commendation-plus {
+      display: inline-block;
+    }
   }
 }
-.commendation-plus {
-  display: inline-block;
-}
+
 
 .container-small {
   padding: 20px;

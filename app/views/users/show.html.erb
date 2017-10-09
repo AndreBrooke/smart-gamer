@@ -73,6 +73,10 @@
   </div>
 
 </div>
+
+<% if @private == true %>
+  <div>Profile Private</div>
+<% else %>
   <div id="col-lg-6">
     <ul class="nav nav-pills">
       <li class="active active-pill"><a data-toggle="pill" href="#overall">Overall</a></li>
@@ -158,22 +162,26 @@
 
       <!-- Commendations -->
       <div id="my_commendations" class="tab-pane fade background-color-div">
-        <% @commendations.each_with_index do |commendation, index| %>
-          <div>
-            <%= commendation.image %>
-            <div class="commendation-item">
-              <span class="commendation-name"><%= commendation.name %></span>
-               - 
-              <span class="commendation-count"><%= commendation.count %></span>
+        <div class="commendation-wrapper">
+          <% @commendations.each_with_index do |commendation, index| %>
+            <div class="commendation-item-wrapper pull-left">
+              <%= commendation.image %>
+              <div class="commendation-item">
+                <span class="commendation-name"><%= commendation.name %></span>
+                 - 
+                <span class="commendation-count"><%= commendation.count %></span>
+              </div>
+                <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
+                  <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
+                <% end %>
             </div>
-              <% unless current_user.likes.find_by(commendation_id: commendation.id) || current_user == @user %> 
-                <div class="commendation-plus" id="commendation-plus-<%= index %>"><%= link_to '<i class="fa fa-plus-square-o fa-2x"></i>'.html_safe, user_commendation_path(commendation.user_id, commendation.id), :method => :put, remote: true  %></div>
-              <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+<% end %>
+
 
 <script>
    $(document).ready(function() {

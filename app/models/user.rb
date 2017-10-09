@@ -17,6 +17,16 @@ class User < ApplicationRecord
   after_save :create_achievements, :create_activity
   after_create :create_achievements # for seed file
 
+  def privacy_check(current_user)
+    if privacy == "public_profile"
+      return false
+    elsif privacy == "friend_only" && User.check_follower(current_user.id, self.id)
+      return false
+    else
+      return true
+    end
+  end
+
   def self.search(search)
     if search
       where("nickname ILIKE :search OR name ILIKE :search OR email ILIKE :search OR uid ILIKE :search", search: "%#{search}%")
@@ -59,14 +69,15 @@ class User < ApplicationRecord
   end
 
   def self.check_follower(user_id, follower_id)
-    check = true
     user = User.find(user_id)
     if user
-      user.followers.where(status: true).each do |follower|
-        check = false if follower.follower_id == follower_id
+      relation = user.followers.find_by(follower_id: follower_id)
+      if relation
+        return relation.status
+      else
+        return false
       end
     end
-    check
   end
 
   def create_achievements

@@ -32,12 +32,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "clearance"
-
 # Use figaro for privacy protection
 gem 'figaro'
 # Use Omniauth Steam for steam login
 gem 'omniauth-steam'
-
 # User RestClient for API
 gem 'rest-client'
 
@@ -46,9 +44,9 @@ gem 'sidekiq'
 gem "chartkick"
 
 gem 'groupdate'
-
 # Use bootstrap-table-rails to sort table
 gem "bootstrap-table-rails"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

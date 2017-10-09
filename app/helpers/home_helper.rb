@@ -21,4 +21,10 @@ module HomeHelper
 			[]
 		end
 	end
+
+	def get_owned_games(user)
+		# FIXME - not working
+    steam_id = user.uid.to_i
+    RestClient.get("http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=1DB6B5F9C6DA54FE150CFCABCB94447A&steamid=#{steam_id}&include_appinfo=1&format=json")
+	end
 end
