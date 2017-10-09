@@ -4,7 +4,7 @@
 			<span class="comment-author"><%= comment.user.nickname %></span> says:
 		</div>
 		<div class="comment-date"><%= comment.updated_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
-		<div class="comment-content">
+		<div class="comment-content<%= comment.id %>">
 			<%= simple_format(comment.reply_article) %>
 		</div>
 		<% if comment.user_id == current_user.id %>

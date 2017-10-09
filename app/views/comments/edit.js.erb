@@ -1,9 +1,3 @@
-$(document).ready(function() {
-	$('.comment-wrapper-parent:not(.registered').on('ajax:success', function() {
-		var commentSplit = this.id.split('-');
-		var $target = $("#edit_comment_link" + commentSplit[1])
-		$target.hide();
-		$(this).after('<%= j render("form") %>')
-	}).addClass('registered');
-});
+$('#edit_comment_link<%= @comment.id %>').hide()
+$('#comment-<%= @comment.id %>').after('<%= j render("form") %>')
 
