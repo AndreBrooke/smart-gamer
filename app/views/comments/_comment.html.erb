@@ -1,15 +1,17 @@
-<div class="comment-wrapper-parent">
+<div class="comment-wrapper-parent" id="comment-<%= comment.id %>">
 	<div class="comment-wrapper-child">
 		<div class="">
 			<span class="comment-author"><%= comment.user.nickname %></span> says:
 		</div>
 		<div class="comment-date"><%= comment.updated_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
-		<div>
+		<div class="comment-content<%= comment.id %>">
 			<%= simple_format(comment.reply_article) %>
 		</div>
 		<% if comment.user_id == current_user.id %>
-			<%= link_to 'Edit Comment', edit_article_comment_path(comment.article_id, comment) %>
-			<%= link_to 'Delete Comment', article_comment_path(comment.article_id, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+			<div id="comment_action#{comment.id}">
+				<%= link_to 'Edit Comment', edit_article_comment_path(comment.article_id, comment), id: "edit_comment_link#{comment.id}", remote: true %>
+				<%= link_to 'Delete Comment', article_comment_path(comment.article_id, comment), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+			</div>
 		<% end %>
 	</div>
 </div>

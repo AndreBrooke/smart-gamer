@@ -51,22 +51,43 @@ User.create(email: "wilson@gmail.com", password: SecureRandom.hex(10), uid: "205
 User.create(email: "leesc_91@hotmail.com", password: SecureRandom.hex(10), uid: "353559183", nickname: "leesc_91", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg", profile_url: "http://steamcommunity.com/id/leesc/", name: "")
   
 
-User.all.each do |x|
-  playtime = rand(1000..4000)
-  x.playtimes.create(date: Date.today - 30, total_playtime: playtime)
-  29.downto(0) do |loop|
-    today_playtime = rand(100..200)
-    playtime += today_playtime
-    x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
+
+  playtime = 50612
+  today_playtime = rand(100..300)
+  User.first.playtimes.create(date: Date.today, total_playtime: playtime, today_playtime: today_playtime)
+  loop = 1
+  while User.first.playtimes.last.total_playtime > 300
+    playtime = playtime - today_playtime
+    today_playtime = rand(100..300)
+    User.first.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime)
+    loop += 1
+  end
+  user_count = User.all.count
+  other_users = (1..user_count).to_a - [User.first.id]
+  rand(1...user_count).times do |i|
+    User.first.followers.create(follower_id: other_users.delete(other_users.sample))
   end
 
-  user_count = User.all.count
-  other_users = (1..user_count).to_a - [x.id]
-  rand(1...user_count).times do |i|
-	  x.followers.create(follower_id: other_users.delete(other_users.sample))
-	end
+  User.first.commendations.create(image: "", name: "Friendly")
+  User.first.commendations.create(image: "", name: "Teamwork")
+  User.first.commendations.create(image: "", name: "Tilt-Proof")
 
-	x.commendations.create(image: "", name: "Friendly")
-	x.commendations.create(image: "", name: "Teamwork")
-	x.commendations.create(image: "", name: "Tilt-Proof")
-end
+# User.all.each do |x|
+#   playtime = rand(1000..4000)
+#   x.playtimes.create(date: Date.today - 30, total_playtime: playtime)
+#   29.downto(0) do |loop|
+#     today_playtime = rand(100..200)
+#     playtime += today_playtime
+#     x.playtimes.create(date: Date.today - loop, total_playtime: playtime, today_playtime: today_playtime )
+#   end
+
+#   user_count = User.all.count
+#   other_users = (1..user_count).to_a - [x.id]
+#   rand(1...user_count).times do |i|
+# 	  x.followers.create(follower_id: other_users.delete(other_users.sample))
+# 	end
+
+# 	x.commendations.create(image: "", name: "Friendly")
+# 	x.commendations.create(image: "", name: "Teamwork")
+# 	x.commendations.create(image: "", name: "Tilt-Proof")
+# end

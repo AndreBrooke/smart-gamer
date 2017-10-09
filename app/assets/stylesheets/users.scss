@@ -28,7 +28,7 @@
 $background-dark: #403F48;
 
 .background-color-div {
-  background-color: whitesmoke;
+  background-color: #F5F5F5;
 }
 
 .border {
@@ -54,6 +54,7 @@ $background-dark: #403F48;
 }
 
 .tab-content {
+
 }
 
 .steam-avatar {
@@ -96,7 +97,7 @@ $background-dark: #403F48;
 }
 
 .achieved {
-  color: #39FF14;
+  opacity: 1.0 !important;
 }
 
 .achievements-wrapper {
@@ -108,6 +109,7 @@ $background-dark: #403F48;
     overflow: hidden;
     border: 1px solid #000;
     border-radius: 5px;
+    opacity: 0.3;
     .achievement-title {
       margin-left: 15px;
       font-size: 1.2em;
@@ -120,22 +122,29 @@ $background-dark: #403F48;
   }
 }
 
+.commendation-wrapper {
+  overflow: hidden;
+  .commendation-item-wrapper {
+    margin-right: 20px;
+    .commendation-item {
+      display: inline-block;
+      background-color: #e6e9ec;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      .commendation-name {
+        font-weight: 600;
+        letter-spacing: 2px;
+      }
+    }
 
-.commendation-item {
-  display: inline-block;
-  background-color: #e6e9ec;
-  padding: 8px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  .commendation-name {
-    font-weight: 600;
-    letter-spacing: 2px;
+    .commendation-plus {
+      display: inline-block;
+    }
   }
 }
-.commendation-plus {
-  display: inline-block;
-}
+
 
 .container-small {
   padding: 20px;
@@ -143,4 +152,81 @@ $background-dark: #403F48;
 
 .btn-signout {
   background-color: #aaa !important;
+}
+
+.circleborder {
+width: 124px;
+height: 124px;
+border-radius: 150px;
+-webkit-border-radius: 150px;
+-moz-border-radius: 150px;
+background: url(URL) no-repeat;
+box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+#user-profile {
+  padding: 20px;
+}
+
+.profile-nickname{
+  font-size: 24px;
+  font-weight: 800px;
+}
+
+.profile-icon {
+  padding-left: 20px;
+  color: black;
+}
+
+.active {
+  color: black;
+}
+
+.nav-pills {
+  font-size: 20px;
+} 
+
+.about_area {
+  width: 90%;
+}
+
+.private-div {
+  height: 400px;
+}
+
+.private-text {
+  color: red;
+  padding: 50px;
+}
+
+.profile-background {
+ background-color: #F5F5F5;
+}
+
+.level {
+  position: relative;
+
+  width: 33px;
+  border-style: ridge;
+  border-width: 2px;
+  border-color: #448998;
+  font-size: 25px;
+  color: white;
+  left: 33px;
+background: rgb(109,179,242); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(109,179,242,1) 0%, rgba(84,163,238,1) 50%, rgba(54,144,240,1) 51%, rgba(30,105,222,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de',GradientType=0 ); /* IE6-9 */
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: white !important;
+  background-color: #FACC2E !important;
+}
+
+.pill-overwrite {
+  color: #00b5ad !important;
 }

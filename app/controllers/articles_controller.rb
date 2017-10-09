@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
+	before_action :admin_only, except: [:index, :show]
+
 	include ArticlesHelper
+
 	def index
 		@articles = Article.all
 	end
