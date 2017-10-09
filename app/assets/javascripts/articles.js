@@ -22,4 +22,14 @@ $(document).ready(function() {
     event.preventDefault();
     $(this).parent().hide().prev().show().prev().show();    
   });
+
+  // FIXME - not working on ajax loaded content - require delegation
+  // $('.comment-wrapper-child').hover(
+  //   function() {
+  //     $(this).addClass('comment-highlight');
+  //   },
+  //   function() {
+  //     $(this).removeClass('comment-highlight');
+  //   }
+  // );
 })

@@ -33,8 +33,12 @@ class CommentsController < ApplicationController
 		@article = Article.find(params[:article_id])
 		@comment = Comment.find(params[:id])
 		if @comment.update(comment_params)
-			flash[:success] = "Comment is updated successfully."
-			redirect_to article_path(@article)
+			respond_to do |format|
+	      format.html { redirect_to article_path(@article), flash: { success: "Comment is updated successfully." } }
+	      # format.js
+	    end
+			# flash[:success] = "Comment is updated successfully."
+			# redirect_to article_path(@article)
 		else
 			flash[:danger] = "Error updating comment."
 			render 'edit'
@@ -45,7 +49,10 @@ class CommentsController < ApplicationController
 		@article = Article.find(params[:article_id])
 		@comment = Comment.find(params[:id])
 		@comment.destroy
-		redirect_to article_path(@article)
+		respond_to do |format|
+      format.html { redirect_to article_path(@article), flash: { success: "Comment is deleted successfully." } }
+      format.js
+    end
 	end
 
 	private
