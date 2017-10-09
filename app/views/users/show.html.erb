@@ -87,18 +87,18 @@
 <% else %>
   <div>
     <ul class="nav nav-pills">
-      <li class="active active-pill"><a data-toggle="pill" href="#overall">Overall</a></li>
-      <li><a data-toggle="pill" href="#stats">Stats</a></li>
-      <li><a data-toggle="pill" href="#history">History</a></li>
+      <li class="active active-pill"><a data-toggle="pill" href="#overall" class="pill-overwrite">Overall</a></li>
+      <li><a data-toggle="pill" href="#stats" class="pill-overwrite">Stats</a></li>
+      <li><a data-toggle="pill" href="#history" class="pill-overwrite">History</a></li>
 
       
-      <li><a data-toggle="pill" href="#about_me">About Me</a></li>
-      <li><a data-toggle="pill" href="#my_games">My Games</a></li>
-      <li><a data-toggle="pill" href="#my_achievements">Achievements</a></li>
-      <li><a data-toggle="pill" href="#my_commendations">Commendations</a></li>
+      <li><a data-toggle="pill" href="#about_me" class="pill-overwrite">About Me</a></li>
+      <li><a data-toggle="pill" href="#my_games" class="pill-overwrite">My Games</a></li>
+      <li><a data-toggle="pill" href="#my_achievements" class="pill-overwrite">Achievements</a></li>
+      <li><a data-toggle="pill" href="#my_commendations" class="pill-overwrite">Commendations</a></li>
       <% if current_user == @user %>
 
-      <li><a data-toggle="pill" href="#settings">Settings</a></li>
+      <li><a data-toggle="pill" href="#settings" class="pill-overwrite">Settings</a></li>
       <% end %>
     </ul>
 
