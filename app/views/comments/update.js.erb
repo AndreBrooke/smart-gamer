@@ -1,6 +1,7 @@
-$(document).ready(function() {
-	$('#new_comment').on('ajax:success', function() {
-		$(this).remove();
-		debugger
-	})
-});
+$('#new_comment').on('ajax:success', function() {
+	$('#comment-<%= @comment.id %>').remove();
+	$(this).before('<%= j render(@comment) %>');
+	$(this).remove();
+	$('#comment-content<%= @comment.id %>').html();
+})
+
