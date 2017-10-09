@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'users/index' => "users#index"
   get 'new_age/index' => "new_age#index"
+  post'users/:id/updatechart' => "users#update_chart", as: "update_chart"
   get "/admin" => "users#admin_page", as: "admin"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -25,11 +26,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  resources :users, only: :show
-
   resources :user_achievements, only: [:new, :index, :create, :show]
 
-  resources :users do
+  resources :users, only: :show do
     resources :commendation
   end
 

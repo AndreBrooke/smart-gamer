@@ -17,4 +17,5 @@
 //= require jquery_ujs
 //= require bootstrap-table
 //= require turbolinks
+//= require flatpickr-calendar
 //= require_tree .

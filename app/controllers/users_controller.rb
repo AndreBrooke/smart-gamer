@@ -37,7 +37,8 @@ class UsersController < ApplicationController
         @private = @user.privacy_check
       end
         if @private == false
-          chart1 = @user.playtimes.group_by_day(:date).sum(:today_playtime)
+          # chart1 = @user.playtimes.group_by_day(:date, last: 30).sum(:today_playtime)
+          chart1 = @user.playtimes.group_by_day(:date, range: Date.today-30..Date.today).sum(:today_playtime)
           chart1.transform_values! {|value| value/60 }
           chart2 = chart1.transform_values {|value| @user.desired_playtime}
           @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
@@ -48,6 +49,28 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "User not found"
       redirect_to root_path
+    end
+  end
+
+  def update_chart
+    date = params[:chart][:date].partition(' to ')
+    start_date = Date.parse(date[0])
+    end_date = Date.parse(date[2])
+    @user = User.find_by_id(params[:id])
+    if params[:chart_option] == "day"
+      chart1 = @user.playtimes.group_by_day(:date, range: start_date..end_date).sum(:today_playtime)
+      chart2 = chart1.transform_values {|value| @user.desired_playtime}
+    elsif params[:chart_option] == "week"
+      chart1 = @user.playtimes.group_by_week(:date, range: start_date..end_date).sum(:today_playtime)
+      chart2 = chart1.transform_values {|value| @user.desired_playtime*7}
+    else
+      chart1 = @user.playtimes.group_by_month(:date, range: start_date..end_date).sum(:today_playtime)
+      chart2 = chart1.transform_values {|value| @user.desired_playtime*30}
+    end
+    chart1.transform_values! {|value| value/60 }
+    @chart = [{name: "Playtime", data: chart1}, {name: "Target", data: chart2}]
+    respond_to do |format|
+      format.js
     end
   end
 
