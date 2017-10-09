@@ -92,20 +92,27 @@ $background-dark: #403F48;
   color: #39FF14;
 }
 
-.achievement-item {
-  margin: 8px;
-  padding: 8px;
+.achievements-wrapper {
   overflow: hidden;
-  .achievement-title {
-    margin-left: 15px;
-    font-size: 1.2em;
-    font-weight: 700;
-  }
-  .achievement-description {
-    margin-left: 15px;
-    font-size: 0.8em;
+  .achievement-item {
+    width: 30%;
+    margin: 8px;
+    padding: 8px;
+    overflow: hidden;
+    border: 1px solid #000;
+    border-radius: 5px;
+    .achievement-title {
+      margin-left: 15px;
+      font-size: 1.2em;
+      font-weight: 700;
+    }
+    .achievement-description {
+      margin-left: 15px;
+      font-size: 0.8em;
+    }
   }
 }
+
 
 .commendation-item {
   display: inline-block;

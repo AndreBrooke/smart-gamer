@@ -133,20 +133,22 @@
         <h3>Achievements</h3>
         <div class="text-left">
           <% achievements = @user.achievements.order(status: :desc) %>
-          <% achievements.each do |achievement| %>
-            <div class="<%= 'achieved' if achievement.status %> achievement-item">
-              <span class="achievement-image pull-left">
-                <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
-              </span>
-              <span class="achievement-title">
-                <%= achievement.badge.name %>
-              </span>
-              <br>
-              <span class="achievement-description">
-                <%= achievement.badge.description %>
-              </span>
-            </div>
-          <% end %>
+          <div class="achievements-wrapper">
+            <% achievements.each do |achievement| %>
+              <div class="<%= 'achieved' if achievement.status %> achievement-item pull-left">
+                <span class="achievement-image">
+                  <%= image_tag(achievement.badge.image, width: '50', height: '50') %>
+                </span>
+                <span class="achievement-title">
+                  <%= achievement.badge.name %>
+                </span>
+                <br>
+                <span class="achievement-description">
+                  <%= achievement.badge.description %>
+                </span>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
 
