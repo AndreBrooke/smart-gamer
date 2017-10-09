@@ -74,6 +74,10 @@
   </div>
 
 </div>
+
+<% if @private == true %>
+  <div>Profile Private</div>
+<% else %>
   <div id="col-lg-6">
     <ul class="nav nav-pills">
       <li class="active"><a data-toggle="pill" href="#overall">Overall</a></li>
@@ -183,6 +187,8 @@
       </div>
     </div>
   </div>
+<% end %>
+
 
 <script>
    $(document).ready(function() {
