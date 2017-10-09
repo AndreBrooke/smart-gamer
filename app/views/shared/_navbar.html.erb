@@ -13,7 +13,7 @@
             <!-- FIXME - change message from "Please fill out this field." -->
             <%= text_field_tag :search, params[:search], placeholder: 'Search for players or articles', required: true, class: 'form-control' %>
             <!-- FIXME - Change Go! to search icon -->
-            <span class="input-group-btn"><%= image_submit_tag("search", class: 'btn btn-default search') %></span>
+            <span class="input-group-btn"><%= image_submit_tag("search.png", class: 'btn btn-default search') %></span>
           </div>
         <% end %>
       </div>
@@ -27,7 +27,7 @@
       <% unless signed_in?  %>
         <ul class="navbar-nav pull-right   navbar-signin">
    
-          <ul> <%= image_tag 'steam-icon-large.png', class: "steam_log_in"%><%= link_to "Sign in with steam", '/auth/steam', class: "navbar-title nav-text" %></ul>
+          <ul> <%= image_tag('steam-icon-large.png', class: "steam_log_in")%><%= link_to "Sign in with steam", '/auth/steam', class: "navbar-title nav-text" %></ul>
         </ul>
       <% end %>
 			<ul class="nav navbar-nav navbar-right">
