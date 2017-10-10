@@ -112,7 +112,20 @@
 
       <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
-        <p>Stat content</p>
+        <p>List of Toxic Words and Count</p>
+        <!-- Dota Toxicidity Score -->
+          <% if @words.nil? %>
+            <%= "" %>
+          <% else %>
+            <% list_of_toxic_words = ["gg", "report", "pussy", "shit", "ez", "wtf", "bad", "uninstall", "cunt", "slut", "fucking", "noobs", "noob", "retard", "fu", "fuck", "nub", "useless", "niama"].each do |toxic_words| %>
+            <% words = @words["my_word_counts"] %>
+              <% words.sort_by {|x, y| y}.reverse.first(10).to_h.each do |key, value| %>
+              <% if toxic_words == key %>
+                <p><%= key %> - <%= value %></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
 
       <!-- History -->
@@ -212,7 +225,6 @@
     </div>
   </div>
 <% end %>
-
 
 <script>
    $(document).ready(function() {
