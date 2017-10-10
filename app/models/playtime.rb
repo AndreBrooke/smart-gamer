@@ -18,7 +18,7 @@ class Playtime < ApplicationRecord
   end
 
   def check_desired_playtime
-    if today_playtime > user.desired_playtime
+    if today_playtime > user.desired_playtime*60
       NotificationJob.perform_later(user.id, "exceed")
     end
   end
