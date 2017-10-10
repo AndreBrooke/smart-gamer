@@ -59,6 +59,7 @@ class UsersController < ApplicationController
           
           @badges = Badge.all
           @commendations = @user.commendations
+          @levels = Level.all
           @like = Like.find_by(params[:commendation_id])
         end
     else
