@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   resources :articles do
-    resources :comments
+    resources :comments, except: [:index]
   end
 
   resources :followers, only: [:create]
