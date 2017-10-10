@@ -152,7 +152,7 @@
 
       <!-- About Me -->
       <div id="about_me" class="tab-pane fade background-color-div">
-        <% unless @user.about.empty? %>
+        <% unless @user.about == "" %>
           <p class="about_me_content"><%= @user.about %></p>
         <% else %>
           <p class="about_me_content">Tell something about yourself.</p>
