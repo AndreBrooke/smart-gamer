@@ -72,7 +72,7 @@
           <div class="progress skill-bar">
             <% user_level = @user.level %>
             <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= @lvl_percentage %>%">
-              <span class="skill">LEVEL<i class="val"><%= @lvl_percentage  %></i></span>
+              <span class="skill">LEVEL <%= @user.level %><i class="val"><%= @lvl_percentage %>%</i></span>
             </div>
           </div>
         </div>
