@@ -366,9 +366,11 @@ tr:nth-child(odd) {
 }
 
 #activity_feed {
+    overflow-y: scroll;
     padding-left: 20px;
     padding-right: 15px;
-    grid-area: 2/4/4/4;
+    margin-bottom: 20px;
+    grid-area: 2/4/5/4;
 }
 
 #activity_feed_name {
