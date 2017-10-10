@@ -28,7 +28,7 @@ class Comment < ApplicationRecord
   def update_points
     unless self == Comment.last
       user = self.user
-      user.update_attribute(:points, 5)
+      user.update_attribute(:points, user.points += 5)
       level_max_points = Level.find_by(level: user.level).max_points
       if user.points >= level_max_points
         user.update_attribute(:level, user.level += 1)
