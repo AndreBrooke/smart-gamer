@@ -70,9 +70,9 @@
 .article-image-second{
 	position: absolute;
     position: absolute;
-    top: -999px;
+    top: -800px;
     bottom: -999px;
-    left: -300px;
+    left: -250px;
     right: -99px;
     margin: auto;
 	
@@ -414,6 +414,7 @@ tr:nth-child(odd) {
 .article-parent{
     position: relative;
     overflow:  hidden;
+    margin: 5px;
     width: 195px;
     height: 195px;
 
