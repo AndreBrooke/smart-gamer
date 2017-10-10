@@ -1,11 +1,16 @@
 class FollowersController < ApplicationController
   def create
     @user = User.find(params[:follower][:follower_id])
-    followers = Follower.where(status: true)
+    followers = Follower.all
     @follower = followers.find_or_initialize_by(follower_params)
     if @follower.id
-      @follower.update(status: !status)
-      flash[:notice] = "You unfollow #{@user.nickname}"
+      if @follower.status
+        @follower.update_attribute(:status, false)
+        flash[:notice] = "You unfollow #{@user.nickname}"
+      else
+        @follower.update_attribute(:status, true)
+        flash[:notice] = "You follow #{@user.nickname}"
+      end
       redirect_to user_path(@follower.follower_id)
     else
       if @follower.save
