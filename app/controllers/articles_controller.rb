@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 				@article = Article.new(share_params)
 			else
 				flash[:danger] = "Error creating article. Invalid link."
-				return redirect_back(fallback_location: root_path)
+				return redirect_back(fallback_location: index_path)
 			end
 		else
 			@article = Article.new(article_params)
@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
 	def destroy
 		@article = Article.find(params[:id])
 		@article.destroy
-		redirect_back(fallback_location: root_path)
+		redirect_back(fallback_location: index_path)
 	end
 
 	private

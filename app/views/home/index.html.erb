@@ -176,7 +176,7 @@
 							</tr>
 						</thead>
 
-						<tbody>
+						<tbody >
 							<!-- FIXME - to find top 5 followers by today_playtime -->
 							<!-- current_user <=> User.last -->
 							<% followers = current_user.followers.where(status: true).first(5) %>

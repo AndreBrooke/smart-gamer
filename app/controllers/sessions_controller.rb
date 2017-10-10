@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(request.env['omniauth.auth'])
     @user.email = params[:user][:email] if params[:user]
     if !@user.save
-      flash[:error] = "Login Fail"
+      flash[:error] = "Login Fail" 
+      redirect_to root_path
     elsif @user.email == "example@na.com"
       @user.commendations.create(name: "Friendly")
       @user.commendations.create(name: "Teamwork")
