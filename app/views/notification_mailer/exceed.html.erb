@@ -6,7 +6,7 @@
   <body>
     <h1>You have exceed your desired playtime. Stop playing! Get a life.</h1>
     <p>
-      <%= @user.name %>, you have exceed your desired playtime - <%= @user.desired_playtime %>. You have played for <%= @user.playtimes.find_by(date: Date.today).today_playtime %>
+      <%= @user.name %>, you have exceed your desired playtime - <%= @user.desired_playtime %>. You have played for <%= @user.playtimes.find_by(date: Date.today).today_playtime / 60 %>
     </p>
   </body>
 </html>
