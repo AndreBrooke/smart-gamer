@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     	@user = User.find(params[:id])
     else
       flash[:notice] = "You are not authorise."
-      redirect_to root_path
+      redirect_to index_path
     end
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:notice] = "You are not authorise"
-      redirect_to root_path
+      redirect_to index_path
     end
   end
 
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
         end
     else
       flash[:notice] = "User not found"
-      redirect_to root_path
+      redirect_to index_path
     end
   end
 
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
     if current_user.admin?
       redirect_to articles_path
     else
-      redirect_to root_path
+      redirect_to index_path
     end
   end
 

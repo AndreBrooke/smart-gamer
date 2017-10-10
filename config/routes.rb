@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:edit, :update, :index]
 
-  get 'new_age/index' => "new_age#index"
+ get "/home" => "home#index", as: :index
   post'users/:id/updatechart' => "users#update_chart", as: "update_chart"
   get "/admin" => "users#admin_page", as: "admin"
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'home#index'
-
+  # root 'home#index'
+  root 'new_age#index'
   resources :user_achievements, only: [:new, :index, :create, :show]
 
   resources :users, only: :show do

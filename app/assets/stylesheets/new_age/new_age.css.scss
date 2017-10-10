@@ -297,6 +297,7 @@ section.features .feature-item {
 }
 section.features .device-container {
   margin-bottom: 100px;
+ 
 }
 @media (min-width: 992px) {
   section.features .device-container {
@@ -423,7 +424,7 @@ footer ul li a.active {
 .bg-primary {
   background: #A7C8FF;
   background: -webkit-linear-gradient(#fdcc52, #fdc539);
-  background: linear-gradient(#00b5ad, #00b5ad);
+  background: linear-gradient(#00b5ad, #27B1BE);
 }
 .text-primary {
   color: #fdcc52;
@@ -481,6 +482,11 @@ body {
   webkit-tap-highlight-color: #222222;
 }
 
+#service-head-text {
+  
+  font-weight: 700;
+}
+
 #demo-screen {
   position: absolute;
   bottom: 70px;
@@ -492,4 +498,72 @@ body {
 #steam-large {
   width: 100px;
   height: 100px;
+}
+
+#feature-div {
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
+  grid-template-rows: 50% 50%;
+  height: 700px;
+  width: 70%;
+  margin-bottom: 100px;
+
+}
+
+.feature-card{
+  margin-bottom: 20px;
+  margin-left: 20px;
+  box-shadow: 0px 0.2em 0px 0px #d4d4d5, 0px 0px 0px 1px #d4d4d5;
+}
+
+.smart-logo {
+  width: 36px;
+  margin-top: 8px;
+  margin-right: 12px;
+}
+
+.feature-card img{
+  width:100%;
+  height: 70%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.section-heading h2{
+  font-size: 42px;
+}
+
+.content{
+  padding: 8px 3px 44px 14px;
+}
+
+.content-header{
+  color: #004a4a;
+      font-size: 18px !important;
+    font-weight: 400 !important;
+ 
+}
+
+.steam_log_in {
+    width:24px;
+    margin-top: 12px;
+}
+
+
+.content-description {
+  color: rgba(0,0,0,0.5);
+  font-size: 12px !important;
+}
+
+#feature-button {
+  position: relative;
+  left: 34%;
+  
+  margin: 20px auto;
+  
+  background-color: #27B1BE;
 }
