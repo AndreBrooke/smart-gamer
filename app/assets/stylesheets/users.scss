@@ -94,10 +94,6 @@ $background-dark: #403F48;
   margin-top: 0px;
 }
 
-#skill-bar {
-  padding: 20px;
-}
-
 .achieved {
   opacity: 1.0 !important;
 }
@@ -205,6 +201,20 @@ box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 
 .profile-background {
  background-color: #F5F5F5;
+}
+
+.profile-wrapper {
+  overflow: hidden;
+  height: auto;
+  display: flex;
+  flex-flow: row;
+  vertical-align: middle;
+  align-items: center;
+  #skill-bar {
+    height: 100%;
+    padding: 20px;
+    align-self: center;
+  }
 }
 
 .level {

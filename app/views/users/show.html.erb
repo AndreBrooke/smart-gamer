@@ -1,15 +1,15 @@
 
-<div id="header" class="border border profile-background">
-  <div class ="row ">
-    <div class="col-lg-6">
+<div id="header" class="border profile-background">
+  <div class ="row profile-wrapper">
+    <div class="col-lg-6 pull-left">
        <div class="row" id="user-profile">
         <div class="col-sm-3">
           <div class="circleborder">
-          <%= image_tag @user.avatar_url, size:"124", class:"steam-avatar"%>
-        </div>
-        <div class="col-sm-6">
-        <p class="level text-center"><%= @user.level %></p>
-        </div>
+            <%= image_tag @user.avatar_url, size:"124", class:"steam-avatar"%>
+          </div>
+          <div class="col-sm-6">
+            <!--<p class="level text-center"><%#= @user.level %></p> -->
+          </div>
         </div>
 
           <div class="col-sm-9">
@@ -24,8 +24,8 @@
         <p> No information given. </p>
         <% else %>
           <p>NAME: <%= @user.name%></p>
-
-          <p>EMAIL: <%= @user.email %></p>
+          <p>Level: <%= @user.level %></p>
+          <p><%= @user.points %> XP</p>
           <!-- Follow button-->
           <% unless @user.id == current_user.id %>
             <% unless User.check_follower(current_user.id, @user.id) %>
@@ -47,7 +47,7 @@
           </div>
         </div>
         </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6 pull-left skill-wrapper">
       <div class="row" id="skill-bar">
         <!-- Skill Bars -->
         <div class="container-fluid">
