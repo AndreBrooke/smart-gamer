@@ -70,6 +70,7 @@ other_users = (1..user_count).to_a - [User.first.id]
 rand(1...user_count).times do |i|
   User.first.followers.create(follower_id: other_users.delete(other_users.sample))
 end
+User.first.update(level: 3, points: 38)
 
 #second user
 playtime = 112235
@@ -87,6 +88,7 @@ other_users = (1..user_count).to_a - [User.second.id]
 rand(1...user_count).times do |i|
   User.second.followers.create(follower_id: other_users.delete(other_users.sample))
 end
+User.second.update(level: 5, points: 100)
 
 #third user
 playtime = 207901
@@ -104,6 +106,7 @@ other_users = (1..user_count).to_a - [User.third.id]
 rand(1...user_count).times do |i|
   User.third.followers.create(follower_id: other_users.delete(other_users.sample))
 end
+User.third.update(level: 4, points: 70)
 
 User.all.each do |user|
   user.commendations.create(name: "Friendly")
