@@ -56,6 +56,9 @@ class UsersController < ApplicationController
           response1 = get_recent_games(@user)
           recent_game = JSON.parse(response1.body)
           @recent_games = recent_game["response"]["games"]
+
+          response2 = get_toxicidity_score(@user)
+          @words = JSON.parse(response2.body)
           
           @badges = Badge.all
           @commendations = @user.commendations
