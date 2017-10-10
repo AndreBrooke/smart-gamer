@@ -19,27 +19,6 @@
     padding-bottom: 30px;
 }
 
-.row-space-1{
-  margin-top: 6px;
-  margin-bottom: 6px;
-}
-
-.row-space-2{
-  margin-top: 12px;
-  margin-bottom: 12px;
-}
-
-.row-space-3{
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.col-lg-2{
-	width: 500px;
-	height: 500px;
-	color: grey;
-}
-
 .a-pic {
 	background-color: grey;
 	width: 100px;
@@ -54,7 +33,7 @@
 .article-text-main {
     width: 555px;
     height: 390px;
-    line-height: 390px;
+    /*line-height: 390px;*/
     padding: 5px;
     background-color: #272121;
     color: #fff;
@@ -65,17 +44,6 @@
         vertical-align: middle;
         line-height: normal;
     }
-}
-
-.article-image-second{
-	position: absolute;
-    position: absolute;
-    top: -800px;
-    bottom: -999px;
-    left: -250px;
-    right: -99px;
-    margin: auto;
-	
 }
 
 .article-text-second {
@@ -97,36 +65,7 @@
     }
 }
 
-.activity-pic{
-	width: 150px;
-	height: 150px;
-	padding: 5px;
-}
-.article-image-second-long{
-	width: 275px;
-	height: 195px;
-	padding: 5px;
-	position: relative;
-    margin-top: -22px;
-}
 
-.article-text-second-long {
-    display: inline-block;
-    position: relative;
-    width: 275px;
-    height: 195px;
-    line-height: 195px;
-    padding: 5px;
-    background-color: #272121;
-    color: #fff;
-    font-size: 2em;
-    background-clip:content-box;
-    span {
-        display: inline-block;
-        vertical-align: middle;
-        line-height: normal;
-    }
-}
 
 
 .h3-title{
@@ -305,14 +244,13 @@ table {
 .search {
     width:49px;
 }
-    
+
 
 tr:nth-child(odd) {
     background: #F5F5F5;
 }
 
 .steam_log_in {
-    
     width:40px;
 }
 
@@ -322,7 +260,7 @@ tr:nth-child(odd) {
     .feed-item {
         position: relative;
         padding-bottom: 20px;
-        padding-left: 30px;
+        padding-left: 10px;
         border-left: 2px solid #e4e8eb;
         .date {
             position: relative;
@@ -369,11 +307,11 @@ tr:nth-child(odd) {
 }
 
 .nav-text {
-    height: 60px; 
+    height: 60px;
     color: white;
     font-size: 24px;
     font-weight: 700;
-    font-family: "ubuntu", Sans-serif; 
+    font-family: "ubuntu", Sans-serif;
 
 }
 
@@ -395,12 +333,6 @@ tr:nth-child(odd) {
     padding: 20px;
 }
 
-.steam-signin-text {
-
-}
-
-
-
 .navbar-nav a:hover {
     background: #ECECEC;
     text-decoration: none;
@@ -411,21 +343,56 @@ tr:nth-child(odd) {
     bottom: -10px;
 }
 
-.article-parent{
-    position: relative;
-    overflow:  hidden;
-    margin: 5px;
-    width: 195px;
-    height: 195px;
-
+#article_field {
+    background-color: #F5F5F5;
+    height: 650px;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: 10% 30% 30% 30%;
 }
 
-.article-col-3 {
-    padding-left: 0px !important;
+#article_name {
+    grid-column: 1/span 2;
+    padding-left:35%;
 }
 
-.article-col-9 {
-    margin-right: -10px !important;
-    padding-right: 0px !important;
+#all_article {
+    padding: 18px 0 0 25%;
 }
 
+#main_article {
+    grid-area: 2/1/4/3;
+    padding: 2px;
+}
+
+#activity_feed {
+    padding-left: 20px;
+    padding-right: 15px;
+    grid-area: 2/4/4/4;
+}
+
+#activity_feed_name {
+    padding-left:30px;
+}
+
+#main_article img {
+    width:100%;
+    height:100%;
+}
+
+.articles {
+    padding: 2px;
+}
+
+.articles img,
+.articles div {
+    width:100%;
+    height:100%;
+    font-size:20px;
+}
+
+div.articles div.article-text-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

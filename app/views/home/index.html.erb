@@ -1,82 +1,31 @@
-
-
-<!-- <div class="container-quote ">
-	<blockquote class="blockquote">
-		<p><%= @quote["quoteText"] %></p>
-		<% quote_author = @quote["quoteAuthor"] %>
-		<footer class="blockquote-footer"><%= quote_author.empty? ? "unknown" : quote_author %></footer>
-	</blockquote>
-</div> -->
-
-	
-	<div class="row ">
-		<div class="col-lg-8 profile-background ">
-			
-			<div class="row">
-				<div class="col-lg-9 "><h3 class="h3-title">Articles</h3></div>
-				<div class="col-lg-3  home-button">
-					<%= link_to articles_path, class: 'btn btn-default' do %>
-						View all articles
-					<% end %>
-				</div>
-			</div>
-			
-			<div class="row">			
-				<div class="col-lg-9 article-col-9 ">
-					<% first_article = @articles_home.first %>
-					<% if first_article %>
-						<%= link_to article_path(first_article), target: "_self" do %>
-							<% if first_article.image %>
-								<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
-							<% else %>
-								<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
-								<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
-							<% end %>
-						<% end %>
-					<% end %>
-			
-					<% second_articles = @articles_home.slice(1..2) %>
-					<% if second_articles %>
-						<% second_articles.each do |article| %>
-							<%= link_to article_path(article), target: "_self" do %>
-								<% if article.image %>
-									<%= image_tag article.image, title: article.title, class: "article-image-second-long" %>
-								<% else %>
-									<div class="text-center article-text-second-long"><span><%= article.title %></span></div>
-								<% end %>
-							<% end %>
-						<% end %>
-					<% end %>
-				</div>
-
-				<div class="col-lg-3 article-col-3">
-					<% third_articles = @articles_home.slice(3..6) %>
-					<% if third_articles %>
-						<% third_articles.each do |article| %>
-							<div class="article-parent">
-							<%= link_to article_path(article), target: "_self" do %>
-								<% if article.image %>
-									<%= image_tag article.image, title: article.title, class: "article-image-second" %>
-								<% else %>
-									<div class="text-center article-text-second"><span><%= article.title %></span></div>
-								<% end %>
-								</div>
-							<% end %>
-						<% end %>
-					
-					<% end %>
-
-				</div>
-			</div>
-		</div>
-	
-
-	
-		<!-- Activity feed -->
+<div id="article_field">
+	<div id="article_name">
+		<h3 class="h3-title">Articles</h3>
+	</div>
+	<div id="all_article">
+		<%= link_to articles_path, class: 'btn btn-default' do %>
+			View all articles
+		<% end %>
+	</div>
+	<div id="main_article">
+		<% first_article = @articles_home.first %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+	<div id="activity_feed_name">
+		<h3 class="h3-title">Activity Feed</h3>
+	</div>
+	<div id="activity_feed">
 		<% if signed_in? %>
-			<div class="col-sm-4">
-				<h3 class="h3-title">Activity Feed</h3>
-				<div class="activity-feed">
+			<div class="activity-feed">
 					<% @activities_home.each do |activity| %>
 						<div class="feed-item profile-background">
 							<div class="date"><%= activity.created_at.strftime("%a, %d %b %Y, %I:%M%p") %></div>
@@ -84,10 +33,78 @@
 						</div>
 					<% end %>
 				</div>
-
-			</div>
+			<% end %>
+	</div>
+	<div class="articles">
+		<% first_article = @articles_home[1] %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span class="text"><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
 		<% end %>
 	</div>
+	<div class="articles">
+		<% first_article = @articles_home[2] %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="articles">
+		<% first_article = @articles_home[3] %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%#= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span class="text"><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="articles">
+		<% first_article = @articles_home[4] %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="articles">
+		<% first_article = @articles_home[5] %>
+		<% if first_article %>
+			<%= link_to article_path(first_article), target: "_self" do %>
+				<% if first_article.image %>
+					<%= image_tag first_article.image, title: first_article.title, class: "article-image-main" %>
+				<% else %>
+					<%= image_tag '/assets/placeholder.jpg', class: "article-image-main" %>
+					<div class="text-center article-text-main"><span><%= first_article.title %></span></div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</div>
+
+
+
+
 
 	<div class="container-table">
 		<div class="row">
@@ -105,7 +122,7 @@
 					<div class="col-sm-3">
 
 					</div>
-				</div>	
+				</div>
 
 				<table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table">
 					<thead>
@@ -186,6 +203,4 @@
 
 
 
-
-	
 
