@@ -152,6 +152,8 @@ header {
   min-height: auto;
   overflow-y: hidden;
   background-image: url("/assets/new_age/bg-rubick.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   /* fallback for old browsers */
   background-image: url("/assets/new_age/bg-rubick.jpg");
   /* Chrome 10-25, Safari 5.1-6 */
@@ -500,8 +502,14 @@ body {
   height: 100px;
 }
 
+section#features{
+  padding-top: 40px;
+}
+
 #feature-div {
+
   margin: 20px auto;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 33% 34% 33%;
   grid-template-rows: 50% 50%;
