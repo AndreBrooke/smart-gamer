@@ -12,8 +12,11 @@ class Comment < ApplicationRecord
       achievement.increment!(:progress) unless achievement.status
       unless achievement.status
         if achievement.progress == badge.goal
-          achievement.update_attribute(:status, true) 
-          self.user.activities.create(content: " unlocked a new badge - #{badge.name}")
+          achievement.update_attribute(:status, true)
+          user = self.user 
+          user.activities.create(content: " unlocked a new badge - #{badge.name}")
+          user.update_attribute(:points, user.points += 10) # to add points column to Badge
+          check_points_level_up(user)
         end
       end
     end
@@ -29,15 +32,19 @@ class Comment < ApplicationRecord
     unless self == Comment.last
       user = self.user
       user.update_attribute(:points, user.points += 5)
-      level_max_points = Level.find_by(level: user.level).max_points
-      if user.points >= level_max_points
-        user.update_attribute(:level, user.level += 1)
-        user.activities.create(content: " reached Level #{user.level}")
-      end
+      check_points_level_up(user)
     end
   end
 
   def update_activity
     Activity.first.update_attribute(:comment_id, self.id)
+  end
+
+  def check_points_level_up(user)
+    level_max_points = Level.find_by(level: user.level).max_points
+    if user.points >= level_max_points
+      user.update_attribute(:level, user.level += 1)
+      user.activities.create(content: " reached Level #{user.level}")
+    end
   end
 end
