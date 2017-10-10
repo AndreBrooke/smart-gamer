@@ -71,10 +71,8 @@
 
           <div class="progress skill-bar">
             <% user_level = @user.level %>
-            <% level_min_points = @levels.find_by(level: user_level).min_points %>
-            <% level_max_points = @levels.find_by(level: user_level).max_points %>
-            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow=<%=@user.points%> aria-valuemin=<%=level_min_points%> aria-valuemax=<%=level_max_points%>>
-              <span class="skill">LEVEL<i class="val"><%= (@user.points - level_min_points) / (level_max_points - level_min_points) * 100 %></i></span>
+            <div class="progress-bar progress-bar-danger" role="progressbar" style="width: <%= @lvl_percentage %>%">
+              <span class="skill">LEVEL<i class="val"><%= @lvl_percentage  %></i></span>
             </div>
           </div>
         </div>
