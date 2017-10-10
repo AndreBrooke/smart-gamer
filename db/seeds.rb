@@ -42,6 +42,13 @@ Badge.create(name: "5 Badges", description: "Obtained 5 Badges", image: "BronzeB
 Badge.create(name: "50 Badges", description: "Obtained 50 Badges", image: "SilverBadgeSeason2.png", goal: 50)
 Badge.create(name: "100 Badges", description: "Obtained 100 Baddges", image: "GoldBadgeSeason2.png", goal: 100)
 
+min = 0
+max = 10
+15.times do |i|
+  Level.create(level: i + 1, min_points: min, max_points: max)
+  min = max + 1
+  max *= 2
+end
 
 User.create(email: "haujiechan@gmail.com", password: SecureRandom.hex(10), uid: "346709119", nickname: "Targaryen", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c8/c8738ddf2d587d3c5e4da39243167cffa674cbd3_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198306974847/", name: "Chan Hau Jie")
 User.create(email: "waikit@gmail.com", password: SecureRandom.hex(10), uid: "136990519", nickname: "Your Mum's Pussy", avatar_url: "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/eb/eb89dcaad32cc26b3be6e63177faffc06c494f82_full.jpg", profile_url: "http://steamcommunity.com/profiles/76561198097256247/", name: "kit")

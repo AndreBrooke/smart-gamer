@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006124040) do
+ActiveRecord::Schema.define(version: 20171010014122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.index ["user_id"], name: "index_followers_on_user_id"
   end
 
+  create_table "levels", force: :cascade do |t|
+    t.integer "level"
+    t.integer "min_points"
+    t.integer "max_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", id: :serial, force: :cascade do |t|
     t.boolean "vote_type", default: false
     t.integer "user_id"
@@ -120,6 +128,8 @@ ActiveRecord::Schema.define(version: 20171006124040) do
     t.integer "status", default: 0
     t.integer "privacy", default: 0
     t.integer "desired_playtime", default: 2
+    t.integer "level", default: 1
+    t.integer "points", default: 0
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["uid"], name: "index_users_on_uid", unique: true
   end
