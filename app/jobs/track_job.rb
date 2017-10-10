@@ -11,10 +11,14 @@ class TrackJob < ApplicationJob
     data[:personastate] = JSON.parse(profile.body)["response"]["players"].first["personastate"]
     games_arr = JSON.parse(played_games.body)["response"]["games"]
     playtime_forever = 0
-    games_arr.each do |x|
-      playtime_forever += x["playtime_forever"]
+    if games_arr
+      games_arr.each do |x|
+        playtime_forever += x["playtime_forever"]
+      end
+      data[:playtime_forever] = playtime_forever
+    else
+      data[:playtime_forever] = 0
     end
-    data[:playtime_forever] = playtime_forever
     user.update_today_playtime(data)
   end
 end
