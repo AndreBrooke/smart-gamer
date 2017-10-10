@@ -32,6 +32,7 @@ class Comment < ApplicationRecord
       level_max_points = Level.find_by(level: user.level).max_points
       if user.points >= level_max_points
         user.update_attribute(:level, user.level += 1)
+        user.activities.create(content: " reached Level #{user.level}")
       end
     end
   end
