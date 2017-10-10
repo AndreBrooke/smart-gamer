@@ -62,7 +62,8 @@ class UsersController < ApplicationController
           
           @badges = Badge.all
           @commendations = @user.commendations
-          @levels = Level.all
+          level = Level.all.find_by(level: @user.level)
+          @lvl_percentage = (@user.points - level.min_points) * 100 / (level.max_points - level.min_points)
           @like = Like.find_by(params[:commendation_id])
         end
     else
