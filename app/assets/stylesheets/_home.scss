@@ -188,9 +188,16 @@
 /* Search page content */
 #search_result{
     min-height: calc(65vh - 70px);
-    margin-top: -40px;
+    margin-top: -10px;
     padding: 0;
 }
+
+#search_result_nav,
+.fixed-table-container {
+    margin-bottom:20px;
+}
+
+
 
 .btn-primary {
     width:100px;

@@ -7,15 +7,15 @@ $(document).ready(function(){
     var text = $(this).text();
     switch (text) {
       case 'All':
-        $("#users_search_result").removeClass("hidden")
+        $(".bootstrap-table").removeClass("hidden")
         $("#articles_search_result").removeClass("hidden")
         break;
       case 'Gamers':
-        $("#users_search_result").removeClass("hidden")
+        $(".bootstrap-table").removeClass("hidden")
         $("#articles_search_result").addClass("hidden")
         break;
       case 'Articles':
-        $("#users_search_result").addClass("hidden")
+        $(".bootstrap-table").addClass("hidden")
         $("#articles_search_result").removeClass("hidden")
         break;
     }

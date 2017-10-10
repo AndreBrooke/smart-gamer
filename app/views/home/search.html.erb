@@ -11,9 +11,9 @@
     <% end %>
   </div>
 
-  
+
     <% if !@users.empty? %>
-      
+
        <table data-toggle="table" data-sort-name="today_playtime" data-sort-order="desc" class="home-user-table" id="users_search_result">
           <thead>
             <tr>
@@ -31,21 +31,26 @@
                   <% end %>
                 </td>
                 <% user_playtimes = user.playtimes %>
-                <% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
-                <td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
-                <td><%= user_total_playtime %></td>
+                <% if !user_playtimes.empty? %>
+                  <% user_total_playtime = user_playtimes.maximum(:total_playtime) %>
+                  <td><%= user_playtimes.where(total_playtime: user_total_playtime)[0].today_playtime %></td>
+                  <td><%= user_total_playtime %></td>
+                <% else %>
+                  <td></td>
+                  <td></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>
         </table>
-     
+
     <% end %>
     <% if !@articles.empty? %>
       <div id="articles_search_result" >
         <% @articles.each do |article| %>
           <div class="search-wrapper">
-    
-    <div class="article"> 
+
+    <div class="article">
       <%= link_to article_path(article), target: "_self" do %>
         <div class="article-title"><%= article.title %></div>
 
@@ -56,7 +61,7 @@
 
       <div class="article-content minimize"><%= simple_format(article.content) %></div>
     </div>
-    
+
     <div class="article-social">
       <%= link_to "https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=#{article.url}&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer", target: "_blank", class: "btn btn-social-icon btn-facebook" do %>
         <span class="fa fa-facebook"></span>
@@ -87,5 +92,5 @@
       </div>
       <% end %>
 
-  
+
 </div>
