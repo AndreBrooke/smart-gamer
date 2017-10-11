@@ -51,7 +51,7 @@ class User < ApplicationRecord
       playtime.update(total_playtime: data[:playtime_forever])
     end
     check_online_status if playtime.today_playtime > self.desired_playtime*60
-    TrackJob.set(wait: 10.minutes).perform_later(self.id)
+    TrackJob.set(wait: 1.minutes).perform_later(self.id)
   end
 
   def self.from_omniauth(auth)
