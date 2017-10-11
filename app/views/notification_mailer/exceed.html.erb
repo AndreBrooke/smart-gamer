@@ -4,7 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>You have exceed your desired playtime. Stop playing! Get a life.</h1>
+  	<h1>Time Limit Exceeded</h1>
+    <h2>You have exceeded your desired playtime limit.</h2>
     <p>
       <%= @user.name %>, you have exceed your desired playtime - <%= @user.desired_playtime %>. You have played for <%= @user.playtimes.find_by(date: Date.today).today_playtime / 60 %>
     </p>
