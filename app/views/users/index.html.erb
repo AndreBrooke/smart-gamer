@@ -12,7 +12,7 @@
 			<tr>
 				<td>
 					<%= link_to user_path(user), target: "_self" do %>
-						<span class="table-user-avatar"><%= image_tag user.avatar_url, title: user.nickname, class: "d" %></span> <%= user.nickname %>
+						<span class="table-user-avatar"><%= image_tag user.avatar_url, title: user.nickname, size: "50", class: "d" %></span> <%= user.nickname %>
 					<% end %>
 				</td>
 				<% user_playtimes = user.playtimes %>
