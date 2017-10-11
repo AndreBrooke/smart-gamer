@@ -250,3 +250,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', end
 .graph-form {
   height: 30px;
 }
+
+.word-stat {
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+  }
+  tbody tr:hover td {
+    background: #cccccc;
+  }
+}

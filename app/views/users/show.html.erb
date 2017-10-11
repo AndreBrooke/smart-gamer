@@ -113,19 +113,29 @@
 
       <!-- Stats -->
       <div id="stats" class="tab-pane fade background-color-div">
-        <p>List of Toxic Words and Count</p>
+        <h3>List of Frequently Used Words </h3>
         <!-- Dota Toxicidity Score -->
           <% if @words.nil? %>
             <%= "" %>
           <% else %>
-            <% list_of_toxic_words = ["gg", "report", "pussy", "shit", "ez", "wtf", "bad", "uninstall", "cunt", "slut", "fucking", "noobs", "noob", "retard", "fu", "fuck", "nub", "useless", "niama"].each do |toxic_words| %>
-            <% words = @words["my_word_counts"] %>
+          <table class="word-stat">
+            <thead>
+              <col width="130">
+              <tr>
+                <th>Word</th>
+                <th>Frequency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% words = @words["my_word_counts"] %>
               <% words.sort_by {|x, y| y}.reverse.first(10).to_h.each do |key, value| %>
-              <% if toxic_words == key %>
-                <p><%= key %> - <%= value %></p>
+                <tr>
+                  <td><%= key %></td>
+                  <td><%= value %></td>
+                </tr>
               <% end %>
-            <% end %>
-          <% end %>
+            </tbody>
+          </table>
         <% end %>
       </div>
 
